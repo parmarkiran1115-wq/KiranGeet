@@ -2507,48 +2507,74 @@ function initRSVPReveal() {
    Preloader & Hero Text Initialization
 ───────────────────────────────────── */
 function initPreloader() {
-  const bride = "किरण";
-  const groom = "गीत";
+  const coupleImageUrl = "assets/Demo/KiranGeet.png";
   const date = "२० जून २०२६";
 
   function updatePreloader() {
-    // Names in preloader
-    const n1 = document.querySelector(".pl-n1");
-    const n2 = document.querySelector(".pl-n2");
-    if (n1) n1.textContent = bride;
-    if (n2) n2.textContent = groom;
-
-    // Names in hero copy
-    const hb = document.querySelector(".hc-bride");
-    const hg = document.querySelector(".hc-groom");
-    if (hb) hb.textContent = bride;
-    if (hg) hg.textContent = groom;
-
-    // template09: patch #introNames .word spans
-    const introNames = document.getElementById("introNames");
-    if (introNames && bride && groom) {
-      const words = Array.from(introNames.querySelectorAll(".word")).filter(
-        (w) => !w.classList.contains("amp-wrap"),
-      );
-      if (words.length >= 2) {
-        words[0].textContent = bride;
-        words[words.length - 1].textContent = groom;
-      }
+    // Inject couple image in preloader (.pl-names)
+    const plNames = document.querySelector(".pl-names");
+    if (plNames && !plNames.querySelector(".pl-couple-img-wrap")) {
+      const imgWrap = document.createElement("div");
+      imgWrap.className = "pl-couple-img-wrap";
+      imgWrap.style.cssText = `
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 20px;
+        perspective: 1200px;
+      `;
+      
+      const img = document.createElement("img");
+      img.className = "pl-couple-img";
+      img.src = coupleImageUrl;
+      img.alt = "Couple";
+      img.decoding = "async";
+      img.style.cssText = `
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        animation: couple3dRotate 8s infinite ease-in-out;
+        transform-style: preserve-3d;
+      `;
+      
+      imgWrap.appendChild(img);
+      plNames.insertBefore(imgWrap, plNames.firstChild);
     }
 
-    // template09: patch intro date and venue
+    // Inject couple image in intro names section
+    const introNames = document.getElementById("introNames");
+    if (introNames && !introNames.querySelector(".intro-couple-img-wrap")) {
+      const imgWrap = document.createElement("div");
+      imgWrap.className = "intro-couple-img-wrap";
+      imgWrap.style.cssText = `
+        width: 400px;
+        height: 180px;
+        margin: 0 auto 20px;
+        perspective: 1200px;
+      `;
+      
+      const img = document.createElement("img");
+      img.className = "intro-couple-img";
+      img.src = coupleImageUrl;
+      img.alt = "Couple";
+      img.decoding = "async";
+      img.style.cssText = `
+        width: 100%;
+        height: 100%;       
+        animation: couple3dRotate 8s infinite ease-in-out;
+        transform-style: preserve-3d;
+      `;
+      
+      imgWrap.appendChild(img);
+      introNames.insertBefore(imgWrap, introNames.firstChild);
+    }
+
+    // Patch intro date
     const introDate = document.getElementById("introDate");
     if (introDate && date) introDate.textContent = date;
 
-    // Fallback: replace any leaf text still reading the placeholder names
-    document.querySelectorAll("*").forEach((el) => {
-      if (el.children.length === 0 && el.textContent.trim() === "Priya")
-        el.textContent = bride;
-      if (el.children.length === 0 && el.textContent.trim() === "Arjun")
-        el.textContent = groom;
-    });
-
-    // Date injection
+    // Date injection fallback
     if (date) {
       let found = false;
       document.querySelectorAll("*").forEach((el) => {

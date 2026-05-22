@@ -5226,6 +5226,7 @@ input.gal-file-input {
   opacity: 0;
   transform: translateY(18px);
   transition: opacity .9s ease, transform .9s ease;
+  word-spacing: .26em;
 }
 
 .rsvp-section.rsvp-alive .rsvp-reveal {
@@ -5266,9 +5267,9 @@ input.gal-file-input {
   text-shadow: 0 2px 14px rgba(0, 0, 0, .55);
 }
 
-.rsvp-section.rsvp-alive .rsvp-eyebrow {
+/* .rsvp-section.rsvp-alive .rsvp-eyebrow {
   opacity: .50;
-}
+} */
 
 /* ── Headline ── */
 .rsvp-headline {

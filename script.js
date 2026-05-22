@@ -1918,9 +1918,9 @@ const TTK_ITEMS = [
   {
     type: "dress-code",
     enabled: true,
-    title: "Dress Code",
+    title: "विनीत ",
     description:
-      "Festive Indian elegance. Sarees, lehengas and sherwanis are warmly encouraged.",
+      "फुलचंदजी, संजयकुमारजी, शांतीलालजी परमार व परिवार",
     icon: TTK_BASE + "pn-ttk-ico-dress-code-x-v01.webp",
     linkLabel: null,
     linkUrl: null,
@@ -1929,9 +1929,10 @@ const TTK_ITEMS = [
   {
     type: "venue",
     enabled: true,
-    title: "Venue",
+    title: "आपकी प्रतीक्षा में",
     description:
-      "The Oberoi Udaivilas, Udaipur. All celebrations take place within the palace grounds.",
+      "सौ. नंदा प्रेमचंदजी श्रीश्रीमाळ, संभाजीनगर \n" + 
+      "सौ.पुष्पा सुभाषलालजी कटारिया, लोणी प्रवरा",
     icon: TTK_BASE + "pn-ttk-ico-venue-x-v01.webp",
     linkLabel: null,
     linkUrl: null,
@@ -1940,9 +1941,9 @@ const TTK_ITEMS = [
   {
     type: "stay-options",
     enabled: true,
-    title: "Stay Options",
+    title: "ननिहाल पक्ष ",
     description:
-      "A curated block of rooms has been reserved. Please book by 1st November 2026.",
+      "श्रीमान सा. संतोषकुमारजी, सुनीलकुमारजी, नितीनकुमारजी, आनंदकुमारजी एवंम समस्त चुत्तर परिवार (पुनावाला)",
     icon: TTK_BASE + "pn-ttk-ico-stay-options-x-v01.webp",
     linkLabel: null,
     linkUrl: null,
@@ -1951,8 +1952,8 @@ const TTK_ITEMS = [
   {
     type: "hashtag",
     enabled: true,
-    title: "Wedding Hashtag",
-    description: "Share your favourite moments with #AaravMeeraNoor.",
+    title: "मीठी मनुहार ",
+    description: "सूरजमल, शुभम, धार्मिका, विराज, आरती, वैभवी, रुही एवं परमार परिवार",
     icon: TTK_BASE + "pn-ttk-ico-hashtag-x-v01.webp",
     linkLabel: null,
     linkUrl: null,

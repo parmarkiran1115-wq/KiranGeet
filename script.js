@@ -442,6 +442,12 @@ function hydrate() {
   ropeImg.src        = A.rope;
   lotusIconImg.src   = A.lotusClosed;
   lotusGlow.src      = A.lotusGlow;
+  
+  // Set background music src from config
+  if (window.__WEDDING_CONFIG__ && window.__WEDDING_CONFIG__.music && window.__WEDDING_CONFIG__.music.bgMusic) {
+    bgMusic.src = window.__WEDDING_CONFIG__.music.bgMusic;
+  }
+  
   const lotusOpenImg = document.getElementById("lotusOpenImg");
   if (lotusOpenImg) {
     lotusOpenImg.src = A.lotusOpen;
@@ -1562,6 +1568,13 @@ lotusButton.addEventListener("click", () => {
 
   Sound.lotus();
 
+  // Play lotus click song from config
+  if (window.__WEDDING_CONFIG__ && window.__WEDDING_CONFIG__.music && window.__WEDDING_CONFIG__.music.lotus) {
+    const lotusAudio = new Audio(window.__WEDDING_CONFIG__.music.lotus);
+    lotusAudio.volume = 0.8;
+    lotusAudio.play().catch(() => {});
+  }
+
   /* Phase 1 — breath in */
   lotusButton.classList.add("lotus-phase-1");
 
@@ -1660,7 +1673,7 @@ document.querySelectorAll(".reveal-item").forEach(el => observer.observe(el));
    so they are fully initialised when renderTTK() is called.
 ═══════════════════════════════════════════════════════════════ */
 
-const TTK_BASE = "assets/ttk/";
+const TTK_BASE = "assets/shared/";
 
 /* ── Card data — 4 enabled by default for preview ── */
 const TTK_ITEMS = [
@@ -1788,16 +1801,13 @@ function buildTTKCard(item, isLastOdd) {
 
   wrap.appendChild(icon);
 
-  const rule = document.createElement("div");
-  rule.className = "ttk-card-rule"; rule.setAttribute("aria-hidden", "true");
-
   const title = document.createElement("h3");
   title.className = "ttk-card-title"; title.textContent = item.title;
 
   const body = document.createElement("p");
   body.className = "ttk-card-body"; body.textContent = item.description;
 
-  a.appendChild(wrap); a.appendChild(rule); a.appendChild(title); a.appendChild(body);
+  a.appendChild(wrap); a.appendChild(title); a.appendChild(body);
 
   if (item.linkLabel && item.linkUrl) {
     const lnk = document.createElement("a");
@@ -1817,6 +1827,22 @@ function buildTTKCard(item, isLastOdd) {
 (function applyConfigPhase1() {
   var C = (typeof window !== 'undefined') ? window.__WEDDING_CONFIG__ : null;
   if (!C) return;
+
+  /* Load TTK items from config FIRST — before any rendering */
+  if (C.ttk && Array.isArray(C.ttk)) {
+    TTK_ITEMS = C.ttk.map(function(item) {
+      return {
+        type: item.type || '',
+        enabled: item.enabled !== false,
+        title: item.title || '',
+        description: item.description || '',
+        icon: item.icon || '',
+        linkLabel: item.linkLabel || null,
+        linkUrl: item.linkUrl || null,
+        custom: item.custom !== true
+      };
+    });
+  }
 
   /* Format ISO date "2026-12-13" → "13 Dec 2026" for event cards */
   function fmtEvDate(iso) {
@@ -1910,10 +1936,42 @@ function buildTTKCard(item, isLastOdd) {
 })();
 
 /* ─────────────────────────────────────
-   Init
+   Init — delayed until config loads
 ───────────────────────────────────── */
-hydrate();
-Sound.init();
+(function waitForConfigThenHydrate() {
+  function runHydrate() {
+    if (window.__WEDDING_CONFIG__) {
+      // Config is loaded
+      const C = window.__WEDDING_CONFIG__;
+      
+      // Load TTK items from config (only if not already loaded)
+      if (C.ttk && Array.isArray(C.ttk) && TTK_ITEMS.length <= 12) {
+        // Check if TTK_ITEMS still has the old hardcoded values (length should be 12 for old array)
+        // If so, replace with new values from config
+        TTK_ITEMS = C.ttk.map(function(item) {
+          return {
+            type: item.type || '',
+            enabled: item.enabled !== false,
+            title: item.title || '',
+            description: item.description || '',
+            icon: item.icon || '',
+            linkLabel: item.linkLabel || null,
+            linkUrl: item.linkUrl || null,
+            custom: item.custom !== true
+          };
+        });
+      }
+      
+      // Now call hydrate
+      hydrate();
+      Sound.init();
+    } else {
+      // Config not ready yet, try again soon
+      setTimeout(runHydrate, 50);
+    }
+  }
+  runHydrate();
+})();
 /* ═══════════════════════════════════════════════════════════════
    RSVP — Royal Night Finale
    Fireworks, fountain, calendar links, reveal sequencer

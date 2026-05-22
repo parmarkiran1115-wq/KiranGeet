@@ -192,5 +192,9 @@
   "config": {
     "hasGrandparents": true,
     "pullThresholdPercent": 0.11
+  },
+  "music": {
+    "bgMusic": "assets/song/Template_09.mp3",
+    "lotus": "assets/song/Template_09.mp3"
   }
 }

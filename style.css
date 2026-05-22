@@ -83,6 +83,7 @@ body.intro-active {
 
 .intro-bg-dark {
   z-index: 1;
+  opacity: 1;
   transform: translate3d(var(--px-bg-x), var(--px-bg-y), 0) scale(1.06);
   transition: transform 1100ms ease-out;
 }
@@ -142,26 +143,7 @@ body.intro-active {
 
 /* ── Vignette ── */
 .intro-vignette {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 54% 62% at 50% 43%,
-      rgba(216, 169, 87, .075) 0%,
-      rgba(166, 56, 79, .045) 38%,
-      transparent 66%),
-    linear-gradient(180deg,
-      rgba(4, 8, 6, .78) 0%,
-      transparent 18%,
-      transparent 50%,
-      rgba(4, 8, 6, .92) 100%),
-    linear-gradient(90deg,
-      rgba(4, 8, 6, .54) 0%,
-      transparent 20%,
-      transparent 80%,
-      rgba(4, 8, 6, .52) 100%);
-  transition: background 2.2s ease;
+  display: none;
 }
 
 /* Lit — open up the scene, let the bg breathe */
@@ -180,14 +162,7 @@ body.intro-active {
 }
 
 .intro-dark-vignette {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none;
-  background: radial-gradient(ellipse 62% 70% at 50% 46%,
-      transparent 28%, rgba(2, 5, 4, .76) 100%);
-  opacity: 1;
-  transition: opacity 2400ms ease;
+  display: none;
 }
 
 .intro.is-lit .intro-dark-vignette {
@@ -196,18 +171,7 @@ body.intro-active {
 
 /* ── Warm amber bloom — LIGHT touch, trust the bg image ── */
 .intro-warm-glow {
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  pointer-events: none;
-  opacity: 0;
-  transform: translate3d(var(--px-jhm-x), var(--px-jhm-y), 0);
-  background:
-    radial-gradient(ellipse 70% 34% at 50% 0%,
-      rgba(216, 169, 87, .30) 0%, transparent 68%);
-  mix-blend-mode: screen;
-  transition: opacity 1600ms ease 300ms;
-  will-change: transform, opacity;
+  display: none;
 }
 
 .intro.is-lit .intro-warm-glow {
@@ -298,18 +262,7 @@ body.intro-active {
 
 /* ── Rose scatter — very subtle floor warmth ── */
 .intro-rose-scatter {
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  pointer-events: none;
-  opacity: 0;
-  background:
-    radial-gradient(ellipse 60% 28% at 14% 86%,
-      rgba(166, 56, 79, .14) 0%, transparent 68%),
-    radial-gradient(ellipse 56% 26% at 86% 86%,
-      rgba(166, 56, 79, .12) 0%, transparent 64%);
-  mix-blend-mode: screen;
-  transition: opacity 2000ms ease 900ms;
+  display: none;
 }
 
 .intro.is-lit .intro-rose-scatter {
@@ -1436,6 +1389,39 @@ body.intro-active {
     animation-duration: .001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .001ms !important;
+  }
+}
+
+/* ─ Mobile responsive ─ */
+@media (max-width: 640px) {
+  .intro {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100svh;
+    min-height: 100svh;
+  }
+  
+  .intro-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .rope-button {
+    width: clamp(80px, 18vw, 120px);
+    height: clamp(300px, 45svh, 450px);
+  }
+  
+  .lotus-cta-group {
+    bottom: 10%;
+  }
+  
+  .intro-reveal {
+    max-width: 85vw;
   }
 }
 

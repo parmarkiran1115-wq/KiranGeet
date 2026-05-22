@@ -102,8 +102,8 @@ const EVENTS = [
    Config — asset paths
 ───────────────────────────────────── */
 const A = {
-  darkBg: "assets/hero/pn-hro-bg-courtyard-dark-m-v03.webp",
-  litBg: "assets/hero/pn-hro-bg-courtyard-lit-m-v03.webp",
+  darkBg: "assets/hero/pn-hro-bg-courtyard-dark-D-v03.webp",
+  litBg: "assets/hero/pn-hro-bg-courtyard-lit-d-v03.webp",
   darkBgDesktop: "assets/hero/pn-hro-bg-courtyard-dark-D-v03.webp",
   litBgDesktop: "assets/hero/pn-hro-bg-courtyard-lit-d-v03.webp",
   rope: "assets/hero/pn-hro-el-rope-hemp-pull-x-v01.webp",

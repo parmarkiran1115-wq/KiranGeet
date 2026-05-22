@@ -14,7 +14,6 @@
             style="display: flex; position: absolute; top: 0px; left: 0px"
           ></div></div></template
     ></plasmo-csui>
-    <base href="../" />
     <title>Kiran &amp; Geet</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,7 +24,6 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body
-    class="intro-active"
     cz-shortcut-listen="true"
     data-new-gr-c-s-check-loaded="14.1294.0"
     data-gr-ext-installed
@@ -35,752 +33,79 @@
     <!-- ═══════════════════════════════════
      INTRO
 ═══════════════════════════════════ -->
-    <section
-      class="intro is-lit show-names show-date show-venue show-lotus"
-      id="intro"
-      aria-label="Opening scene"
-      style="
-        --px-bg-x: 0px;
-        --px-bg-y: 0px;
-        --px-jhm-x: 0px;
-        --px-jhm-y: 0px;
-        --px-flr-x: 0px;
-        --px-flr-y: 0px;
-        --px-dya-x: 0px;
-        --px-dya-y: 0px;
-      "
-    >
-      <!-- Background layers -->
-      <img
-        class="intro-bg intro-bg-dark"
-        id="introBgDark"
-        alt
-        aria-hidden="true"
-        decoding="async"
-        fetchpriority="high"
-        src="assets/hero/pn-hro-bg-courtyard-dark-D-v03.webp"
-      />
-      <img
-        class="intro-bg intro-bg-lit"
-        id="introBgLit"
-        alt
-        aria-hidden="true"
-        decoding="async"
-        src="assets/hero/pn-hro-bg-courtyard-lit-d-v03.webp"
-      />
+<section class="intro is-waiting" id="intro" aria-label="Opening scene" style="--px-bg-x: 0.00px; --px-bg-y: 0.00px; --px-jhm-x: 0.00px; --px-jhm-y: 0.00px; --px-flr-x: 0.00px; --px-flr-y: 0.00px; --px-dya-x: 0.00px; --px-dya-y: 0.00px;">
 
-      <!-- Glow system -->
-      <div class="intro-vignette" aria-hidden="true"></div>
-      <div class="intro-dark-vignette" aria-hidden="true"></div>
-      <div class="intro-warm-glow" aria-hidden="true"></div>
-      <div class="intro-jhoomer-glow" aria-hidden="true"></div>
-      <div class="intro-rose-scatter" aria-hidden="true"></div>
+  <!-- Background layers -->
+  <img class="intro-bg intro-bg-dark" id="introBgDark" alt="" aria-hidden="true" decoding="async" fetchpriority="high" src="assets/hero/pn-hro-bg-courtyard-dark-D-v03.webp">
+  <img class="intro-bg intro-bg-lit" id="introBgLit" alt="" aria-hidden="true" decoding="async" src="assets/hero/pn-hro-bg-courtyard-lit-d-v03.webp">
 
-      <!-- Particles (lit only) -->
-      <div class="intro-dust" id="introDust" aria-hidden="true">
-        <div
-          class="dust-particle"
-          style="
-            width: 3.28584px;
-            height: 3.28584px;
-            left: 26.736%;
-            bottom: 13.3725%;
-            animation-duration: 12.2118s;
-            animation-delay: 3.69433s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 2.6006px;
-            height: 2.6006px;
-            left: 28.7359%;
-            bottom: 18.7572%;
-            animation-duration: 10.798s;
-            animation-delay: 0.912855s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 2.72697px;
-            height: 2.72697px;
-            left: 53.2941%;
-            bottom: 13.1154%;
-            animation-duration: 11.909s;
-            animation-delay: 4.86563s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 2.93588px;
-            height: 2.93588px;
-            left: 69.3407%;
-            bottom: 26.5153%;
-            animation-duration: 14.6738s;
-            animation-delay: 6.73547s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 3.40387px;
-            height: 3.40387px;
-            left: 43.5885%;
-            bottom: 60.081%;
-            animation-duration: 7.13691s;
-            animation-delay: 1.67372s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 2.95182px;
-            height: 2.95182px;
-            left: 50.4376%;
-            bottom: 19.2521%;
-            animation-duration: 14.3312s;
-            animation-delay: 4.91497s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 1.37666px;
-            height: 1.37666px;
-            left: 68.5529%;
-            bottom: 50.3678%;
-            animation-duration: 12.1932s;
-            animation-delay: 1.62396s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 3.10929px;
-            height: 3.10929px;
-            left: 45.7795%;
-            bottom: 39.7674%;
-            animation-duration: 9.13223s;
-            animation-delay: 5.55034s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 1.10378px;
-            height: 1.10378px;
-            left: 77.4604%;
-            bottom: 13.6972%;
-            animation-duration: 14.015s;
-            animation-delay: 7.50459s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 3.08183px;
-            height: 3.08183px;
-            left: 67.6687%;
-            bottom: 28.2921%;
-            animation-duration: 7.40235s;
-            animation-delay: 4.52575s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 1.77183px;
-            height: 1.77183px;
-            left: 36.74%;
-            bottom: 10.4208%;
-            animation-duration: 10.1093s;
-            animation-delay: 4.87289s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 3.60497px;
-            height: 3.60497px;
-            left: 64.9186%;
-            bottom: 34.499%;
-            animation-duration: 10.7867s;
-            animation-delay: 2.54525s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 2.01339px;
-            height: 2.01339px;
-            left: 23.5807%;
-            bottom: 15.225%;
-            animation-duration: 15.2942s;
-            animation-delay: 6.40717s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 1.78877px;
-            height: 1.78877px;
-            left: 25.0364%;
-            bottom: 21.7277%;
-            animation-duration: 14.7933s;
-            animation-delay: 4.05043s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 2.51983px;
-            height: 2.51983px;
-            left: 45.8197%;
-            bottom: 35.3213%;
-            animation-duration: 13.5343s;
-            animation-delay: 3.38403s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 3.6748px;
-            height: 3.6748px;
-            left: 29.1694%;
-            bottom: 23.4899%;
-            animation-duration: 16.9446s;
-            animation-delay: 4.86339s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 2.98023px;
-            height: 2.98023px;
-            left: 59.5936%;
-            bottom: 21.0095%;
-            animation-duration: 12.3515s;
-            animation-delay: 0.140875s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 1.70253px;
-            height: 1.70253px;
-            left: 28.2729%;
-            bottom: 31.4159%;
-            animation-duration: 13.7345s;
-            animation-delay: 7.89743s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 3.04161px;
-            height: 3.04161px;
-            left: 67.0568%;
-            bottom: 17.1272%;
-            animation-duration: 12.2418s;
-            animation-delay: 2.0361s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 1.72026px;
-            height: 1.72026px;
-            left: 32.143%;
-            bottom: 56.682%;
-            animation-duration: 11.253s;
-            animation-delay: 0.124194s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 2.74571px;
-            height: 2.74571px;
-            left: 63.3943%;
-            bottom: 23.6957%;
-            animation-duration: 7.90294s;
-            animation-delay: 0.379043s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 1.53757px;
-            height: 1.53757px;
-            left: 44.6108%;
-            bottom: 32.489%;
-            animation-duration: 15.8083s;
-            animation-delay: 3.70908s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 2.94238px;
-            height: 2.94238px;
-            left: 74.546%;
-            bottom: 35.9217%;
-            animation-duration: 16.8165s;
-            animation-delay: 4.11876s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 1.11664px;
-            height: 1.11664px;
-            left: 34.6886%;
-            bottom: 52.6423%;
-            animation-duration: 11.0259s;
-            animation-delay: 5.86433s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 1.25776px;
-            height: 1.25776px;
-            left: 56.8745%;
-            bottom: 48.903%;
-            animation-duration: 8.57639s;
-            animation-delay: 6.99371s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 1.41553px;
-            height: 1.41553px;
-            left: 25.1589%;
-            bottom: 40.7118%;
-            animation-duration: 15.195s;
-            animation-delay: 4.61205s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 3.35892px;
-            height: 3.35892px;
-            left: 28.7599%;
-            bottom: 46.4629%;
-            animation-duration: 12.4995s;
-            animation-delay: 1.33276s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 2.23303px;
-            height: 2.23303px;
-            left: 44.6775%;
-            bottom: 48.6743%;
-            animation-duration: 8.83483s;
-            animation-delay: 2.39324s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 3.7492px;
-            height: 3.7492px;
-            left: 45.3045%;
-            bottom: 13.8843%;
-            animation-duration: 11.1699s;
-            animation-delay: 6.19991s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 3.46007px;
-            height: 3.46007px;
-            left: 33.9057%;
-            bottom: 39.882%;
-            animation-duration: 10.454s;
-            animation-delay: 3.30781s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 1.60457px;
-            height: 1.60457px;
-            left: 32.8639%;
-            bottom: 22.5084%;
-            animation-duration: 11.0872s;
-            animation-delay: 4.09214s;
-          "
-        ></div>
-        <div
-          class="dust-particle"
-          style="
-            width: 3.40828px;
-            height: 3.40828px;
-            left: 60.0765%;
-            bottom: 40.5594%;
-            animation-duration: 7.25757s;
-            animation-delay: 6.66548s;
-          "
-        ></div>
-      </div>
-      <div class="intro-petals" id="introPetals" aria-hidden="true">
-        <div
-          class="petal"
-          style="
-            left: 29.0003%;
-            bottom: 6.66732%;
-            width: 7.37236px;
-            height: 4.57086px;
-            animation-duration: 11.086s;
-            animation-delay: 9.75174s;
-          "
-        ></div>
-        <div
-          class="petal"
-          style="
-            left: 72.5443%;
-            bottom: 15.5746%;
-            width: 8.25704px;
-            height: 5.11936px;
-            animation-duration: 16.3612s;
-            animation-delay: 8.36201s;
-          "
-        ></div>
-        <div
-          class="petal"
-          style="
-            left: 46.3849%;
-            bottom: 4.06484%;
-            width: 10.4157px;
-            height: 6.45775px;
-            animation-duration: 20.5786s;
-            animation-delay: 7.60361s;
-          "
-        ></div>
-        <div
-          class="petal"
-          style="
-            left: 59.1044%;
-            bottom: 1.04971%;
-            width: 7.88072px;
-            height: 4.88605px;
-            animation-duration: 13.6111s;
-            animation-delay: 8.41026s;
-          "
-        ></div>
-        <div
-          class="petal"
-          style="
-            left: 81.6414%;
-            bottom: 7.77688%;
-            width: 5.16735px;
-            height: 3.20376px;
-            animation-duration: 19.4084s;
-            animation-delay: 7.41073s;
-          "
-        ></div>
-        <div
-          class="petal"
-          style="
-            left: 24.1605%;
-            bottom: 15.4365%;
-            width: 6.24942px;
-            height: 3.87464px;
-            animation-duration: 12.9159s;
-            animation-delay: 6.16273s;
-          "
-        ></div>
-        <div
-          class="petal"
-          style="
-            left: 33.7128%;
-            bottom: 2.71504%;
-            width: 9.85372px;
-            height: 6.10931px;
-            animation-duration: 23.7204s;
-            animation-delay: 8.70812s;
-          "
-        ></div>
-        <div
-          class="petal"
-          style="
-            left: 12.125%;
-            bottom: 2.3472%;
-            width: 11.927px;
-            height: 7.39473px;
-            animation-duration: 14.3999s;
-            animation-delay: 5.67117s;
-          "
-        ></div>
-        <div
-          class="petal"
-          style="
-            left: 48.4185%;
-            bottom: 5.37547%;
-            width: 11.6178px;
-            height: 7.20303px;
-            animation-duration: 12.1126s;
-            animation-delay: 2.32332s;
-          "
-        ></div>
-        <div
-          class="petal"
-          style="
-            left: 56.6989%;
-            bottom: 15.7588%;
-            width: 8.08178px;
-            height: 5.0107px;
-            animation-duration: 20.3996s;
-            animation-delay: 4.16199s;
-          "
-        ></div>
-        <div
-          class="petal"
-          style="
-            left: 32.929%;
-            bottom: 13.347%;
-            width: 6.02893px;
-            height: 3.73794px;
-            animation-duration: 19.6956s;
-            animation-delay: 4.28713s;
-          "
-        ></div>
-        <div
-          class="petal"
-          style="
-            left: 37.9581%;
-            bottom: 11.354%;
-            width: 8.49531px;
-            height: 5.2671px;
-            animation-duration: 20.203s;
-            animation-delay: 7.19322s;
-          "
-        ></div>
-        <div
-          class="petal"
-          style="
-            left: 86.5352%;
-            bottom: 17.5701%;
-            width: 5.74668px;
-            height: 3.56294px;
-            animation-duration: 18.1052s;
-            animation-delay: 7.92843s;
-          "
-        ></div>
-        <div
-          class="petal"
-          style="
-            left: 83.6181%;
-            bottom: 8.51372%;
-            width: 11.1289px;
-            height: 6.8999px;
-            animation-duration: 11.3239s;
-            animation-delay: 8.67347s;
-          "
-        ></div>
-        <div
-          class="petal"
-          style="
-            left: 19.231%;
-            bottom: 9.95264%;
-            width: 6.06309px;
-            height: 3.75911px;
-            animation-duration: 20.1054s;
-            animation-delay: 6.4953s;
-          "
-        ></div>
-        <div
-          class="petal"
-          style="
-            left: 61.6288%;
-            bottom: 8.73715%;
-            width: 11.4032px;
-            height: 7.07001px;
-            animation-duration: 13.3562s;
-            animation-delay: 5.82515s;
-          "
-        ></div>
-        <div
-          class="petal"
-          style="
-            left: 71.6885%;
-            bottom: 3.6841%;
-            width: 11.2198px;
-            height: 6.95627px;
-            animation-duration: 20.8542s;
-            animation-delay: 7.37763s;
-          "
-        ></div>
-        <div
-          class="petal"
-          style="
-            left: 37.529%;
-            bottom: 7.62045%;
-            width: 7.93906px;
-            height: 4.92222px;
-            animation-duration: 18.4112s;
-            animation-delay: 5.54408s;
-          "
-        ></div>
-      </div>
+  <!-- Glow system -->
+  <div class="intro-vignette" aria-hidden="true"></div>
+  <div class="intro-dark-vignette" aria-hidden="true"></div>
+  <div class="intro-warm-glow" aria-hidden="true"></div>
+  <div class="intro-jhoomer-glow" aria-hidden="true"></div>
+  <div class="intro-rose-scatter" aria-hidden="true"></div>
 
-      <!-- Floral clusters — bottom corners, lit only -->
-      <img
-        class="intro-floral-left"
-        id="introFloralLeft"
-        alt
-        aria-hidden="true"
-        decoding="async"
-        src="assets/hero/pn-shr-mot-floral-bush-cluster-x-v01.webp"
-      />
-      <img
-        class="intro-floral-right"
-        id="introFloralRight"
-        alt
-        aria-hidden="true"
-        decoding="async"
-        src="assets/hero/pn-shr-mot-floral-bush-cluster-x-v01.webp"
-      />
+  <!-- Particles (lit only) -->
+  <div class="intro-dust" id="introDust" aria-hidden="true"><div class="dust-particle" style="width: 1.23785px; height: 1.23785px; left: 56.2731%; bottom: 25.4179%; animation-duration: 14.3974s; animation-delay: 5.76905s;"></div><div class="dust-particle" style="width: 2.9179px; height: 2.9179px; left: 53.8173%; bottom: 42.246%; animation-duration: 8.90258s; animation-delay: 5.73697s;"></div><div class="dust-particle" style="width: 2.09705px; height: 2.09705px; left: 25.4781%; bottom: 13.4405%; animation-duration: 11.8445s; animation-delay: 2.20101s;"></div><div class="dust-particle" style="width: 3.68881px; height: 3.68881px; left: 77.3996%; bottom: 26.4268%; animation-duration: 8.91699s; animation-delay: 0.239774s;"></div><div class="dust-particle" style="width: 1.57562px; height: 1.57562px; left: 57.6662%; bottom: 12.0378%; animation-duration: 14.977s; animation-delay: 1.22128s;"></div><div class="dust-particle" style="width: 2.83746px; height: 2.83746px; left: 69.9689%; bottom: 43.743%; animation-duration: 13.8814s; animation-delay: 0.787284s;"></div><div class="dust-particle" style="width: 3.28498px; height: 3.28498px; left: 35.9506%; bottom: 62.393%; animation-duration: 7.13486s; animation-delay: 5.9153s;"></div><div class="dust-particle" style="width: 2.17864px; height: 2.17864px; left: 60.428%; bottom: 45.766%; animation-duration: 16.2702s; animation-delay: 2.16465s;"></div><div class="dust-particle" style="width: 2.75061px; height: 2.75061px; left: 57.8251%; bottom: 57.3111%; animation-duration: 10.1435s; animation-delay: 1.03833s;"></div><div class="dust-particle" style="width: 3.60148px; height: 3.60148px; left: 61.6258%; bottom: 25.7821%; animation-duration: 12.0974s; animation-delay: 7.72775s;"></div><div class="dust-particle" style="width: 2.69152px; height: 2.69152px; left: 34.4847%; bottom: 31.1587%; animation-duration: 12.3703s; animation-delay: 2.81706s;"></div><div class="dust-particle" style="width: 2.60625px; height: 2.60625px; left: 72.7587%; bottom: 48.5478%; animation-duration: 12.1581s; animation-delay: 6.54714s;"></div><div class="dust-particle" style="width: 2.19507px; height: 2.19507px; left: 42.9519%; bottom: 50.6068%; animation-duration: 7.48876s; animation-delay: 7.7918s;"></div><div class="dust-particle" style="width: 2.04694px; height: 2.04694px; left: 26.5381%; bottom: 52.7908%; animation-duration: 9.94604s; animation-delay: 1.1232s;"></div><div class="dust-particle" style="width: 1.48317px; height: 1.48317px; left: 31.1208%; bottom: 41.015%; animation-duration: 16.7852s; animation-delay: 3.04322s;"></div><div class="dust-particle" style="width: 2.66045px; height: 2.66045px; left: 40.6269%; bottom: 25.9587%; animation-duration: 8.27712s; animation-delay: 6.23866s;"></div><div class="dust-particle" style="width: 3.42795px; height: 3.42795px; left: 40.9582%; bottom: 8.76353%; animation-duration: 12.8181s; animation-delay: 6.91187s;"></div><div class="dust-particle" style="width: 2.85107px; height: 2.85107px; left: 69.5886%; bottom: 26.8122%; animation-duration: 7.97898s; animation-delay: 7.03312s;"></div><div class="dust-particle" style="width: 3.35352px; height: 3.35352px; left: 39.1996%; bottom: 25.8158%; animation-duration: 13.1365s; animation-delay: 7.88473s;"></div><div class="dust-particle" style="width: 3.10211px; height: 3.10211px; left: 42.4344%; bottom: 62.3318%; animation-duration: 10.7795s; animation-delay: 1.72645s;"></div><div class="dust-particle" style="width: 2.21854px; height: 2.21854px; left: 60.7327%; bottom: 25.7239%; animation-duration: 15.2093s; animation-delay: 2.80139s;"></div><div class="dust-particle" style="width: 3.46328px; height: 3.46328px; left: 22.0728%; bottom: 61.3233%; animation-duration: 15.4575s; animation-delay: 1.03053s;"></div><div class="dust-particle" style="width: 2.3768px; height: 2.3768px; left: 66.0538%; bottom: 34.194%; animation-duration: 11.5928s; animation-delay: 7.72486s;"></div><div class="dust-particle" style="width: 2.38247px; height: 2.38247px; left: 74.1034%; bottom: 42.545%; animation-duration: 15.4799s; animation-delay: 5.59104s;"></div><div class="dust-particle" style="width: 3.33365px; height: 3.33365px; left: 58.9707%; bottom: 51.0961%; animation-duration: 9.29672s; animation-delay: 0.865963s;"></div><div class="dust-particle" style="width: 1.3469px; height: 1.3469px; left: 40.5171%; bottom: 17.4886%; animation-duration: 9.69464s; animation-delay: 7.73131s;"></div><div class="dust-particle" style="width: 3.57797px; height: 3.57797px; left: 41.4984%; bottom: 16.0656%; animation-duration: 10.9015s; animation-delay: 7.55222s;"></div><div class="dust-particle" style="width: 3.71299px; height: 3.71299px; left: 37.4612%; bottom: 59.7889%; animation-duration: 13.6595s; animation-delay: 6.36156s;"></div><div class="dust-particle" style="width: 2.82728px; height: 2.82728px; left: 69.1011%; bottom: 31.5534%; animation-duration: 13.0747s; animation-delay: 5.50276s;"></div><div class="dust-particle" style="width: 2.58376px; height: 2.58376px; left: 33.0943%; bottom: 13.1563%; animation-duration: 12.1565s; animation-delay: 1.10126s;"></div><div class="dust-particle" style="width: 1.81628px; height: 1.81628px; left: 68.86%; bottom: 9.35235%; animation-duration: 14.2074s; animation-delay: 6.25923s;"></div><div class="dust-particle" style="width: 3.67709px; height: 3.67709px; left: 40.361%; bottom: 12.5286%; animation-duration: 13.1969s; animation-delay: 0.38242s;"></div></div>
+  <div class="intro-petals" id="introPetals" aria-hidden="true"><div class="petal" style="left: 43.5911%; bottom: 15.5463%; width: 5.89432px; height: 3.65448px; animation-duration: 16.3543s; animation-delay: 7.55154s;"></div><div class="petal" style="left: 47.6508%; bottom: 5.71489%; width: 11.2218px; height: 6.95751px; animation-duration: 19.8227s; animation-delay: 2.212s;"></div><div class="petal" style="left: 15.5967%; bottom: 13.868%; width: 10.5058px; height: 6.51357px; animation-duration: 17.7408s; animation-delay: 8.0003s;"></div><div class="petal" style="left: 57.2187%; bottom: 10.385%; width: 8.0598px; height: 4.99708px; animation-duration: 17.623s; animation-delay: 0.935231s;"></div><div class="petal" style="left: 36.7775%; bottom: 14.9187%; width: 8.82475px; height: 5.47135px; animation-duration: 16.0707s; animation-delay: 3.4249s;"></div><div class="petal" style="left: 70.9911%; bottom: 14.4464%; width: 8.57891px; height: 5.31892px; animation-duration: 14.5088s; animation-delay: 2.55985s;"></div><div class="petal" style="left: 71.7863%; bottom: 2.39348%; width: 7.40497px; height: 4.59108px; animation-duration: 14.5705s; animation-delay: 6.02948s;"></div><div class="petal" style="left: 9.02306%; bottom: 1.81731%; width: 8.68104px; height: 5.38225px; animation-duration: 16.2588s; animation-delay: 0.45888s;"></div><div class="petal" style="left: 43.3738%; bottom: 7.2346%; width: 8.50485px; height: 5.27301px; animation-duration: 20.5457s; animation-delay: 4.7402s;"></div><div class="petal" style="left: 39.4754%; bottom: 12.5587%; width: 7.50834px; height: 4.65517px; animation-duration: 18.7396s; animation-delay: 3.18562s;"></div><div class="petal" style="left: 69.6678%; bottom: 3.20566%; width: 9.07216px; height: 5.62474px; animation-duration: 19.105s; animation-delay: 9.27605s;"></div><div class="petal" style="left: 20.0429%; bottom: 13.6858%; width: 8.81977px; height: 5.46826px; animation-duration: 14.7983s; animation-delay: 4.17783s;"></div><div class="petal" style="left: 34.7048%; bottom: 14.4225%; width: 10.9625px; height: 6.79677px; animation-duration: 23.2945s; animation-delay: 2.89867s;"></div><div class="petal" style="left: 20.5931%; bottom: 0.280194%; width: 8.03554px; height: 4.98203px; animation-duration: 10.3864s; animation-delay: 6.65036s;"></div><div class="petal" style="left: 48.6327%; bottom: 14.6822%; width: 8.17959px; height: 5.07135px; animation-duration: 13.0467s; animation-delay: 8.29755s;"></div><div class="petal" style="left: 62.2456%; bottom: 15.3394%; width: 11.8618px; height: 7.35433px; animation-duration: 23.4193s; animation-delay: 3.46075s;"></div><div class="petal" style="left: 74.4083%; bottom: 0.981886%; width: 6.16016px; height: 3.8193px; animation-duration: 19.3907s; animation-delay: 0.588621s;"></div><div class="petal" style="left: 15.9269%; bottom: 1.89593%; width: 7.5287px; height: 4.66779px; animation-duration: 19.3873s; animation-delay: 1.95972s;"></div></div>
 
-      <!-- Diyas — arch gate floor, lit only -->
-      <div class="diya-wrap diya-left" id="diyaWrapLeft">
-        <img
-          class="diya-img"
-          id="introDiyaLeft"
-          alt
-          aria-hidden="true"
-          decoding="async"
-          src="assets/hero/pn-shr-mot-diya-glow-x-v01.webp"
-        />
-        <div class="diya-floor-glow"></div>
-      </div>
-      <div class="diya-wrap diya-right" id="diyaWrapRight">
-        <img
-          class="diya-img"
-          id="introDiyaRight"
-          alt
-          aria-hidden="true"
-          decoding="async"
-          src="assets/hero/pn-shr-mot-diya-glow-x-v01.webp"
-        />
-        <div class="diya-floor-glow"></div>
-      </div>
+  <!-- Floral clusters — bottom corners, lit only -->
+  <img class="intro-floral-left" id="introFloralLeft" alt="" aria-hidden="true" decoding="async" src="assets/hero/pn-shr-mot-floral-bush-cluster-x-v01.webp">
+  <img class="intro-floral-right" id="introFloralRight" alt="" aria-hidden="true" decoding="async" src="assets/hero/pn-shr-mot-floral-bush-cluster-x-v01.webp">
 
-      <!-- Jhoomer — lit only -->
-      <img
-        class="intro-jhoomer"
-        id="introJhoomer"
-        alt
-        aria-hidden="true"
-        decoding="async"
-        src="assets/shared/pn-shr-mot-jhoomer-hanging-x-v01.webp"
-      />
+  <!-- Diyas — arch gate floor, lit only -->
+  <div class="diya-wrap diya-left" id="diyaWrapLeft">
+    <img class="diya-img" id="introDiyaLeft" alt="" aria-hidden="true" decoding="async" src="assets/hero/pn-shr-mot-diya-glow-x-v01.webp">
+    <div class="diya-floor-glow"></div>
+  </div>
+  <div class="diya-wrap diya-right" id="diyaWrapRight">
+    <img class="diya-img" id="introDiyaRight" alt="" aria-hidden="true" decoding="async" src="assets/hero/pn-shr-mot-diya-glow-x-v01.webp">
+    <div class="diya-floor-glow"></div>
+  </div>
 
-      <!-- Rope anchor glow -->
-      <div class="rope-anchor-glow" aria-hidden="true"></div>
+  <!-- Jhoomer — lit only -->
+  <img class="intro-jhoomer" id="introJhoomer" alt="" aria-hidden="true" decoding="async" src="assets/shared/pn-shr-mot-jhoomer-hanging-x-v01.webp">
 
-      <!-- ROPE — the hero interaction -->
-      <button
-        class="rope-button rope-ready"
-        id="ropeButton"
-        type="button"
-        aria-label="Pull the rope to light our celebration"
-        style="
-          transition: transform 680ms cubic-bezier(0.2, 0.92, 0.22, 1);
-          will-change: transform, opacity, filter;
-          transform: translateX(-50%) rotate(-2.2deg);
-        "
-      >
-        <img
-          class="rope-img"
-          id="ropeImg"
-          alt
-          aria-hidden="true"
-          draggable="false"
-          src="assets/hero/pn-hro-el-rope-hemp-pull-x-v01.webp"
-          style="
-            transition: transform 680ms cubic-bezier(0.2, 0.92, 0.22, 1);
-            transform: scaleY(1.16);
-          "
-        />
-        <span
-          class="rope-halo"
-          aria-hidden="true"
-          style="
-            transition: none;
-            opacity: 0.953143;
-            transform: translateX(-50%) translateY(15.39px) scale(1.757);
-          "
-        ></span>
-      </button>
+  <!-- Rope anchor glow -->
+  <div class="rope-anchor-glow" aria-hidden="true"></div>
 
-      <!-- Instruction (dark state) -->
-      <div class="pull-feedback" id="pullFeedback" aria-hidden="true"></div>
+  <!-- ROPE — the hero interaction -->
+  <button class="rope-button rope-ready rope-idle" id="ropeButton" type="button" aria-label="Pull the rope to light our celebration">
+    <img class="rope-img" id="ropeImg" alt="" aria-hidden="true" draggable="false" src="assets/hero/pn-hro-el-rope-hemp-pull-x-v01.webp">
+    <span class="rope-halo" aria-hidden="true"></span>
+  </button>
 
-      <!-- Text reveal -->
-      <div class="intro-reveal" id="introReveal" aria-live="polite">
-        <h1 class="names intro-reveal-item" id="introNames">
-          <span class="word">किरण</span>
-          <span class="word amp-wrap"><span class="amp">&amp;</span></span
-          ><br /><span class="word">गीत</span>
-        </h1>
-        <div class="ornament intro-reveal-item" id="introOrnament">
-          <span></span><i></i><span></span>
-        </div>
-        <p class="date intro-reveal-item" id="introDate">२० जून २०२६</p>
-      </div>
+  <!-- Instruction (dark state) -->
+  <div class="intro-instruction" id="introInstruction" aria-hidden="true">
+    <div class="pull-ritual-cue"></div>
+    <span class="pull-label">खींचें, खुशियों की रोशनी जगाएँ</span>
+  </div>
+  <div class="pull-feedback" id="pullFeedback" aria-hidden="true">A little deeper to wake the lights</div>
 
-      <!-- Lotus CTA -->
-      <div class="lotus-cta-group" id="lotusCTAGroup">
-        <button
-          class="lotus-button"
-          id="lotusButton"
-          type="button"
-          aria-label="Tap the lotus to join us"
-        >
-          <img
-            class="lotus-glow-burst"
-            id="lotusGlowBurst"
-            alt
-            aria-hidden="true"
-            decoding="async"
-            src="assets/hero/pn-fx-ovl-lotus-glow-burst-x-v01.webp"
-          />
-          <img
-            class="lotus-icon-img"
-            id="lotusIconImg"
-            alt
-            aria-hidden="true"
-            draggable="false"
-            src="assets/hero/pn-rvl-btn-lotus-closed-x-v01.webp"
-          />
-          <img
-            class="lotus-open-img"
-            id="lotusOpenImg"
-            alt
-            aria-hidden="true"
-            draggable="false"
-            src="assets/hero/pn-rvl-btn-lotus-open-x-v01.webp"
-          />
-        </button>
-        <p class="lotus-cta-label" id="lotusButtonText" aria-hidden="true">
-          कमल पर क्लिक करें
-        </p>
-      </div>
+  <!-- Text reveal -->
+  <div class="intro-reveal" id="introReveal" aria-live="polite">
+    <h1 class="names intro-reveal-item" id="introNames">
+      <span class="word"></span> <span class="word amp-wrap"><span class="amp">&amp;</span></span><br><span class="word"></span>
+    </h1>
+    <div class="ornament intro-reveal-item" id="introOrnament">
+      <span></span><i></i><span></span>
+    </div>
+    <p class="date  intro-reveal-item" id="introDate"></p>
+  </div>
 
-      <button class="skip-intro" id="skipIntro" type="button">
-        skip intro
-      </button>
-    </section>
+  <!-- Lotus CTA -->
+  <div class="lotus-cta-group" id="lotusCTAGroup">
+    <button class="lotus-button" id="lotusButton" type="button" aria-label="Tap the lotus to join us">
+      <img class="lotus-glow-burst" id="lotusGlowBurst" alt="" aria-hidden="true" decoding="async" src="assets/hero/pn-fx-ovl-lotus-glow-burst-x-v01.webp">
+      <img class="lotus-icon-img" id="lotusIconImg" alt="" aria-hidden="true" draggable="false" src="assets/hero/pn-rvl-btn-lotus-closed-x-v01.webp">
+      <img class="lotus-open-img" id="lotusOpenImg" alt="" aria-hidden="true" draggable="false" src="assets/hero/pn-rvl-btn-lotus-open-x-v01.webp">
+    </button>
+    <p class="lotus-cta-label" id="lotusButtonText" aria-hidden="true">कमल पर क्लिक करें</p>
+  </div>
 
+  <button class="skip-intro" id="skipIntro" type="button">skip intro</button>
+</section>
     <!-- ═══════════════════════════════════
      PAGE SHELL
 ═══════════════════════════════════ -->

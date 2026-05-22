@@ -1777,17 +1777,6 @@ lotusButton.addEventListener("click", () => {
 
   Sound.lotus();
 
-  // Play lotus click song from config
-  if (
-    window.__WEDDING_CONFIG__ &&
-    window.__WEDDING_CONFIG__.music &&
-    window.__WEDDING_CONFIG__.music.lotus
-  ) {
-    const lotusAudio = new Audio(window.__WEDDING_CONFIG__.music.lotus);
-    lotusAudio.volume = 0.8;
-    lotusAudio.play().catch(() => {});
-  }
-
   /* Phase 1 — breath in */
   lotusButton.classList.add("lotus-phase-1");
 

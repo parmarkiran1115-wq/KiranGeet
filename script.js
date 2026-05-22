@@ -530,7 +530,7 @@ function hydrate() {
   renderStars();
   renderBirds();
   initEvtParallax();
-  renderGallery();
+  // renderGallery(); // Disabled: using static HTML frames instead
   renderTTK();
 
   setTimeout(() => {
@@ -1074,137 +1074,137 @@ function spawnGalDust(container) {
 }
 
 /* ── Render gallery ── */
-function renderGallery() {
-  const wall = document.getElementById("galWall");
-  if (!wall) return;
+// function renderGallery() {
+//   const wall = document.getElementById("galWall");
+//   if (!wall) return;
 
-  /* Filter to only the photos we actually have */
-  const filledPhotos = GALLERY_PHOTOS.filter(
-    (p) => p.src && p.src.trim() !== "",
-  );
+//   /* Filter to only the photos we actually have */
+//   const filledPhotos = GALLERY_PHOTOS.filter(
+//     (p) => p.src && p.src.trim() !== "",
+//   );
 
-  /* Stagger entry delays */
-  const DELAYS = [0, 160, 80, 240];
+//   /* Stagger entry delays */
+//   const DELAYS = [0, 160, 80, 240];
 
-  GALLERY_PHOTOS.forEach((photo, i) => {
-    const slot = document.createElement("div");
-    slot.className = `gal-frame-slot gal-slot-${photo.orient}`;
-    slot.setAttribute("role", "listitem");
-    slot.style.transitionDelay = `${DELAYS[i] || 0}ms`;
+//   GALLERY_PHOTOS.forEach((photo, i) => {
+//     const slot = document.createElement("div");
+//     slot.className = `gal-frame-slot gal-slot-${photo.orient}`;
+//     slot.setAttribute("role", "listitem");
+//     slot.style.transitionDelay = `${DELAYS[i] || 0}ms`;
 
-    const inner = document.createElement("div");
-    inner.className = "gal-frame-inner";
+//     const inner = document.createElement("div");
+//     inner.className = "gal-frame-inner";
 
-    /* Gold dust layer */
-    const dust = document.createElement("div");
-    dust.className = "gal-frame-dust";
+//     /* Gold dust layer */
+//     const dust = document.createElement("div");
+//     dust.className = "gal-frame-dust";
 
-    /* Photo area or placeholder */
-    const photoWrap = document.createElement("div");
-    photoWrap.className = "gal-photo-wrap";
+//     /* Photo area or placeholder */
+//     const photoWrap = document.createElement("div");
+//     photoWrap.className = "gal-photo-wrap";
 
-    if (photo.src && photo.src.trim() !== "") {
-      /* Real photo */
-      const img = document.createElement("img");
-      img.className = "gal-photo";
-      img.src = photo.src;
-      img.alt = photo.caption;
-      img.decoding = "async";
-      img.loading = "lazy";
-      const photoIndex = filledPhotos.indexOf(photo);
-      photoWrap.addEventListener("click", () =>
-        openLightbox(filledPhotos, photoIndex),
-      );
-      photoWrap.appendChild(img);
-    } else {
-      /* Upload placeholder */
-      const ph = document.createElement("div");
-      ph.className = "gal-placeholder";
-      ph.innerHTML = `
-        <div class="gal-placeholder-icon">+</div>
-        <p class="gal-placeholder-label">Tap to add photo</p>`;
-      const fileInput = document.createElement("input");
-      fileInput.type = "file";
-      fileInput.accept = "image/*";
-      fileInput.className = "gal-file-input";
-      fileInput.addEventListener("change", (ev) => {
-        const file = ev.target.files[0];
-        if (!file) return;
-        const url = URL.createObjectURL(file);
-        photo.src = url;
-        photo.caption = file.name.replace(/\.[^.]+$/, "");
-        /* Swap placeholder for real image */
-        const img = document.createElement("img");
-        img.className = "gal-photo";
-        img.src = url;
-        img.alt = photo.caption;
-        photoWrap.innerHTML = "";
-        photoWrap.appendChild(img);
-        /* Re-trigger curtain reveal */
-        photoWrap.style.clipPath = "inset(100% 0 0 0)";
-        requestAnimationFrame(() => {
-          setTimeout(() => {
-            photoWrap.style.clipPath = "inset(0% 0 0 0)";
-          }, 40);
-        });
-        /* Enable lightbox for this new photo */
-        const newFilled = GALLERY_PHOTOS.filter(
-          (p) => p.src && p.src.trim() !== "",
-        );
-        const idx = newFilled.indexOf(photo);
-        photoWrap.addEventListener("click", () => openLightbox(newFilled, idx));
-        spawnGalDust(dust);
-      });
-      ph.appendChild(fileInput);
-      photoWrap.appendChild(ph);
-    }
+//     if (photo.src && photo.src.trim() !== "") {
+//       /* Real photo */
+//       const img = document.createElement("img");
+//       img.className = "gal-photo";
+//       img.src = photo.src;
+//       img.alt = photo.caption;
+//       img.decoding = "async";
+//       img.loading = "lazy";
+//       const photoIndex = filledPhotos.indexOf(photo);
+//       photoWrap.addEventListener("click", () =>
+//         openLightbox(filledPhotos, photoIndex),
+//       );
+//       photoWrap.appendChild(img);
+//     } else {
+//       /* Upload placeholder */
+//       const ph = document.createElement("div");
+//       ph.className = "gal-placeholder";
+//       ph.innerHTML = `
+//         <div class="gal-placeholder-icon">+</div>
+//         <p class="gal-placeholder-label">Tap to add photo</p>`;
+//       const fileInput = document.createElement("input");
+//       fileInput.type = "file";
+//       fileInput.accept = "image/*";
+//       fileInput.className = "gal-file-input";
+//       fileInput.addEventListener("change", (ev) => {
+//         const file = ev.target.files[0];
+//         if (!file) return;
+//         const url = URL.createObjectURL(file);
+//         photo.src = url;
+//         photo.caption = file.name.replace(/\.[^.]+$/, "");
+//         /* Swap placeholder for real image */
+//         const img = document.createElement("img");
+//         img.className = "gal-photo";
+//         img.src = url;
+//         img.alt = photo.caption;
+//         photoWrap.innerHTML = "";
+//         photoWrap.appendChild(img);
+//         /* Re-trigger curtain reveal */
+//         photoWrap.style.clipPath = "inset(100% 0 0 0)";
+//         requestAnimationFrame(() => {
+//           setTimeout(() => {
+//             photoWrap.style.clipPath = "inset(0% 0 0 0)";
+//           }, 40);
+//         });
+//         /* Enable lightbox for this new photo */
+//         const newFilled = GALLERY_PHOTOS.filter(
+//           (p) => p.src && p.src.trim() !== "",
+//         );
+//         const idx = newFilled.indexOf(photo);
+//         photoWrap.addEventListener("click", () => openLightbox(newFilled, idx));
+//         spawnGalDust(dust);
+//       });
+//       ph.appendChild(fileInput);
+//       photoWrap.appendChild(ph);
+//     }
 
-    /* Frame PNG on top */
-    const frameImg = document.createElement("img");
-    frameImg.className = "gal-frame-img";
-    frameImg.src = GAL_FRAMES[photo.orient];
-    frameImg.alt = "";
-    frameImg.setAttribute("aria-hidden", "true");
-    frameImg.decoding = "async";
-    frameImg.draggable = false;
+//     /* Frame PNG on top */
+//     const frameImg = document.createElement("img");
+//     frameImg.className = "gal-frame-img";
+//     frameImg.src = GAL_FRAMES[photo.orient];
+//     frameImg.alt = "";
+//     frameImg.setAttribute("aria-hidden", "true");
+//     frameImg.decoding = "async";
+//     frameImg.draggable = false;
 
-    inner.appendChild(dust);
-    inner.appendChild(photoWrap);
-    inner.appendChild(frameImg);
-    slot.appendChild(inner);
+//     inner.appendChild(dust);
+//     inner.appendChild(photoWrap);
+//     inner.appendChild(frameImg);
+//     slot.appendChild(inner);
 
-    /* Caption */
-    const cap = document.createElement("p");
-    cap.className = "gal-frame-caption";
-    cap.textContent = photo.caption;
-    slot.appendChild(cap);
+//     /* Caption */
+//     const cap = document.createElement("p");
+//     cap.className = "gal-frame-caption";
+//     cap.textContent = photo.caption;
+//     slot.appendChild(cap);
 
-    wall.appendChild(slot);
+//     wall.appendChild(slot);
 
-    /* Intersection observer for curtain-reveal + sway */
-    galFrameObserver.observe(slot);
-  });
+//     /* Intersection observer for curtain-reveal + sway */
+//     galFrameObserver.observe(slot);
+//   });
 
-  /* Wire lightbox controls */
-  document
-    .getElementById("galLbClose")
-    .addEventListener("click", closeLightbox);
-  document
-    .getElementById("galLbPrev")
-    .addEventListener("click", () => lbNav(-1));
-  document
-    .getElementById("galLbNext")
-    .addEventListener("click", () => lbNav(1));
-  document.getElementById("galLightbox").addEventListener("click", (e) => {
-    if (e.target === e.currentTarget) closeLightbox();
-  });
-  document.addEventListener("keydown", (e) => {
-    if (document.getElementById("galLightbox").hidden) return;
-    if (e.key === "Escape") closeLightbox();
-    if (e.key === "ArrowLeft") lbNav(-1);
-    if (e.key === "ArrowRight") lbNav(1);
-  });
-}
+//   /* Wire lightbox controls */
+//   document
+//     .getElementById("galLbClose")
+//     .addEventListener("click", closeLightbox);
+//   document
+//     .getElementById("galLbPrev")
+//     .addEventListener("click", () => lbNav(-1));
+//   document
+//     .getElementById("galLbNext")
+//     .addEventListener("click", () => lbNav(1));
+//   document.getElementById("galLightbox").addEventListener("click", (e) => {
+//     if (e.target === e.currentTarget) closeLightbox();
+//   });
+//   document.addEventListener("keydown", (e) => {
+//     if (document.getElementById("galLightbox").hidden) return;
+//     if (e.key === "Escape") closeLightbox();
+//     if (e.key === "ArrowLeft") lbNav(-1);
+//     if (e.key === "ArrowRight") lbNav(1);
+//   });
+// }
 
 /* ── Gallery frame intersection observer ── */
 const galFrameObserver = new IntersectionObserver(

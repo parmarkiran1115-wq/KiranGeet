@@ -1,4 +1,29 @@
 /* ─────────────────────────────────────
+   INITIALIZATION — Load config from data.json
+───────────────────────────────────── */
+async function loadWeddingConfig() {
+  try {
+    const response = await fetch('../data.json');
+    if (!response.ok) throw new Error(`Failed to load data.json: ${response.status}`);
+    window.__WEDDING_CONFIG__ = await response.json();
+  } catch (error) {
+    console.error('Error loading wedding config:', error);
+    // Set fallback empty config if load fails
+    window.__WEDDING_CONFIG__ = {
+      couple: { bride: "", groom: "", date: "", venue: "" },
+      invite: {},
+      events: [],
+      rsvp: {},
+      gallery: {},
+      music: {}
+    };
+  }
+}
+
+// Load config immediately
+loadWeddingConfig();
+
+/* ─────────────────────────────────────
    Events data — data-driven, scalable
    Supports 12 fixed + custom events.
    Only the rendered count changes, not
@@ -2063,6 +2088,133 @@ function initRSVPReveal() {
   io.observe(section);
 }
 
+/* ─────────────────────────────────────
+   Preloader & Hero Text Initialization
+───────────────────────────────────── */
+function initPreloader() {
+  const bride = "Kiran";
+  const groom = "Geet";
+  const date = "12 December 2026";
+
+  function updatePreloader() {
+    // Names in preloader
+    const n1 = document.querySelector(".pl-n1");
+    const n2 = document.querySelector(".pl-n2");
+    if (n1) n1.textContent = bride;
+    if (n2) n2.textContent = groom;
+
+    // Names in hero copy
+    const hb = document.querySelector(".hc-bride");
+    const hg = document.querySelector(".hc-groom");
+    if (hb) hb.textContent = bride;
+    if (hg) hg.textContent = groom;
+
+    // template09: patch #introNames .word spans
+    const introNames = document.getElementById("introNames");
+    if (introNames && bride && groom) {
+      const words = Array.from(introNames.querySelectorAll(".word")).filter(
+        w => !w.classList.contains("amp-wrap")
+      );
+      if (words.length >= 2) {
+        words[0].textContent = bride;
+        words[words.length - 1].textContent = groom;
+      }
+    }
+
+    // template09: patch intro date and venue
+    const introDate = document.getElementById("introDate");
+    if (introDate && date) introDate.textContent = date;
+
+    // Fallback: replace any leaf text still reading the placeholder names
+    document.querySelectorAll("*").forEach(el => {
+      if (el.children.length === 0 && el.textContent.trim() === "Priya")
+        el.textContent = bride;
+      if (el.children.length === 0 && el.textContent.trim() === "Arjun")
+        el.textContent = groom;
+    });
+
+    // Date injection
+    if (date) {
+      let found = false;
+      document.querySelectorAll("*").forEach(el => {
+        if (el.children.length === 0) {
+          const txt = el.textContent.trim();
+          if (
+            txt === "14 February 2025" ||
+            txt === "14 FEBRUARY 2025" ||
+            el.classList.contains("pre-date") ||
+            el.classList.contains("preloader-date") ||
+            el.classList.contains("pl-date")
+          ) {
+            el.textContent = date;
+            found = true;
+          }
+        }
+      });
+      // No existing date element found — insert one after .pl-names
+      if (!found) {
+        const container =
+          document.querySelector(".pl-names") ||
+          document.querySelector(".pl-content");
+        if (container && !container.querySelector(".pl-date-injected")) {
+          const dateEl = document.createElement("span");
+          dateEl.className = "pl-date-injected";
+          dateEl.textContent = date;
+          dateEl.style.cssText =
+            'display:block;font-family:"DM Sans",sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(196,152,90,0.75);margin-top:10px;';
+          container.appendChild(dateEl);
+        }
+      }
+    }
+  }
+
+  updatePreloader();
+}
+
+/* ─────────────────────────────────────
+   Parent Order & Smooth Scroll Handlers
+───────────────────────────────────── */
+function initEventHandlers() {
+  // Handle parent order
+  const cfg = window.__WEDDING_CONFIG__;
+  if (cfg && cfg.invite && cfg.invite.parentsOrder === "groom_first") {
+    const bEl = document.getElementById("iBrideParents");
+    const gEl = document.getElementById("iGroomParents");
+    if (bEl) {
+      const em =
+        bEl.closest(".fam-parents") &&
+        bEl.closest(".fam-parents").querySelector("em");
+      if (em) em.textContent = "Son of";
+    }
+    if (gEl) {
+      const em2 =
+        gEl.closest(".fam-parents") &&
+        gEl.closest(".fam-parents").querySelector("em");
+      if (em2) em2.textContent = "Daughter of";
+    }
+  }
+
+  // Handle smooth scrolling for anchor links
+  document.addEventListener("click", e => {
+    if (e.defaultPrevented) return;
+    const link =
+      e.target && e.target.closest
+        ? e.target.closest('a[href^="#"]')
+        : null;
+    if (!link) return;
+    const href = link.getAttribute("href") || "";
+    if (!href || href === "#") return;
+    let id = href.slice(1);
+    try {
+      id = decodeURIComponent(id);
+    } catch (_) {}
+    const target = document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+}
+
 /* ── Boot ── */
 function initRSVP() {
   wireCalendarButtons();
@@ -2071,10 +2223,21 @@ function initRSVP() {
   if (canvas) initRSVPFireworks(canvas);
 }
 
+// Initialize all features (waits for config to load)
+async function initAll() {
+  // Wait for config to be loaded
+  await loadWeddingConfig();
+  
+  // Then initialize all features
+  initPreloader();
+  initEventHandlers();
+  initRSVP();
+}
+
 // Run after DOM is ready (script is deferred)
-document.addEventListener("DOMContentLoaded", initRSVP);
+document.addEventListener("DOMContentLoaded", initAll);
 // Also run immediately if DOM already loaded
-if (document.readyState !== "loading") initRSVP();
+if (document.readyState !== "loading") initAll();
 /* ═══════════════════════════════════════════
    MEET THE COUPLE — Tree parting + content reveal
 ═══════════════════════════════════════════ */

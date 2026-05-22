@@ -3,11 +3,12 @@
 ───────────────────────────────────── */
 async function loadWeddingConfig() {
   try {
-    const response = await fetch('../data.json');
-    if (!response.ok) throw new Error(`Failed to load data.json: ${response.status}`);
+    const response = await fetch("../data.json");
+    if (!response.ok)
+      throw new Error(`Failed to load data.json: ${response.status}`);
     window.__WEDDING_CONFIG__ = await response.json();
   } catch (error) {
-    console.error('Error loading wedding config:', error);
+    console.error("Error loading wedding config:", error);
     // Set fallback empty config if load fails
     window.__WEDDING_CONFIG__ = {
       couple: { bride: "", groom: "", date: "", venue: "" },
@@ -15,7 +16,7 @@ async function loadWeddingConfig() {
       events: [],
       rsvp: {},
       gallery: {},
-      music: {}
+      music: {},
     };
   }
 }
@@ -29,88 +30,100 @@ loadWeddingConfig();
    Only the rendered count changes, not
    the architecture.
 ───────────────────────────────────── */
-const MAP_URL = "https://www.google.com/maps/search/?api=1&query=The+Oberoi+Udaivilas+Udaipur+Rajasthan";
+const MAP_URL =
+  "https://www.google.com/maps/place/Avadhoot+Banquet+Hall/@18.6839741,73.8893756,628m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3bc2c90eaf3540a9:0x92290793b6f6da25!8m2!3d18.6839741!4d73.8919505!16s%2Fg%2F11wv10ww_z?entry=ttu&g_ep=EgoyMDI2MDUxNy4wIKXMDSoASAFQAw%3D%3D";
 
+const MAP_Home =
+  "https://www.google.com/maps/place/Kumar+Palaash/@18.5423147,73.9250591,629m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3bc2c14245732dbd:0x6c4686b57846cedb!8m2!3d18.5423147!4d73.927634!16s%2Fg%2F11ghrkkkqv?entry=ttu&g_ep=EgoyMDI2MDUxNy4wIKXMDSoASAFQAw%3D%3D";
 const EVENTS = [
   {
     id: "mehendi",
     icon: "assets/event/pn-evt-ico-mehendi-x-v01.webp",
-    name: "Mehendi",
-    date: "11 Dec 2026", time: "4:00 PM",
-    venue: "Lotus Courtyard",
-    note: "Greens & florals encouraged",
-    map: MAP_URL
+    name: "मेहंदी",
+    date: "१९ जून २०२६",
+    time: "4:00 PM",
+    venue: "सुगंध उपवन",
+    note: "हिरवाई, आनंद आणि प्रेमाने सजलेला मेहंदी सोहळा",
+    map: MAP_Home,
   },
   {
     id: "haldi",
     icon: "assets/event/pn-evt-ico-haldi-x-v01.webp",
-    name: "Haldi",
-    date: "12 Dec 2026", time: "10:00 AM",
-    venue: "Poolside Courtyard",
-    note: "Yellow / ivory tones",
-    map: MAP_URL
+    name: "हल्दी",
+    date: "१९ जून २०२६",
+    time: "5:00 PM",
+    venue: "मंगल प्रांगण",
+    note: "हळदीच्या शुभ रंगात न्हालेला आनंदमय क्षण",
+    map: MAP_Home,
   },
   {
     id: "sangeet",
     icon: "assets/event/pn-evt-ico-sangeet-x-v01.webp",
-    name: "Sangeet",
-    date: "12 Dec 2026", time: "7:30 PM",
-    venue: "Royal Ballroom",
-    note: "An evening of music and performances",
-    map: MAP_URL
+    name: "कुंकुम",
+    date: "२० जून २०२६",
+    time: "9:10 AM",
+    venue: "शुभ मंगल सभागृह",
+    note: "परंपरा, आनंद आणि आशीर्वादांचा मंगल सोहळा",
+    map: MAP_URL,
   },
   {
     id: "shaadi",
     icon: "assets/event/pn-evt-ico-shaadi-x-v01.webp",
-    name: "Shaadi",
-    date: "13 Dec 2026", time: "9:30 AM",
-    venue: "Lake Mandap",
-    note: "Traditional Indian attire",
-    map: MAP_URL
+    name: "शादी",
+    date: "२० जून २०२६",
+    time: "12:30 PM",
+    venue: "विवाह मंडप",
+    note: "दोन जीवांच्या पवित्र बंधनाचा शुभ क्षण",
+    map: MAP_URL,
   },
   {
     id: "reception",
     icon: "assets/event/pn-evt-ico-reception-x-v01.webp",
-    name: "Reception",
-    date: "13 Dec 2026", time: "7:30 PM",
-    venue: "Palace Lawns",
-    note: "Candlelit dinner and celebration",
-    map: MAP_URL
+    name: "हस्तमिलाप",
+    date: "२० जून २०२६",
+    time: "2:16 PM",
+    venue: "अवधूत बैंक्वेट हॉल",
+    note: "प्रेम, आनंद आणि शुभेच्छांचा खास उत्सव",
+    map: MAP_URL,
   },
   {
     id: "vidaai",
     icon: "assets/event/pn-evt-ico-vidaai-x-v01.webp",
-    name: "Vidaai",
-    date: "14 Dec 2026", time: "9:00 AM",
-    venue: "Main Courtyard",
-    note: "A quiet farewell with blessings",
-    map: MAP_URL
-  }
+    name: "विदाई",
+    date: "२० जून २०२६",
+    time: "6:00 AM",
+    venue: "मुख्य प्रांगण",
+    note: "आशीर्वाद आणि भावनांनी भरलेला निरोप समारंभ",
+    map: MAP_URL,
+  },
 ];
 
 /* ─────────────────────────────────────
    Config — asset paths
 ───────────────────────────────────── */
 const A = {
-  darkBg:      "assets/hero/pn-hro-bg-courtyard-dark-m-v03.webp",
-  litBg:       "assets/hero/pn-hro-bg-courtyard-lit-m-v03.webp",
+  darkBg: "assets/hero/pn-hro-bg-courtyard-dark-m-v03.webp",
+  litBg: "assets/hero/pn-hro-bg-courtyard-lit-m-v03.webp",
   darkBgDesktop: "assets/hero/pn-hro-bg-courtyard-dark-D-v03.webp",
-  litBgDesktop:  "assets/hero/pn-hro-bg-courtyard-lit-d-v03.webp",
-  rope:        "assets/hero/pn-hro-el-rope-hemp-pull-x-v01.webp",
+  litBgDesktop: "assets/hero/pn-hro-bg-courtyard-lit-d-v03.webp",
+  rope: "assets/hero/pn-hro-el-rope-hemp-pull-x-v01.webp",
   lotusClosed: "assets/hero/pn-rvl-btn-lotus-closed-x-v01.webp",
-  lotusOpen:   "assets/hero/pn-rvl-btn-lotus-open-x-v01.webp",
-  lotusGlow:   "assets/hero/pn-fx-ovl-lotus-glow-burst-x-v01.webp",
-  jhoomer:     "assets/shared/pn-shr-mot-jhoomer-hanging-x-v01.webp",
-  floralBush:  "assets/hero/pn-shr-mot-floral-bush-cluster-x-v01.webp",
-  diya:        "assets/hero/pn-shr-mot-diya-glow-x-v01.webp"
+  lotusOpen: "assets/hero/pn-rvl-btn-lotus-open-x-v01.webp",
+  lotusGlow: "assets/hero/pn-fx-ovl-lotus-glow-burst-x-v01.webp",
+  jhoomer: "assets/shared/pn-shr-mot-jhoomer-hanging-x-v01.webp",
+  floralBush: "assets/hero/pn-shr-mot-floral-bush-cluster-x-v01.webp",
+  diya: "assets/hero/pn-shr-mot-diya-glow-x-v01.webp",
 };
-const PULL_THRESHOLD = Math.min(112, Math.max(84, Math.round(window.innerHeight * 0.11)));
+const PULL_THRESHOLD = Math.min(
+  112,
+  Math.max(84, Math.round(window.innerHeight * 0.11)),
+);
 
 function getHeroBackgrounds() {
   const desktop = window.matchMedia("(min-width: 768px)").matches;
   return {
     dark: desktop ? A.darkBgDesktop : A.darkBg,
-    lit:  desktop ? A.litBgDesktop  : A.litBg
+    lit: desktop ? A.litBgDesktop : A.litBg,
   };
 }
 
@@ -136,7 +149,9 @@ const Sound = {
       const c = this.ctx;
       if (!c) return;
       if (c.state === "suspended") {
-        c.resume().then(fn).catch(() => {});
+        c.resume()
+          .then(fn)
+          .catch(() => {});
       } else {
         fn();
       }
@@ -149,9 +164,13 @@ const Sound = {
       const c = this.ctx;
       const now = c.currentTime;
       // Three harmonic partials: fundamental + octave + fifth
-      [[528, 0.30, 2.0], [1056, 0.14, 1.4], [792, 0.10, 1.7]].forEach(([freq, vol, dur]) => {
+      [
+        [528, 0.3, 2.0],
+        [1056, 0.14, 1.4],
+        [792, 0.1, 1.7],
+      ].forEach(([freq, vol, dur]) => {
         const osc = c.createOscillator();
-        const g   = c.createGain();
+        const g = c.createGain();
         osc.connect(g);
         g.connect(c.destination);
         osc.type = "sine";
@@ -170,9 +189,14 @@ const Sound = {
       const c = this.ctx;
       const now = c.currentTime;
       // Four low harmonic tones that swell and fade
-      [[220, 0.055, 4.0], [330, 0.040, 3.5], [440, 0.048, 4.8], [660, 0.028, 3.2]].forEach(([f, v, d], i) => {
+      [
+        [220, 0.055, 4.0],
+        [330, 0.04, 3.5],
+        [440, 0.048, 4.8],
+        [660, 0.028, 3.2],
+      ].forEach(([f, v, d], i) => {
         const osc = c.createOscillator();
-        const g   = c.createGain();
+        const g = c.createGain();
         osc.connect(g);
         g.connect(c.destination);
         osc.type = "sine";
@@ -193,13 +217,17 @@ const Sound = {
       const c = this.ctx;
       const now = c.currentTime;
       // Rising arpeggio: three notes bloom outward
-      [[396, 0.20, 1.6], [528, 0.15, 1.4], [792, 0.09, 1.1]].forEach(([f, v, d], i) => {
+      [
+        [396, 0.2, 1.6],
+        [528, 0.15, 1.4],
+        [792, 0.09, 1.1],
+      ].forEach(([f, v, d], i) => {
         const osc = c.createOscillator();
-        const g   = c.createGain();
+        const g = c.createGain();
         osc.connect(g);
         g.connect(c.destination);
         osc.type = "sine";
-        const start = now + i * 0.10;
+        const start = now + i * 0.1;
         // Each note rises slightly from below pitch for a "blooming" feel
         osc.frequency.setValueAtTime(f * 0.88, start);
         osc.frequency.exponentialRampToValueAtTime(f, start + 0.28);
@@ -212,25 +240,25 @@ const Sound = {
     });
   },
 
-  init() {} /* kept for API compatibility */
+  init() {} /* kept for API compatibility */,
 };
 
 /* ─────────────────────────────────────
    DOM refs
 ───────────────────────────────────── */
-const introEl      = document.getElementById("intro");
-const ropeButton   = document.getElementById("ropeButton");
-const ropeImg      = document.getElementById("ropeImg");
-const ropeHalo     = ropeButton.querySelector(".rope-halo");
+const introEl = document.getElementById("intro");
+const ropeButton = document.getElementById("ropeButton");
+const ropeImg = document.getElementById("ropeImg");
+const ropeHalo = ropeButton.querySelector(".rope-halo");
 const pullFeedback = document.getElementById("pullFeedback");
-const lotusButton  = document.getElementById("lotusButton");
+const lotusButton = document.getElementById("lotusButton");
 const lotusIconImg = document.getElementById("lotusIconImg");
-const lotusGlow    = document.getElementById("lotusGlowBurst");
-const skipBtn      = document.getElementById("skipIntro");
+const lotusGlow = document.getElementById("lotusGlowBurst");
+const skipBtn = document.getElementById("skipIntro");
 const floatingMenu = document.getElementById("floatingMenu");
-const menuToggle   = document.getElementById("menuToggle");
-const bgMusic      = document.getElementById("bgMusic");
-const musicToggle  = document.getElementById("musicToggle");
+const menuToggle = document.getElementById("menuToggle");
+const bgMusic = document.getElementById("bgMusic");
+const musicToggle = document.getElementById("musicToggle");
 
 const rmq = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -238,7 +266,10 @@ const rmq = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 function setBgMusicState(playing) {
   musicToggle.classList.toggle("is-playing", playing);
   musicToggle.setAttribute("aria-pressed", playing ? "true" : "false");
-  musicToggle.setAttribute("aria-label",   playing ? "Pause music" : "Play music");
+  musicToggle.setAttribute(
+    "aria-label",
+    playing ? "Pause music" : "Play music",
+  );
 }
 
 function syncBgMusicState() {
@@ -264,22 +295,27 @@ let _musicUnlocked = false;
 function _unlockMusic() {
   if (_musicUnlocked) return;
   bgMusic.volume = 0;
-  bgMusic.play().then(() => {
-    _musicUnlocked = true;
-    if (triggered) {
-      /* triggerIntro already fired while unlock was in-flight — unmute and keep playing */
+  bgMusic
+    .play()
+    .then(() => {
+      _musicUnlocked = true;
+      if (triggered) {
+        /* triggerIntro already fired while unlock was in-flight — unmute and keep playing */
+        bgMusic.volume = 1;
+        syncBgMusicState();
+      } else {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+        bgMusic.volume = 1;
+        syncBgMusicState();
+      }
+    })
+    .catch(() => {
       bgMusic.volume = 1;
-      syncBgMusicState();
-    } else {
-      bgMusic.pause();
-      bgMusic.currentTime = 0;
-      bgMusic.volume = 1;
-      syncBgMusicState();
-    }
-  }).catch(() => { bgMusic.volume = 1; });
+    });
 }
 
-musicToggle.addEventListener("click", e => {
+musicToggle.addEventListener("click", (e) => {
   e.stopPropagation();
   if (bgMusic.paused) {
     playBgMusic().catch(syncBgMusicState);
@@ -288,16 +324,19 @@ musicToggle.addEventListener("click", e => {
   }
 });
 
-["play", "playing", "pause", "ended", "emptied", "error"].forEach(evt => {
+["play", "playing", "pause", "ended", "emptied", "error"].forEach((evt) => {
   bgMusic.addEventListener(evt, syncBgMusicState);
 });
 
 let _musicRetries = 0;
-bgMusic.addEventListener('error', () => {
+bgMusic.addEventListener("error", () => {
   const err = bgMusic.error;
   if (err && err.code === MediaError.MEDIA_ERR_NETWORK && _musicRetries < 2) {
     _musicRetries++;
-    setTimeout(() => { bgMusic.load(); playBgMusic().catch(() => {}); }, 4000);
+    setTimeout(() => {
+      bgMusic.load();
+      playBgMusic().catch(() => {});
+    }, 4000);
   }
 });
 
@@ -327,12 +366,12 @@ function buildPetals() {
   for (let i = 0; i < 18; i++) {
     const p = document.createElement("div");
     p.className = "petal";
-    const l   = 6 + Math.random() * 88;
-    const b   = Math.random() * 18;
+    const l = 6 + Math.random() * 88;
+    const b = Math.random() * 18;
     const dur = 10 + Math.random() * 14;
     const del = Math.random() * 10;
-    const sz  = 5 + Math.random() * 7;
-    p.style.cssText = `left:${l}%;bottom:${b}%;width:${sz}px;height:${sz*.62}px;animation-duration:${dur}s;animation-delay:${del}s`;
+    const sz = 5 + Math.random() * 7;
+    p.style.cssText = `left:${l}%;bottom:${b}%;width:${sz}px;height:${sz * 0.62}px;animation-duration:${dur}s;animation-delay:${del}s`;
     el.appendChild(p);
   }
 }
@@ -341,11 +380,11 @@ function buildPetals() {
    Rope resistance curve
 ───────────────────────────────────── */
 function resist(raw) {
-  const easy = PULL_THRESHOLD * .38;
-  const firm = PULL_THRESHOLD * .82;
-  if (raw <= easy) return raw * .92;
-  if (raw <= firm) return easy * .92 + (raw - easy) * .58;
-  return easy * .92 + (firm - easy) * .58 + (raw - firm) * .30;
+  const easy = PULL_THRESHOLD * 0.38;
+  const firm = PULL_THRESHOLD * 0.82;
+  if (raw <= easy) return raw * 0.92;
+  if (raw <= firm) return easy * 0.92 + (raw - easy) * 0.58;
+  return easy * 0.92 + (firm - easy) * 0.58 + (raw - firm) * 0.3;
 }
 
 /* ─────────────────────────────────────
@@ -354,14 +393,16 @@ function resist(raw) {
    bg (farthest) → florals (closest)
 ───────────────────────────────────── */
 let pxFrame = 0;
-let currentNx = 0, currentNy = 0;
+let currentNx = 0,
+  currentNy = 0;
 
 function setParallax(nx, ny) {
-  currentNx = nx; currentNy = ny;
+  currentNx = nx;
+  currentNy = ny;
   const el = introEl;
   /* Background — far, slow */
-  el.style.setProperty("--px-bg-x",  `${(-nx * 13).toFixed(2)}px`);
-  el.style.setProperty("--px-bg-y",  `${(-ny * 8).toFixed(2)}px`);
+  el.style.setProperty("--px-bg-x", `${(-nx * 13).toFixed(2)}px`);
+  el.style.setProperty("--px-bg-y", `${(-ny * 8).toFixed(2)}px`);
   /* Jhoomer — ceiling lamp, moderate */
   el.style.setProperty("--px-jhm-x", `${(nx * 22).toFixed(2)}px`);
   el.style.setProperty("--px-jhm-y", `${(ny * 14).toFixed(2)}px`);
@@ -376,7 +417,10 @@ function setParallax(nx, ny) {
 function queueParallax(nx, ny) {
   if (rmq || introEl.classList.contains("is-complete")) return;
   if (pxFrame) cancelAnimationFrame(pxFrame);
-  pxFrame = requestAnimationFrame(() => { setParallax(nx, ny); pxFrame = 0; });
+  pxFrame = requestAnimationFrame(() => {
+    setParallax(nx, ny);
+    pxFrame = 0;
+  });
 }
 
 /* ─────────────────────────────────────
@@ -386,25 +430,37 @@ let gyroEnabled = false;
 function enableGyro() {
   if (gyroEnabled || rmq) return;
   gyroEnabled = true;
-  window.addEventListener("deviceorientation", e => {
-    if (introEl.classList.contains("is-complete") || isDragging) return;
-    /* gamma = left/right tilt (-90 to 90), beta = forward/back (0 to 180) */
-    const nx = Math.max(-1, Math.min(1, (e.gamma || 0) / 18));
-    /* Portrait mode: subtract 45° (typical hold angle) */
-    const ny = Math.max(-1, Math.min(1, ((e.beta  || 0) - 45) / 22));
-    queueParallax(nx, ny);
-  }, { passive: true });
+  window.addEventListener(
+    "deviceorientation",
+    (e) => {
+      if (introEl.classList.contains("is-complete") || isDragging) return;
+      /* gamma = left/right tilt (-90 to 90), beta = forward/back (0 to 180) */
+      const nx = Math.max(-1, Math.min(1, (e.gamma || 0) / 18));
+      /* Portrait mode: subtract 45° (typical hold angle) */
+      const ny = Math.max(-1, Math.min(1, ((e.beta || 0) - 45) / 22));
+      queueParallax(nx, ny);
+    },
+    { passive: true },
+  );
 }
 
 /* Request permission on iOS 13+ */
-if (typeof DeviceOrientationEvent !== "undefined" &&
-    typeof DeviceOrientationEvent.requestPermission === "function") {
+if (
+  typeof DeviceOrientationEvent !== "undefined" &&
+  typeof DeviceOrientationEvent.requestPermission === "function"
+) {
   /* iOS — request on first touch */
-  document.addEventListener("touchstart", () => {
-    DeviceOrientationEvent.requestPermission()
-      .then(r => { if (r === "granted") enableGyro(); })
-      .catch(() => {});
-  }, { once: true });
+  document.addEventListener(
+    "touchstart",
+    () => {
+      DeviceOrientationEvent.requestPermission()
+        .then((r) => {
+          if (r === "granted") enableGyro();
+        })
+        .catch(() => {});
+    },
+    { once: true },
+  );
 } else {
   /* Android / non-iOS — no permission needed */
   window.addEventListener("load", () => {
@@ -416,15 +472,21 @@ if (typeof DeviceOrientationEvent !== "undefined" &&
    Pointer parallax (desktop)
 ───────────────────────────────────── */
 if (!rmq) {
-  introEl.addEventListener("pointermove", e => {
-    if (isDragging || gyroEnabled) return;
-    const r = introEl.getBoundingClientRect();
-    queueParallax(
-      Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width  - .5) * 2)),
-      Math.max(-1, Math.min(1, ((e.clientY - r.top)  / r.height - .5) * 2))
-    );
-  }, { passive: true });
-  introEl.addEventListener("pointerleave", () => queueParallax(0, 0), { passive: true });
+  introEl.addEventListener(
+    "pointermove",
+    (e) => {
+      if (isDragging || gyroEnabled) return;
+      const r = introEl.getBoundingClientRect();
+      queueParallax(
+        Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width - 0.5) * 2)),
+        Math.max(-1, Math.min(1, ((e.clientY - r.top) / r.height - 0.5) * 2)),
+      );
+    },
+    { passive: true },
+  );
+  introEl.addEventListener("pointerleave", () => queueParallax(0, 0), {
+    passive: true,
+  });
 }
 
 /* ─────────────────────────────────────
@@ -432,26 +494,30 @@ if (!rmq) {
 ───────────────────────────────────── */
 function hydrate() {
   const heroBg = getHeroBackgrounds();
-  document.getElementById("introBgDark").src    = heroBg.dark;
-  document.getElementById("introBgLit").src     = heroBg.lit;
-  document.getElementById("introJhoomer").src   = A.jhoomer;
-  document.getElementById("introFloralLeft").src  = A.floralBush;
+  document.getElementById("introBgDark").src = heroBg.dark;
+  document.getElementById("introBgLit").src = heroBg.lit;
+  document.getElementById("introJhoomer").src = A.jhoomer;
+  document.getElementById("introFloralLeft").src = A.floralBush;
   document.getElementById("introFloralRight").src = A.floralBush;
-  document.getElementById("introDiyaLeft").src  = A.diya;
+  document.getElementById("introDiyaLeft").src = A.diya;
   document.getElementById("introDiyaRight").src = A.diya;
-  ropeImg.src        = A.rope;
-  lotusIconImg.src   = A.lotusClosed;
-  lotusGlow.src      = A.lotusGlow;
-  
+  ropeImg.src = A.rope;
+  lotusIconImg.src = A.lotusClosed;
+  lotusGlow.src = A.lotusGlow;
+
   // Set background music src from config
-  if (window.__WEDDING_CONFIG__ && window.__WEDDING_CONFIG__.music && window.__WEDDING_CONFIG__.music.bgMusic) {
+  if (
+    window.__WEDDING_CONFIG__ &&
+    window.__WEDDING_CONFIG__.music &&
+    window.__WEDDING_CONFIG__.music.bgMusic
+  ) {
     bgMusic.src = window.__WEDDING_CONFIG__.music.bgMusic;
   }
-  
+
   const lotusOpenImg = document.getElementById("lotusOpenImg");
   if (lotusOpenImg) {
     lotusOpenImg.src = A.lotusOpen;
-    new Image().src  = A.lotusOpen; /* preload */
+    new Image().src = A.lotusOpen; /* preload */
   }
 
   /* Preload lit bg */
@@ -467,8 +533,12 @@ function hydrate() {
   renderGallery();
   renderTTK();
 
-  setTimeout(() => { if (!triggered) introEl.classList.add("is-waiting"); }, 1100);
-  setTimeout(() => { if (!triggered) ropeButton.classList.add("rope-ready", "rope-idle"); }, 1900);
+  setTimeout(() => {
+    if (!triggered) introEl.classList.add("is-waiting");
+  }, 1100);
+  setTimeout(() => {
+    if (!triggered) ropeButton.classList.add("rope-ready", "rope-idle");
+  }, 1900);
 }
 
 /* ─────────────────────────────────────
@@ -489,23 +559,27 @@ function engageFarmanLock() {
   farmanScrollLocked = true;
   farmanLockScrollTop = window.scrollY;
   /* Freeze page at current position — no rubber-band snap-back */
-  document.body.style.position   = 'fixed';
-  document.body.style.top        = `-${farmanLockScrollTop}px`;
-  document.body.style.width      = '100%';
-  document.body.style.overflowY  = 'scroll';
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${farmanLockScrollTop}px`;
+  document.body.style.width = "100%";
+  document.body.style.overflowY = "scroll";
 }
 
 function releaseFarmanLockAndMark() {
   if (!farmanScrollLocked) return;
   farmanScrollLocked = false;
-  document.body.style.position  = '';
-  document.body.style.top       = '';
-  document.body.style.width     = '';
-  document.body.style.overflowY = '';
-  window.scrollTo({ top: farmanLockScrollTop, behavior: 'instant' });
-  try { sessionStorage.setItem(FARMAN_SESSION_KEY, "1"); } catch (_) {}
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.width = "";
+  document.body.style.overflowY = "";
+  window.scrollTo({ top: farmanLockScrollTop, behavior: "instant" });
+  try {
+    sessionStorage.setItem(FARMAN_SESSION_KEY, "1");
+  } catch (_) {}
 }
-function releaseFarmanLock() { releaseFarmanLockAndMark(); }
+function releaseFarmanLock() {
+  releaseFarmanLockAndMark();
+}
 
 let firstFarmanSeen = false;
 
@@ -520,12 +594,13 @@ function spawnFarmanDust(farmanEl) {
     d.className = "farman-dust-dot";
     const sz = 2 + Math.random() * 3.5;
     d.style.cssText = [
-      `width:${sz}px`, `height:${sz}px`,
+      `width:${sz}px`,
+      `height:${sz}px`,
       `left:${15 + Math.random() * 70}%`,
       `bottom:${10 + Math.random() * 55}%`,
       `--dur:${3.5 + Math.random() * 3}s`,
       `--del:${Math.random() * 4}s`,
-      `--dx:${(Math.random() - .5) * 18}px`
+      `--dx:${(Math.random() - 0.5) * 18}px`,
     ].join(";");
     layer.appendChild(d);
   }
@@ -537,7 +612,7 @@ const isDesktop = () => window.matchMedia("(min-width: 768px)").matches;
 function openRemainingFarmans() {
   const container = document.getElementById("evtStops");
   if (!container) return;
-  container.querySelectorAll(".farman-stop").forEach(el => {
+  container.querySelectorAll(".farman-stop").forEach((el) => {
     const idx = parseInt(el.dataset.farmanIndex ?? "0", 10);
     if (idx < 3 || el.classList.contains("is-open")) return;
     farmanObserver.unobserve(el);
@@ -549,67 +624,72 @@ function openRemainingFarmans() {
   });
 }
 
-const farmanObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    const el = e.target;
-    farmanObserver.unobserve(el);
+const farmanObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      farmanObserver.unobserve(el);
 
-    const idx = parseInt(el.dataset.farmanIndex ?? "0", 10);
+      const idx = parseInt(el.dataset.farmanIndex ?? "0", 10);
 
-    /* Desktop: events 4+ open via openRemainingFarmans — if observer fires for them
+      /* Desktop: events 4+ open via openRemainingFarmans — if observer fires for them
        (user scrolled past), snap open instantly to avoid double-triggering animation */
-    if (isDesktop() && idx >= 3) {
-      el.classList.add("is-entering", "is-unrolling", "is-open");
-      spawnFarmanDust(el);
-      return;
-    }
+      if (isDesktop() && idx >= 3) {
+        el.classList.add("is-entering", "is-unrolling", "is-open");
+        spawnFarmanDust(el);
+        return;
+      }
 
-    const skipAnim = rmq || idx >= 4;
+      const skipAnim = rmq || idx >= 4;
 
-    if (skipAnim) {
-      el.classList.add("is-entering", "is-unrolling", "is-open");
-      spawnFarmanDust(el);
-      return;
-    }
+      if (skipAnim) {
+        el.classList.add("is-entering", "is-unrolling", "is-open");
+        spawnFarmanDust(el);
+        return;
+      }
 
-    const isFirst = !firstFarmanSeen;
-    if (isFirst) firstFarmanSeen = true;
+      const isFirst = !firstFarmanSeen;
+      if (isFirst) firstFarmanSeen = true;
 
-    /* Phase 1 — rolled scroll rises and floats gently (~900ms) */
-    el.classList.add("is-entering");
+      /* Phase 1 — rolled scroll rises and floats gently (~900ms) */
+      el.classList.add("is-entering");
 
-    // Scroll lock removed — position:fixed on body triggers pull-to-refresh on mobile
+      // Scroll lock removed — position:fixed on body triggers pull-to-refresh on mobile
 
-    /* Phase 2 — begin unrolling; brief pause so rolled scroll is seen */
-    setTimeout(() => el.classList.add("is-unrolling"), 620);
+      /* Phase 2 — begin unrolling; brief pause so rolled scroll is seen */
+      setTimeout(() => el.classList.add("is-unrolling"), 620);
 
-    /* Phase 3 — is-open fires when clip-path transition ends (860ms + 60ms delay)
+      /* Phase 3 — is-open fires when clip-path transition ends (860ms + 60ms delay)
        Content fades in during is-unrolling so there is no blank gap */
-    const openWrap = el.querySelector(".farman-open-wrap");
+      const openWrap = el.querySelector(".farman-open-wrap");
 
-    function onUnrollEnd(ev) {
-      if (ev && ev.propertyName !== "clip-path") return;
-      openWrap.removeEventListener("transitionend", onUnrollEnd);
-      el.classList.add("is-open");
-      spawnFarmanDust(el);
-      /* Desktop: trigger events 4+ the moment event 3 fully opens */
-      if (isDesktop() && idx === 2 && EVENTS.length > 3) openRemainingFarmans();
-    }
-
-    openWrap.addEventListener("transitionend", onUnrollEnd);
-
-    /* Safety fallback — covers 620ms phase2 delay + 860ms transition + 60ms CSS delay */
-    setTimeout(() => {
-      if (!el.classList.contains("is-open")) {
+      function onUnrollEnd(ev) {
+        if (ev && ev.propertyName !== "clip-path") return;
         openWrap.removeEventListener("transitionend", onUnrollEnd);
         el.classList.add("is-open");
         spawnFarmanDust(el);
-        if (isDesktop() && idx === 2 && EVENTS.length > 3) openRemainingFarmans();
+        /* Desktop: trigger events 4+ the moment event 3 fully opens */
+        if (isDesktop() && idx === 2 && EVENTS.length > 3)
+          openRemainingFarmans();
       }
-    }, 1800);
-  });
-}, { threshold: 0.12, rootMargin: "0px 0px 0% 0px" });
+
+      openWrap.addEventListener("transitionend", onUnrollEnd);
+
+      /* Safety fallback — covers 620ms phase2 delay + 860ms transition + 60ms CSS delay */
+      setTimeout(() => {
+        if (!el.classList.contains("is-open")) {
+          openWrap.removeEventListener("transitionend", onUnrollEnd);
+          el.classList.add("is-open");
+          spawnFarmanDust(el);
+          if (isDesktop() && idx === 2 && EVENTS.length > 3)
+            openRemainingFarmans();
+        }
+      }, 1800);
+    });
+  },
+  { threshold: 0.12, rootMargin: "0px 0px 0% 0px" },
+);
 
 /* ─────────────────────────────────────
    Render events section — Farman design
@@ -651,18 +731,18 @@ function renderEvents() {
   </svg>`;
 
   EVENTS.forEach((evt, i) => {
-    const noteHtml = evt.note
-      ? `<p class="farman-note">${evt.note}</p>` : "";
-    const mapHtml  = evt.map
+    const noteHtml = evt.note ? `<p class="farman-note">${evt.note}</p>` : "";
+    const mapHtml = evt.map
       ? `<a class="farman-map" href="${evt.map}" target="_blank"
             rel="noreferrer" aria-label="Open ${evt.venue} on Google Maps">
-           ${MAP_PIN_SVG}Open in Maps</a>` : "";
+           ${MAP_PIN_SVG}Open in Maps</a>`
+      : "";
 
     const article = document.createElement("article");
 
     /* Alternate left / right alignment; mark main event */
-    const isMain   = evt.id === "shaadi";
-    const side     = i % 2 === 0 ? "farman-left" : "farman-right";
+    const isMain = evt.id === "shaadi";
+    const side = i % 2 === 0 ? "farman-left" : "farman-right";
     article.className = `farman-stop ${side}${isMain ? " farman-stop--main" : ""}`;
     article.setAttribute("role", "listitem");
     article.setAttribute("data-event", evt.id);
@@ -722,8 +802,8 @@ function renderEvents() {
    through the section
 ───────────────────────────────────── */
 function initEvtParallax() {
-  const section  = document.getElementById("events");
-  const peacock  = document.getElementById("evtPeacock");
+  const section = document.getElementById("events");
+  const peacock = document.getElementById("evtPeacock");
   const elephant = document.getElementById("evtElephant");
   if (!section || !peacock || !elephant || rmq) return;
 
@@ -731,19 +811,23 @@ function initEvtParallax() {
      Scroll parallax is kept subtle (18px max) so it adds depth without
      fighting the animation transform. */
   let ticking = false;
-  window.addEventListener("scroll", () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      const rect  = section.getBoundingClientRect();
-      const h     = section.offsetHeight;
-      const p     = Math.max(0, Math.min(1, -rect.top / h));
-      const shift = (p * 18).toFixed(1);
-      peacock.style.transform  = `translateY(-${shift}px)`;
-      elephant.style.transform = `scaleX(-1) translateY(-${shift}px)`;
-      ticking = false;
-    });
-  }, { passive: true });
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const rect = section.getBoundingClientRect();
+        const h = section.offsetHeight;
+        const p = Math.max(0, Math.min(1, -rect.top / h));
+        const shift = (p * 18).toFixed(1);
+        peacock.style.transform = `translateY(-${shift}px)`;
+        elephant.style.transform = `scaleX(-1) translateY(-${shift}px)`;
+        ticking = false;
+      });
+    },
+    { passive: true },
+  );
 }
 
 /* ─────────────────────────────────────
@@ -754,15 +838,16 @@ function initEvtParallax() {
    when section is off-screen.
 ───────────────────────────────────── */
 function renderStars() {
-  const canvas  = document.getElementById("evtStars");
+  const canvas = document.getElementById("evtStars");
   const section = document.getElementById("events");
   if (!canvas || !section) return;
 
   const ctx = canvas.getContext("2d");
-  let raf = null, active = false;
+  let raf = null,
+    active = false;
 
   function resize() {
-    canvas.width  = section.offsetWidth;
+    canvas.width = section.offsetWidth;
     canvas.height = section.offsetHeight;
   }
   resize();
@@ -770,48 +855,53 @@ function renderStars() {
 
   /* Build star data once */
   const mobile = window.innerWidth < 768;
-  const COUNT  = mobile ? 80 : 150;
+  const COUNT = mobile ? 80 : 150;
 
   const stars = Array.from({ length: COUNT }, () => {
     /* 68 % of stars in the upper 55 % — the open sky zone */
     const inSky = Math.random() < 0.68;
     return {
-      x:     Math.random(),
-      y:     inSky ? Math.random() * 0.55 : 0.55 + Math.random() * 0.30,
-      r:     0.45 + Math.random() * 1.55,         /* 0.45 – 2 px radius */
-      base:  0.22 + Math.random() * 0.62,         /* resting brightness */
-      spd:   0.18 + Math.random() * 0.65,         /* twinkle speed (slow) */
+      x: Math.random(),
+      y: inSky ? Math.random() * 0.55 : 0.55 + Math.random() * 0.3,
+      r: 0.45 + Math.random() * 1.55 /* 0.45 – 2 px radius */,
+      base: 0.22 + Math.random() * 0.62 /* resting brightness */,
+      spd: 0.18 + Math.random() * 0.65 /* twinkle speed (slow) */,
       phase: Math.random() * 6.2832,
-      warm:  Math.random() > 0.52,                /* warm ivory vs cool blue-white */
+      warm: Math.random() > 0.52 /* warm ivory vs cool blue-white */,
     };
   });
 
   function draw(ms) {
     if (!active) return;
     const t = ms * 0.001;
-    const W = canvas.width, H = canvas.height;
+    const W = canvas.width,
+      H = canvas.height;
     ctx.clearRect(0, 0, W, H);
 
     for (const s of stars) {
       /* Gentle sine-wave twinkle */
-      const pulse = 0.30 + 0.70 * (Math.sin(t * s.spd + s.phase) * 0.5 + 0.5);
+      const pulse = 0.3 + 0.7 * (Math.sin(t * s.spd + s.phase) * 0.5 + 0.5);
       const alpha = s.base * pulse;
-      const sx = s.x * W, sy = s.y * H;
+      const sx = s.x * W,
+        sy = s.y * H;
 
       /* Star dot */
       ctx.beginPath();
       ctx.arc(sx, sy, s.r, 0, 6.2832);
       ctx.fillStyle = s.warm
-        ? `rgba(255,238,205,${alpha})`   /* warm ivory-gold */
-        : `rgba(215,228,255,${alpha})`;  /* cool blue-white */
+        ? `rgba(255,238,205,${alpha})` /* warm ivory-gold */
+        : `rgba(215,228,255,${alpha})`; /* cool blue-white */
       ctx.fill();
 
       /* Soft glow halo on larger stars only */
       if (s.r > 1.15) {
         const g = ctx.createRadialGradient(sx, sy, 0, sx, sy, s.r * 4.5);
-        g.addColorStop(0, s.warm
-          ? `rgba(255,232,170,${alpha * 0.26})`
-          : `rgba(180,210,255,${alpha * 0.26})`);
+        g.addColorStop(
+          0,
+          s.warm
+            ? `rgba(255,232,170,${alpha * 0.26})`
+            : `rgba(180,210,255,${alpha * 0.26})`,
+        );
         g.addColorStop(1, "rgba(0,0,0,0)");
         ctx.beginPath();
         ctx.arc(sx, sy, s.r * 4.5, 0, 6.2832);
@@ -824,15 +914,18 @@ function renderStars() {
   }
 
   /* Only animate while the section is on-screen — saves battery */
-  const io = new IntersectionObserver(([e]) => {
-    if (e.isIntersecting && !active) {
-      active = true;
-      raf = requestAnimationFrame(draw);
-    } else if (!e.isIntersecting && active) {
-      active = false;
-      cancelAnimationFrame(raf);
-    }
-  }, { threshold: 0 });
+  const io = new IntersectionObserver(
+    ([e]) => {
+      if (e.isIntersecting && !active) {
+        active = true;
+        raf = requestAnimationFrame(draw);
+      } else if (!e.isIntersecting && active) {
+        active = false;
+        cancelAnimationFrame(raf);
+      }
+    },
+    { threshold: 0 },
+  );
   io.observe(section);
 
   /* Also pause on tab switch */
@@ -853,21 +946,21 @@ function renderBirds() {
 
   /* top%, width px, dur s, delay s, drift px */
   const FLOCK = [
-    { top:  7, w: 24, dur: 30, del:    0, drift: -16 },
-    { top: 13, w: 16, dur: 38, del:  -11, drift:  -8 },
-    { top: 19, w: 28, dur: 24, del:  -20, drift: -24 },
-    { top: 10, w: 14, dur: 44, del:   -6, drift: -10 },
-    { top: 25, w: 20, dur: 28, del:  -33, drift: -18 },
-    { top:  5, w: 18, dur: 35, del:  -17, drift: -12 },
+    { top: 7, w: 24, dur: 30, del: 0, drift: -16 },
+    { top: 13, w: 16, dur: 38, del: -11, drift: -8 },
+    { top: 19, w: 28, dur: 24, del: -20, drift: -24 },
+    { top: 10, w: 14, dur: 44, del: -6, drift: -10 },
+    { top: 25, w: 20, dur: 28, del: -33, drift: -18 },
+    { top: 5, w: 18, dur: 35, del: -17, drift: -12 },
   ];
 
-  FLOCK.forEach(b => {
+  FLOCK.forEach((b) => {
     const el = document.createElement("span");
     el.className = "evt-bird";
-    el.style.setProperty("--bird-top",   `${b.top}%`);
-    el.style.setProperty("--bird-w",     `${b.w}px`);
-    el.style.setProperty("--bird-dur",   `${b.dur}s`);
-    el.style.setProperty("--bird-del",   `${b.del}s`);
+    el.style.setProperty("--bird-top", `${b.top}%`);
+    el.style.setProperty("--bird-w", `${b.w}px`);
+    el.style.setProperty("--bird-dur", `${b.dur}s`);
+    el.style.setProperty("--bird-del", `${b.del}s`);
     el.style.setProperty("--bird-drift", `${b.drift}px`);
     container.appendChild(el);
   });
@@ -882,15 +975,15 @@ function renderBirds() {
 let HAS_GRANDPARENTS = true;
 
 function applyGrandparentsMode() {
-  const blessing    = document.querySelector(".inv-blessing");
+  const blessing = document.querySelector(".inv-blessing");
   const blessingAlt = document.querySelector(".inv-blessing-alt");
-  const kicker      = document.querySelector(".inv-kicker");
+  const kicker = document.querySelector(".inv-kicker");
   if (!blessing || !blessingAlt) return;
   if (HAS_GRANDPARENTS) {
     blessingAlt.style.display = "none";
   } else {
     blessing.style.display = "none";
-    kicker.style.display   = "none";
+    kicker.style.display = "none";
   }
 }
 
@@ -908,26 +1001,26 @@ function applyGrandparentsMode() {
    placeholder instead.
 ────────────────────────────────────── */
 const GALLERY_PHOTOS = [
-  { src: "", caption: "Together",      orient: "hero"      },
-  { src: "", caption: "Getting ready", orient: "portrait"  },
-  { src: "", caption: "The ceremony",  orient: "landscape" },
-  { src: "", caption: "Celebrations",  orient: "portrait"  },
+  { src: "", caption: "Together", orient: "hero" },
+  { src: "", caption: "Getting ready", orient: "portrait" },
+  { src: "", caption: "The ceremony", orient: "landscape" },
+  { src: "", caption: "Celebrations", orient: "portrait" },
 ];
 
 /* Frame assets — one WebP per orientation */
 const GAL_FRAMES = {
   landscape: "assets/gallery/pn-gal-fr-hanging-landscape-x-v01.webp",
-  portrait:  "assets/gallery/pn-gal-fr-hanging-portrait-x-v01.webp",
-  hero:      "assets/gallery/pn-gal-fr-hanging-hero-arch-x-v01.webp",
+  portrait: "assets/gallery/pn-gal-fr-hanging-portrait-x-v01.webp",
+  hero: "assets/gallery/pn-gal-fr-hanging-hero-arch-x-v01.webp",
 };
 
 /* ── Lightbox state ── */
-let lbPhotos  = [];   // only filled photos (no placeholders)
-let lbIndex   = 0;
+let lbPhotos = []; // only filled photos (no placeholders)
+let lbIndex = 0;
 
 function openLightbox(photos, index) {
   lbPhotos = photos;
-  lbIndex  = index;
+  lbIndex = index;
   const lb = document.getElementById("galLightbox");
   lb.hidden = false;
   lb.classList.toggle("single", photos.length === 1);
@@ -949,7 +1042,8 @@ function showLbPhoto(i) {
   img.alt = p.caption;
   cap.textContent = p.caption;
   img.onload = () => {
-    img.style.transition = "opacity 300ms ease, transform 400ms cubic-bezier(.16,1,.3,1)";
+    img.style.transition =
+      "opacity 300ms ease, transform 400ms cubic-bezier(.16,1,.3,1)";
     img.style.opacity = "1";
     img.style.transform = "scale(1)";
   };
@@ -967,12 +1061,13 @@ function spawnGalDust(container) {
     d.className = "gal-dust-dot";
     const sz = 1.5 + Math.random() * 3;
     d.style.cssText = [
-      `width:${sz}px`, `height:${sz}px`,
+      `width:${sz}px`,
+      `height:${sz}px`,
       `left:${20 + Math.random() * 60}%`,
       `bottom:${10 + Math.random() * 60}%`,
       `--dur:${3 + Math.random() * 3.5}s`,
       `--del:${Math.random() * 5}s`,
-      `--dx:${(Math.random() - .5) * 20}px`,
+      `--dx:${(Math.random() - 0.5) * 20}px`,
     ].join(";");
     container.appendChild(d);
   }
@@ -984,7 +1079,9 @@ function renderGallery() {
   if (!wall) return;
 
   /* Filter to only the photos we actually have */
-  const filledPhotos = GALLERY_PHOTOS.filter(p => p.src && p.src.trim() !== "");
+  const filledPhotos = GALLERY_PHOTOS.filter(
+    (p) => p.src && p.src.trim() !== "",
+  );
 
   /* Stagger entry delays */
   const DELAYS = [0, 160, 80, 240];
@@ -1015,7 +1112,9 @@ function renderGallery() {
       img.decoding = "async";
       img.loading = "lazy";
       const photoIndex = filledPhotos.indexOf(photo);
-      photoWrap.addEventListener("click", () => openLightbox(filledPhotos, photoIndex));
+      photoWrap.addEventListener("click", () =>
+        openLightbox(filledPhotos, photoIndex),
+      );
       photoWrap.appendChild(img);
     } else {
       /* Upload placeholder */
@@ -1028,7 +1127,7 @@ function renderGallery() {
       fileInput.type = "file";
       fileInput.accept = "image/*";
       fileInput.className = "gal-file-input";
-      fileInput.addEventListener("change", ev => {
+      fileInput.addEventListener("change", (ev) => {
         const file = ev.target.files[0];
         if (!file) return;
         const url = URL.createObjectURL(file);
@@ -1044,10 +1143,14 @@ function renderGallery() {
         /* Re-trigger curtain reveal */
         photoWrap.style.clipPath = "inset(100% 0 0 0)";
         requestAnimationFrame(() => {
-          setTimeout(() => { photoWrap.style.clipPath = "inset(0% 0 0 0)"; }, 40);
+          setTimeout(() => {
+            photoWrap.style.clipPath = "inset(0% 0 0 0)";
+          }, 40);
         });
         /* Enable lightbox for this new photo */
-        const newFilled = GALLERY_PHOTOS.filter(p => p.src && p.src.trim() !== "");
+        const newFilled = GALLERY_PHOTOS.filter(
+          (p) => p.src && p.src.trim() !== "",
+        );
         const idx = newFilled.indexOf(photo);
         photoWrap.addEventListener("click", () => openLightbox(newFilled, idx));
         spawnGalDust(dust);
@@ -1083,32 +1186,40 @@ function renderGallery() {
   });
 
   /* Wire lightbox controls */
-  document.getElementById("galLbClose").addEventListener("click", closeLightbox);
-  document.getElementById("galLbPrev").addEventListener("click", () => lbNav(-1));
-  document.getElementById("galLbNext").addEventListener("click", () => lbNav(1));
-  document.getElementById("galLightbox").addEventListener("click", e => {
+  document
+    .getElementById("galLbClose")
+    .addEventListener("click", closeLightbox);
+  document
+    .getElementById("galLbPrev")
+    .addEventListener("click", () => lbNav(-1));
+  document
+    .getElementById("galLbNext")
+    .addEventListener("click", () => lbNav(1));
+  document.getElementById("galLightbox").addEventListener("click", (e) => {
     if (e.target === e.currentTarget) closeLightbox();
   });
-  document.addEventListener("keydown", e => {
+  document.addEventListener("keydown", (e) => {
     if (document.getElementById("galLightbox").hidden) return;
-    if (e.key === "Escape")      closeLightbox();
-    if (e.key === "ArrowLeft")   lbNav(-1);
-    if (e.key === "ArrowRight")  lbNav(1);
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowLeft") lbNav(-1);
+    if (e.key === "ArrowRight") lbNav(1);
   });
 }
 
 /* ── Gallery frame intersection observer ── */
-const galFrameObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    galFrameObserver.unobserve(e.target);
-    e.target.classList.add("in-view");
-    /* Spawn dust after curtain finishes */
-    const dust = e.target.querySelector(".gal-frame-dust");
-    if (dust) setTimeout(() => spawnGalDust(dust), 1100);
-  });
-}, { threshold: 0.22, rootMargin: "0px 0px -5% 0px" });
-
+const galFrameObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      galFrameObserver.unobserve(e.target);
+      e.target.classList.add("in-view");
+      /* Spawn dust after curtain finishes */
+      const dust = e.target.querySelector(".gal-frame-dust");
+      if (dust) setTimeout(() => spawnGalDust(dust), 1100);
+    });
+  },
+  { threshold: 0.22, rootMargin: "0px 0px -5% 0px" },
+);
 
 function revealSite() {
   introEl.classList.add("is-complete");
@@ -1120,7 +1231,8 @@ function revealSite() {
     setTimeout(() => inviteSection.classList.add("invite-active"), 180);
   }
   /* Start rose petal shower from birds */
-  if (typeof window._startPetalShower === 'function') window._startPetalShower();
+  if (typeof window._startPetalShower === "function")
+    window._startPetalShower();
 }
 
 /* ─────────────────────────────────────
@@ -1149,17 +1261,22 @@ function revealSite() {
    * ─────────────────────────────────────────────────────────────────
    */
   const SPAWN_INTERVAL_MS = 900;
-  const MAX_PETALS        = 8;
-  const PETAL_SRC         = 'assets/invite/petal.webp';
+  const MAX_PETALS = 8;
+  const PETAL_SRC = "assets/invite/petal.webp";
 
-  let petalImg = null, imgReady = false, petalInterval = null;
-  const _img  = new Image();
-  _img.onload  = () => { petalImg = _img; imgReady = true; };
-  _img.onerror = () => console.warn('[PetalShower] petal.webp not found');
+  let petalImg = null,
+    imgReady = false,
+    petalInterval = null;
+  const _img = new Image();
+  _img.onload = () => {
+    petalImg = _img;
+    imgReady = true;
+  };
+  _img.onerror = () => console.warn("[PetalShower] petal.webp not found");
   _img.src = PETAL_SRC;
 
   let canvas, ctx, W, H, dpr;
-  let petals  = [];
+  let petals = [];
   let running = false;
   let rafActive = false;
   let birdEls = [];
@@ -1167,8 +1284,9 @@ function revealSite() {
   function resize() {
     dpr = window.devicePixelRatio || 1;
     const r = canvas.getBoundingClientRect();
-    W = r.width; H = r.height;
-    canvas.width  = W * dpr;
+    W = r.width;
+    H = r.height;
+    canvas.width = W * dpr;
     canvas.height = H * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
@@ -1176,26 +1294,28 @@ function revealSite() {
   function getBirdPos(el) {
     const b = el.getBoundingClientRect();
     const c = canvas.getBoundingClientRect();
-    return { x: b.left - c.left + b.width * 0.5,
-             y: b.top  - c.top  + b.height * 0.5 };
+    return {
+      x: b.left - c.left + b.width * 0.5,
+      y: b.top - c.top + b.height * 0.5,
+    };
   }
 
   function pickBirdPos() {
-    const cRect   = canvas.getBoundingClientRect();
-    const visible = birdEls.filter(el => {
+    const cRect = canvas.getBoundingClientRect();
+    const visible = birdEls.filter((el) => {
       if (!el) return false;
-      const b  = el.getBoundingClientRect();
+      const b = el.getBoundingClientRect();
       const bx = b.left - cRect.left;
       return bx > -b.width && bx < W + b.width;
     });
     if (!visible.length) {
-      return { x: W * (0.15 + Math.random() * 0.70), y: H * 0.08 };
+      return { x: W * (0.15 + Math.random() * 0.7), y: H * 0.08 };
     }
-    const el  = visible[Math.floor(Math.random() * visible.length)];
+    const el = visible[Math.floor(Math.random() * visible.length)];
     const pos = getBirdPos(el);
     // scatter within the wing-span area only — no upward burst
     pos.x += (Math.random() - 0.5) * 24;
-    pos.y += Math.random() * 14;          // only downward from body
+    pos.y += Math.random() * 14; // only downward from body
     return pos;
   }
 
@@ -1203,55 +1323,66 @@ function revealSite() {
     const pos = pickBirdPos();
 
     // ── Size: large enough to feel real ──
-    const size = 26 + Math.random() * 22;   // 26–48 px
+    const size = 26 + Math.random() * 22; // 26–48 px
 
     // ── Fall speed: very gentle, like a feather ──
     // Terminal velocity reached almost immediately; tiny accel after
-    const vyBase    = 1.20 + Math.random() * 0.60;   // 1.20–1.80 px/frame
+    const vyBase = 1.2 + Math.random() * 0.6; // 1.20–1.80 px/frame
     const fallAccel = 0.0015 + Math.random() * 0.001; // barely perceptible gravity
 
     // ── Lateral drift: pure sine wave, no initial horizontal burst ──
-    const driftAmp  = 18 + Math.random() * 22;   // 18–40 px amplitude
+    const driftAmp = 18 + Math.random() * 22; // 18–40 px amplitude
     const driftFreq = 0.018 + Math.random() * 0.014; // one sway per ~60-90 frames
-    const driftOff  = Math.random() * Math.PI * 2;   // phase offset
+    const driftOff = Math.random() * Math.PI * 2; // phase offset
 
     // ── Rock / tilt: pendulum oscillation that drives 3-D perspective ──
     // θ oscillates between -maxRock and +maxRock
-    const rockAmp   = 0.55 + Math.random() * 0.35;  // 0.55–0.90 rad (~30–50°)
-    const rockFreq  = 0.022 + Math.random() * 0.018; // slightly different from drift
-    const rockOff   = Math.random() * Math.PI * 2;
+    const rockAmp = 0.55 + Math.random() * 0.35; // 0.55–0.90 rad (~30–50°)
+    const rockFreq = 0.022 + Math.random() * 0.018; // slightly different from drift
+    const rockOff = Math.random() * Math.PI * 2;
 
     // ── Axial spin: barely there ──
-    const vr = (Math.random() - 0.5) * 0.008;   // very slow axial rotation
+    const vr = (Math.random() - 0.5) * 0.008; // very slow axial rotation
 
     // ── Uplift: random chance to pause / drift up momentarily ──
     // modelled as a slow sine on vy itself
-    const upliftAmp  = 0.08 + Math.random() * 0.07;
+    const upliftAmp = 0.08 + Math.random() * 0.07;
     const upliftFreq = 0.008 + Math.random() * 0.006;
-    const upliftOff  = Math.random() * Math.PI * 2;
+    const upliftOff = Math.random() * Math.PI * 2;
 
     return {
-      x: pos.x, y: pos.y,
-      vy: vyBase, vyBase, fallAccel,
-      driftAmp, driftFreq, driftOff,
-      rockAmp, rockFreq, rockOff,
-      vr, rot: Math.random() * Math.PI * 2,
-      upliftAmp, upliftFreq, upliftOff,
-      size, life: 0,
+      x: pos.x,
+      y: pos.y,
+      vy: vyBase,
+      vyBase,
+      fallAccel,
+      driftAmp,
+      driftFreq,
+      driftOff,
+      rockAmp,
+      rockFreq,
+      rockOff,
+      vr,
+      rot: Math.random() * Math.PI * 2,
+      upliftAmp,
+      upliftFreq,
+      upliftOff,
+      size,
+      life: 0,
     };
   }
 
   function drawPetal(p) {
     // Fade in gently over 20 frames
-    const fadeIn  = Math.min(1, p.life / 20);
+    const fadeIn = Math.min(1, p.life / 20);
     // Fade out over bottom 80px
     const fadeOut = Math.min(1, Math.max(0, (H - p.y) / 80));
-    const alpha   = fadeIn * fadeOut;
+    const alpha = fadeIn * fadeOut;
     if (alpha <= 0 || !imgReady) return;
 
     // Rock angle drives scaleX (left-right tilt in perspective)
-    const θ      = p.rockAmp * Math.sin(p.life * p.rockFreq + p.rockOff);
-    const scaleX = Math.cos(θ);          // 1 = face-on, 0 = edge-on
+    const θ = p.rockAmp * Math.sin(p.life * p.rockFreq + p.rockOff);
+    const scaleX = Math.cos(θ); // 1 = face-on, 0 = edge-on
     // scaleY gets a very subtle companion tilt (much smaller)
     const scaleY = 1 - Math.abs(Math.sin(θ)) * 0.15;
 
@@ -1268,19 +1399,22 @@ function revealSite() {
   function tick() {
     if (!rafActive) return;
     ctx.clearRect(0, 0, W, H);
-    petals = petals.filter(p => p.y < H + p.size);
+    petals = petals.filter((p) => p.y < H + p.size);
 
     for (const p of petals) {
       // Lateral position: pure sine drift (no persistent vx)
-      p.x = p.x + p.driftAmp * Math.cos(p.life * p.driftFreq + p.driftOff) * p.driftFreq;
+      p.x =
+        p.x +
+        p.driftAmp * Math.cos(p.life * p.driftFreq + p.driftOff) * p.driftFreq;
 
       // Vertical: slow terminal velocity + barely-there gravity + uplift pulse
-      const uplift = p.upliftAmp * Math.sin(p.life * p.upliftFreq + p.upliftOff);
+      const uplift =
+        p.upliftAmp * Math.sin(p.life * p.upliftFreq + p.upliftOff);
       p.vy = Math.min(p.vyBase + p.life * p.fallAccel, 2.4); // cap at 2.4 px/frame
-      p.y += Math.max(0.05, p.vy - uplift);  // never negative (no shooting upward)
+      p.y += Math.max(0.05, p.vy - uplift); // never negative (no shooting upward)
 
       // Very slow axial spin
-      p.rot  += p.vr;
+      p.rot += p.vr;
       p.life++;
       drawPetal(p);
     }
@@ -1295,23 +1429,31 @@ function revealSite() {
   function start() {
     if (running) return;
     running = true;
-    canvas  = document.getElementById('invitePetals');
+    canvas = document.getElementById("invitePetals");
     if (!canvas) return;
-    ctx = canvas.getContext('2d');
+    ctx = canvas.getContext("2d");
     birdEls = [
-      document.getElementById('invBirdA'),
-      document.getElementById('invBirdB'),
+      document.getElementById("invBirdA"),
+      document.getElementById("invBirdB"),
     ];
     resize();
-    window.addEventListener('resize', resize);
-    new IntersectionObserver(entries => {
-      const vis = entries[0].isIntersecting;
-      if (vis && !rafActive) { rafActive = true; requestAnimationFrame(tick); }
-      else if (!vis) {
-        rafActive = false;
-        if (petalInterval) { clearInterval(petalInterval); petalInterval = null; }
-      }
-    }, { rootMargin: '100px' }).observe(canvas);
+    window.addEventListener("resize", resize);
+    new IntersectionObserver(
+      (entries) => {
+        const vis = entries[0].isIntersecting;
+        if (vis && !rafActive) {
+          rafActive = true;
+          requestAnimationFrame(tick);
+        } else if (!vis) {
+          rafActive = false;
+          if (petalInterval) {
+            clearInterval(petalInterval);
+            petalInterval = null;
+          }
+        }
+      },
+      { rootMargin: "100px" },
+    ).observe(canvas);
     setTimeout(() => {
       spawnOne();
       petalInterval = setInterval(spawnOne, SPAWN_INTERVAL_MS);
@@ -1320,7 +1462,6 @@ function revealSite() {
 
   window._startPetalShower = start;
 })();
-
 
 let triggered = false;
 function triggerIntro() {
@@ -1333,13 +1474,23 @@ function triggerIntro() {
     syncBgMusicState();
     function retryMusic() {
       playBgMusic().catch(syncBgMusicState);
-      document.removeEventListener('click',      retryMusic, true);
-      document.removeEventListener('touchstart', retryMusic, true);
-      document.removeEventListener('keydown',    retryMusic, true);
+      document.removeEventListener("click", retryMusic, true);
+      document.removeEventListener("touchstart", retryMusic, true);
+      document.removeEventListener("keydown", retryMusic, true);
     }
-    document.addEventListener('click',      retryMusic, { once: true, capture: true });
-    document.addEventListener('touchstart', retryMusic, { once: true, capture: true, passive: true });
-    document.addEventListener('keydown',    retryMusic, { once: true, capture: true });
+    document.addEventListener("click", retryMusic, {
+      once: true,
+      capture: true,
+    });
+    document.addEventListener("touchstart", retryMusic, {
+      once: true,
+      capture: true,
+      passive: true,
+    });
+    document.addEventListener("keydown", retryMusic, {
+      once: true,
+      capture: true,
+    });
   });
   if (ropeFrame) {
     cancelAnimationFrame(ropeFrame);
@@ -1352,38 +1503,51 @@ function triggerIntro() {
   ropeButton.classList.remove("is-pulling");
 
   if (rmq) {
-    introEl.classList.add("is-lit","show-names","show-date","show-venue","show-lotus");
+    introEl.classList.add(
+      "is-lit",
+      "show-names",
+      "show-date",
+      "show-venue",
+      "show-lotus",
+    );
     return;
   }
 
   /* 1 — rope snap down hard */
   ropeButton.style.willChange = "transform, opacity, filter";
   ropeButton.style.transition = "transform 85ms cubic-bezier(.18,0,.6,1)";
-  ropeButton.style.transform  = "translateX(-50%) rotate(5deg)";
-  ropeImg.style.transition    = "transform 85ms ease";
-  ropeImg.style.transform     = "scaleY(1.66)";
+  ropeButton.style.transform = "translateX(-50%) rotate(5deg)";
+  ropeImg.style.transition = "transform 85ms ease";
+  ropeImg.style.transform = "scaleY(1.66)";
 
-  if (navigator.vibrate) { try { navigator.vibrate([14, 22, 88]); } catch(_) {} }
+  if (navigator.vibrate) {
+    try {
+      navigator.vibrate([14, 22, 88]);
+    } catch (_) {}
+  }
 
   /* 2 — elastic rebound */
   setTimeout(() => {
     ropeButton.style.transition = "transform 680ms cubic-bezier(.2,.92,.22,1)";
-    ropeButton.style.transform  = "translateX(-50%) rotate(-2.2deg)";
-    ropeImg.style.transition    = "transform 680ms cubic-bezier(.2,.92,.22,1)";
-    ropeImg.style.transform     = "scaleY(1.16)";
+    ropeButton.style.transform = "translateX(-50%) rotate(-2.2deg)";
+    ropeImg.style.transition = "transform 680ms cubic-bezier(.2,.92,.22,1)";
+    ropeImg.style.transform = "scaleY(1.16)";
   }, 85);
 
   /* Cinematic flash — golden burst from top, like a lamp igniting */
   setTimeout(() => {
     const flash = document.createElement("div");
     flash.style.cssText = [
-      "position:absolute", "inset:0", "z-index:16", "pointer-events:none",
+      "position:absolute",
+      "inset:0",
+      "z-index:16",
+      "pointer-events:none",
       "background:radial-gradient(ellipse 110% 80% at 50% 5%,",
       "  rgba(255,218,100,.92) 0%,",
       "  rgba(255,190,60,.44) 30%,",
       "  rgba(255,160,40,.12) 58%,",
       "  transparent 76%)",
-      "animation:cinemaFlash 1300ms ease-out forwards"
+      "animation:cinemaFlash 1300ms ease-out forwards",
     ].join(";");
     introEl.appendChild(flash);
     setTimeout(() => flash.remove(), 1400);
@@ -1396,16 +1560,17 @@ function triggerIntro() {
   }, 200);
 
   /* 4 — cascade text */
-  setTimeout(() => introEl.classList.add("show-names"),  1200);
-  setTimeout(() => introEl.classList.add("show-date"),   2200);
-  setTimeout(() => introEl.classList.add("show-venue"),  2550);
-  setTimeout(() => introEl.classList.add("show-lotus"),  3100);
+  setTimeout(() => introEl.classList.add("show-names"), 1200);
+  setTimeout(() => introEl.classList.add("show-date"), 2200);
+  setTimeout(() => introEl.classList.add("show-venue"), 2550);
+  setTimeout(() => introEl.classList.add("show-lotus"), 3100);
 }
 
 /* ─────────────────────────────────────
    Rope drag — pointer events
 ───────────────────────────────────── */
-let isDragging = false, dragStartY = 0;
+let isDragging = false,
+  dragStartY = 0;
 let ropeTargetY = 0;
 let ropeVisualY = 0;
 let ropeVelocityY = 0;
@@ -1421,24 +1586,38 @@ function clamp(n, min, max) {
 }
 
 function applyRopePhysicsFrame() {
-  const spring = isDragging ? .26 : .18;
-  const damping = isDragging ? .70 : .60;
+  const spring = isDragging ? 0.26 : 0.18;
+  const damping = isDragging ? 0.7 : 0.6;
 
-  ropeVelocityY = (ropeVelocityY + (ropeTargetY - ropeVisualY) * spring) * damping;
+  ropeVelocityY =
+    (ropeVelocityY + (ropeTargetY - ropeVisualY) * spring) * damping;
   ropeVisualY += ropeVelocityY;
 
   const progress = Math.min(ropeLastRaw / PULL_THRESHOLD, 1);
   const tasselDrop = ropeVisualY;
-  const rotation = clamp(ropePointerOffset * 10 + ropeVelocityY * .11 + ropeSwing, -13, 13);
-  const stretch = 1 + clamp(tasselDrop / (PULL_THRESHOLD * 1.45), 0, .66) + clamp(Math.abs(ropeVelocityY) * .012, 0, .095);
-  const haloScale = 1 + progress * .76 + clamp(Math.abs(ropeVelocityY) * .01, 0, .15);
+  const rotation = clamp(
+    ropePointerOffset * 10 + ropeVelocityY * 0.11 + ropeSwing,
+    -13,
+    13,
+  );
+  const stretch =
+    1 +
+    clamp(tasselDrop / (PULL_THRESHOLD * 1.45), 0, 0.66) +
+    clamp(Math.abs(ropeVelocityY) * 0.012, 0, 0.095);
+  const haloScale =
+    1 + progress * 0.76 + clamp(Math.abs(ropeVelocityY) * 0.01, 0, 0.15);
 
   ropeButton.style.transform = `translateX(-50%) rotate(${rotation.toFixed(2)}deg)`;
   ropeImg.style.transform = `scaleY(${stretch.toFixed(3)})`;
-  ropeHalo.style.opacity = String(.24 + progress * .72);
-  ropeHalo.style.transform = `translateX(-50%) translateY(${(tasselDrop * .28).toFixed(2)}px) scale(${haloScale.toFixed(3)})`;
+  ropeHalo.style.opacity = String(0.24 + progress * 0.72);
+  ropeHalo.style.transform = `translateX(-50%) translateY(${(tasselDrop * 0.28).toFixed(2)}px) scale(${haloScale.toFixed(3)})`;
 
-  if (!isDragging && ropeTargetY === 0 && Math.abs(ropeVisualY) < .45 && Math.abs(ropeVelocityY) < .45) {
+  if (
+    !isDragging &&
+    ropeTargetY === 0 &&
+    Math.abs(ropeVisualY) < 0.45 &&
+    Math.abs(ropeVelocityY) < 0.45
+  ) {
     ropeVisualY = 0;
     ropeVelocityY = 0;
     ropeLastRaw = 0;
@@ -1479,22 +1658,28 @@ function showPullFeedback() {
 function snapBack() {
   ropeTargetY = 0;
   ropeLastRaw = 0;
-  ropeSwing = clamp(ropeVelocityY * -.08, -5.5, 5.5);
+  ropeSwing = clamp(ropeVelocityY * -0.08, -5.5, 5.5);
   ropeButton.classList.remove("is-pulling");
   ropeButton.style.transition = "none";
   ropeImg.style.transition = "none";
   ropeHalo.style.transition = "none";
   startRopePhysics();
-  setTimeout(() => { if (!triggered && !isDragging) ropeButton.classList.add("rope-idle"); }, 760);
+  setTimeout(() => {
+    if (!triggered && !isDragging) ropeButton.classList.add("rope-idle");
+  }, 760);
 }
 
-ropeButton.addEventListener("pointerdown", e => {
+ropeButton.addEventListener("pointerdown", (e) => {
   if (triggered) return;
   _unlockMusic(); /* pre-warm <audio> element while still in gesture handler */
   /* iOS/Safari: WebAudio AudioContext must also be resumed inside a gesture stack */
-  try { const sc = Sound.ctx; if (sc && sc.state === "suspended") sc.resume(); } catch (_) {}
+  try {
+    const sc = Sound.ctx;
+    if (sc && sc.state === "suspended") sc.resume();
+  } catch (_) {}
   e.preventDefault();
-  isDragging = true; dragStartY = e.clientY;
+  isDragging = true;
+  dragStartY = e.clientY;
   ropePeakRaw = 0;
   hidePullFeedback();
   /* bell fires on pointerdown so it doesn't wait for threshold */
@@ -1503,54 +1688,75 @@ ropeButton.addEventListener("pointerdown", e => {
   ropeButton.classList.add("is-pulling");
   ropeButton.style.transition = "none";
   ropeButton.style.willChange = "transform";
-  ropeImg.style.transition    = "none";
-  ropeHalo.style.transition   = "none";
+  ropeImg.style.transition = "none";
+  ropeHalo.style.transition = "none";
   ropeTargetY = ropeVisualY;
   ropeVelocityY = 0;
   ropeLastRaw = 0;
   const rect = ropeButton.getBoundingClientRect();
-  ropePointerOffset = clamp((e.clientX - (rect.left + rect.width / 2)) / rect.width, -1, 1);
+  ropePointerOffset = clamp(
+    (e.clientX - (rect.left + rect.width / 2)) / rect.width,
+    -1,
+    1,
+  );
   startRopePhysics();
   ropeButton.setPointerCapture(e.pointerId);
 });
 
-ropeButton.addEventListener("pointermove", e => {
+ropeButton.addEventListener("pointermove", (e) => {
   if (!isDragging || triggered) return;
   e.preventDefault();
-  const raw    = Math.max(0, e.clientY - dragStartY);
+  const raw = Math.max(0, e.clientY - dragStartY);
   const visual = resist(raw);
   const rect = ropeButton.getBoundingClientRect();
-  const nextOffset = clamp((e.clientX - (rect.left + rect.width / 2)) / rect.width, -1, 1);
+  const nextOffset = clamp(
+    (e.clientX - (rect.left + rect.width / 2)) / rect.width,
+    -1,
+    1,
+  );
 
   ropeTargetY = visual;
   ropeLastRaw = raw;
   ropePeakRaw = Math.max(ropePeakRaw, raw);
-  ropeSwing = clamp((nextOffset - ropePointerOffset) * 18 + (visual - ropeVisualY) * .034, -8.5, 8.5);
+  ropeSwing = clamp(
+    (nextOffset - ropePointerOffset) * 18 + (visual - ropeVisualY) * 0.034,
+    -8.5,
+    8.5,
+  );
   ropePointerOffset = nextOffset;
   startRopePhysics();
 
-  if (raw >= PULL_THRESHOLD) { isDragging = false; triggerIntro(); }
+  if (raw >= PULL_THRESHOLD) {
+    isDragging = false;
+    triggerIntro();
+  }
 });
 
-ropeButton.addEventListener("pointerup", e => {
-  if (ropeButton.hasPointerCapture(e.pointerId)) ropeButton.releasePointerCapture(e.pointerId);
+ropeButton.addEventListener("pointerup", (e) => {
+  if (ropeButton.hasPointerCapture(e.pointerId))
+    ropeButton.releasePointerCapture(e.pointerId);
   isDragging = false;
   if (!triggered) {
-    if (ropePeakRaw > PULL_THRESHOLD * .18) showPullFeedback();
+    if (ropePeakRaw > PULL_THRESHOLD * 0.18) showPullFeedback();
     snapBack();
   }
 });
 ropeButton.addEventListener("pointercancel", () => {
   isDragging = false;
   if (!triggered) {
-    if (ropePeakRaw > PULL_THRESHOLD * .18) showPullFeedback();
+    if (ropePeakRaw > PULL_THRESHOLD * 0.18) showPullFeedback();
     snapBack();
   }
 });
-ropeButton.addEventListener("keydown", e => {
-  if (e.key === "Enter" || e.key === " ") { e.preventDefault(); triggerIntro(); }
+ropeButton.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    triggerIntro();
+  }
 });
-ropeButton.addEventListener("click", () => { if (!triggered && rmq) triggerIntro(); });
+ropeButton.addEventListener("click", () => {
+  if (!triggered && rmq) triggerIntro();
+});
 
 /* ─────────────────────────────────────
    Lotus tap — 5-phase bloom sequence
@@ -1564,12 +1770,19 @@ lotusButton.addEventListener("click", () => {
   if (lotusButton.classList.contains("is-animating")) return;
   lotusButton.classList.add("is-animating");
 
-  if (rmq) { revealSite(); return; }
+  if (rmq) {
+    revealSite();
+    return;
+  }
 
   Sound.lotus();
 
   // Play lotus click song from config
-  if (window.__WEDDING_CONFIG__ && window.__WEDDING_CONFIG__.music && window.__WEDDING_CONFIG__.music.lotus) {
+  if (
+    window.__WEDDING_CONFIG__ &&
+    window.__WEDDING_CONFIG__.music &&
+    window.__WEDDING_CONFIG__.music.lotus
+  ) {
     const lotusAudio = new Audio(window.__WEDDING_CONFIG__.music.lotus);
     lotusAudio.volume = 0.8;
     lotusAudio.play().catch(() => {});
@@ -1591,13 +1804,13 @@ lotusButton.addEventListener("click", () => {
 
     /* Fade out closed image */
     lotusIconImg.style.transition = "opacity 400ms ease";
-    lotusIconImg.style.opacity    = "0";
+    lotusIconImg.style.opacity = "0";
 
     /* Fade in open image */
     const openImg = document.getElementById("lotusOpenImg");
     if (openImg) {
       openImg.style.transition = "opacity 420ms ease 80ms";
-      openImg.style.opacity    = "1";
+      openImg.style.opacity = "1";
     }
   }, 600);
 
@@ -1615,40 +1828,55 @@ skipBtn.addEventListener("click", revealSite);
 /* ─────────────────────────────────────
    Floating nav
 ───────────────────────────────────── */
-menuToggle.addEventListener("click", e => {
+menuToggle.addEventListener("click", (e) => {
   e.stopPropagation(); // prevent this click from immediately triggering the outside-click listener
   const open = floatingMenu.classList.toggle("is-open");
   menuToggle.setAttribute("aria-expanded", String(open));
 });
 
-document.querySelectorAll(".menu-link").forEach(a =>
-  a.addEventListener("click", e => {
+document.querySelectorAll(".menu-link").forEach((a) =>
+  a.addEventListener("click", (e) => {
     /* Home — re-show the intro in its lit state (names visible, lotus ready to tap) */
     if (a.id === "menuHome") {
       e.preventDefault();
       /* Reset lotus back to closed, ready to tap again */
-      lotusButton.classList.remove("is-open", "is-animating", "lotus-phase-1", "lotus-phase-2", "lotus-phase-3");
+      lotusButton.classList.remove(
+        "is-open",
+        "is-animating",
+        "lotus-phase-1",
+        "lotus-phase-2",
+        "lotus-phase-3",
+      );
       lotusIconImg.style.transition = "none";
       lotusIconImg.style.opacity = "1";
       var openImg = document.getElementById("lotusOpenImg");
-      if (openImg) { openImg.style.transition = "none"; openImg.style.opacity = "0"; }
+      if (openImg) {
+        openImg.style.transition = "none";
+        openImg.style.opacity = "0";
+      }
       /* Allow lotus to be triggered again */
       triggered = false;
       /* Hide nav — revealSite() re-adds is-visible when lotus is tapped */
       floatingMenu.classList.remove("is-visible");
       /* Show intro in lit state — names/date/venue/lotus all visible */
       introEl.classList.remove("is-complete");
-      introEl.classList.add("is-lit", "show-names", "show-date", "show-venue", "show-lotus");
+      introEl.classList.add(
+        "is-lit",
+        "show-names",
+        "show-date",
+        "show-venue",
+        "show-lotus",
+      );
       document.body.classList.add("intro-active");
       window.scrollTo({ top: 0, behavior: "instant" });
     }
     floatingMenu.classList.remove("is-open");
     menuToggle.setAttribute("aria-expanded", "false");
-  })
+  }),
 );
 
 /* Click anywhere outside the menu panel closes it */
-document.addEventListener("click", e => {
+document.addEventListener("click", (e) => {
   if (!floatingMenu.classList.contains("is-open")) return;
   if (!floatingMenu.contains(e.target)) {
     floatingMenu.classList.remove("is-open");
@@ -1659,13 +1887,23 @@ document.addEventListener("click", e => {
 /* ─────────────────────────────────────
    Scroll reveal
 ───────────────────────────────────── */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (document.body.classList.contains("intro-active") && e.target.closest(".invite-section")) return;
-    if (e.isIntersecting) { e.target.classList.add("in-view"); observer.unobserve(e.target); }
-  });
-}, { threshold: 0.08, rootMargin: "0px 0px -4% 0px" });
-document.querySelectorAll(".reveal-item").forEach(el => observer.observe(el));
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((e) => {
+      if (
+        document.body.classList.contains("intro-active") &&
+        e.target.closest(".invite-section")
+      )
+        return;
+      if (e.isIntersecting) {
+        e.target.classList.add("in-view");
+        observer.unobserve(e.target);
+      }
+    });
+  },
+  { threshold: 0.08, rootMargin: "0px 0px -4% 0px" },
+);
+document.querySelectorAll(".reveal-item").forEach((el) => observer.observe(el));
 
 /* ═══════════════════════════════════════════════════════════════
    THINGS TO KNOW — Dynamic Guest Info Board
@@ -1678,95 +1916,154 @@ const TTK_BASE = "assets/shared/";
 /* ── Card data — 4 enabled by default for preview ── */
 const TTK_ITEMS = [
   {
-    type:        "dress-code",
-    enabled:     true,
-    title:       "Dress Code",
-    description: "Festive Indian elegance. Sarees, lehengas and sherwanis are warmly encouraged.",
-    icon:        TTK_BASE + "pn-ttk-ico-dress-code-x-v01.webp",
-    linkLabel:   null, linkUrl: null, custom: false,
+    type: "dress-code",
+    enabled: true,
+    title: "Dress Code",
+    description:
+      "Festive Indian elegance. Sarees, lehengas and sherwanis are warmly encouraged.",
+    icon: TTK_BASE + "pn-ttk-ico-dress-code-x-v01.webp",
+    linkLabel: null,
+    linkUrl: null,
+    custom: false,
   },
   {
-    type:        "venue",
-    enabled:     true,
-    title:       "Venue",
-    description: "The Oberoi Udaivilas, Udaipur. All celebrations take place within the palace grounds.",
-    icon:        TTK_BASE + "pn-ttk-ico-venue-x-v01.webp",
-    linkLabel:   null,
-    linkUrl:     null,
-    custom:      false,
+    type: "venue",
+    enabled: true,
+    title: "Venue",
+    description:
+      "The Oberoi Udaivilas, Udaipur. All celebrations take place within the palace grounds.",
+    icon: TTK_BASE + "pn-ttk-ico-venue-x-v01.webp",
+    linkLabel: null,
+    linkUrl: null,
+    custom: false,
   },
   {
-    type:        "stay-options",
-    enabled:     true,
-    title:       "Stay Options",
-    description: "A curated block of rooms has been reserved. Please book by 1st November 2026.",
-    icon:        TTK_BASE + "pn-ttk-ico-stay-options-x-v01.webp",
-    linkLabel:   null, linkUrl: null, custom: false,
+    type: "stay-options",
+    enabled: true,
+    title: "Stay Options",
+    description:
+      "A curated block of rooms has been reserved. Please book by 1st November 2026.",
+    icon: TTK_BASE + "pn-ttk-ico-stay-options-x-v01.webp",
+    linkLabel: null,
+    linkUrl: null,
+    custom: false,
   },
   {
-    type:        "hashtag",
-    enabled:     true,
-    title:       "Wedding Hashtag",
+    type: "hashtag",
+    enabled: true,
+    title: "Wedding Hashtag",
     description: "Share your favourite moments with #AaravMeeraNoor.",
-    icon:        TTK_BASE + "pn-ttk-ico-hashtag-x-v01.webp",
-    linkLabel:   null, linkUrl: null, custom: false,
+    icon: TTK_BASE + "pn-ttk-ico-hashtag-x-v01.webp",
+    linkLabel: null,
+    linkUrl: null,
+    custom: false,
   },
   /* ── Remaining cards — set enabled: true to activate ── */
   {
-    type: "transport", enabled: false, title: "Transport",
-    description: "Complimentary shuttle service between the airport and the palace.",
-    icon: TTK_BASE + "pn-ttk-ico-transport-x-v01.webp", linkLabel: null, linkUrl: null, custom: false,
+    type: "transport",
+    enabled: false,
+    title: "Transport",
+    description:
+      "Complimentary shuttle service between the airport and the palace.",
+    icon: TTK_BASE + "pn-ttk-ico-transport-x-v01.webp",
+    linkLabel: null,
+    linkUrl: null,
+    custom: false,
   },
   {
-    type: "gift-registry", enabled: false, title: "Gift Registry",
-    description: "Your presence is the greatest gift. A registry link is available for those who wish.",
-    icon: TTK_BASE + "pn-ttk-ico-gift-registry-x-v01.webp", linkLabel: "View Registry", linkUrl: "#", custom: false,
+    type: "gift-registry",
+    enabled: false,
+    title: "Gift Registry",
+    description:
+      "Your presence is the greatest gift. A registry link is available for those who wish.",
+    icon: TTK_BASE + "pn-ttk-ico-gift-registry-x-v01.webp",
+    linkLabel: "View Registry",
+    linkUrl: "#",
+    custom: false,
   },
   {
-    type: "food", enabled: false, title: "Food",
-    description: "A lavish spread of vegetarian and non-vegetarian dishes will be served at all events.",
-    icon: TTK_BASE + "pn-ttk-ico-food-x-v01.webp", linkLabel: null, linkUrl: null, custom: false,
+    type: "food",
+    enabled: false,
+    title: "Food",
+    description:
+      "A lavish spread of vegetarian and non-vegetarian dishes will be served at all events.",
+    icon: TTK_BASE + "pn-ttk-ico-food-x-v01.webp",
+    linkLabel: null,
+    linkUrl: null,
+    custom: false,
   },
   {
-    type: "weather", enabled: false, title: "Weather",
-    description: "December in Udaipur is pleasant — expect clear skies and cool evenings.",
-    icon: TTK_BASE + "pn-ttk-ico-weather-x-v01.webp", linkLabel: null, linkUrl: null, custom: false,
+    type: "weather",
+    enabled: false,
+    title: "Weather",
+    description:
+      "December in Udaipur is pleasant — expect clear skies and cool evenings.",
+    icon: TTK_BASE + "pn-ttk-ico-weather-x-v01.webp",
+    linkLabel: null,
+    linkUrl: null,
+    custom: false,
   },
   {
-    type: "parking", enabled: false, title: "Parking",
+    type: "parking",
+    enabled: false,
+    title: "Parking",
     description: "Valet parking is available at the main palace entrance.",
-    icon: TTK_BASE + "pn-ttk-ico-parking-x-v01.webp", linkLabel: null, linkUrl: null, custom: false,
+    icon: TTK_BASE + "pn-ttk-ico-parking-x-v01.webp",
+    linkLabel: null,
+    linkUrl: null,
+    custom: false,
   },
   {
-    type: "kids-welcome", enabled: false, title: "Kids Welcome",
-    description: "Children are warmly welcome. A dedicated kids' zone will be available at all events.",
-    icon: TTK_BASE + "pn-ttk-ico-kids-welcome-x-v01.webp", linkLabel: null, linkUrl: null, custom: false,
+    type: "kids-welcome",
+    enabled: false,
+    title: "Kids Welcome",
+    description:
+      "Children are warmly welcome. A dedicated kids' zone will be available at all events.",
+    icon: TTK_BASE + "pn-ttk-ico-kids-welcome-x-v01.webp",
+    linkLabel: null,
+    linkUrl: null,
+    custom: false,
   },
   {
-    type: "photography", enabled: false, title: "Photography",
-    description: "A professional photographer will be present. Guests are welcome to capture moments freely.",
-    icon: TTK_BASE + "pn-ttk-ico-photography-x-v01.webp", linkLabel: null, linkUrl: null, custom: false,
+    type: "photography",
+    enabled: false,
+    title: "Photography",
+    description:
+      "A professional photographer will be present. Guests are welcome to capture moments freely.",
+    icon: TTK_BASE + "pn-ttk-ico-photography-x-v01.webp",
+    linkLabel: null,
+    linkUrl: null,
+    custom: false,
   },
   {
-    type: "whatsapp-group", enabled: false, title: "WhatsApp Group",
-    description: "Join our wedding group for live updates and celebration news.",
-    icon: TTK_BASE + "pn-ttk-ico-whatsapp-group-x-v01.webp", linkLabel: "Join Group", linkUrl: "#", custom: false,
+    type: "whatsapp-group",
+    enabled: false,
+    title: "WhatsApp Group",
+    description:
+      "Join our wedding group for live updates and celebration news.",
+    icon: TTK_BASE + "pn-ttk-ico-whatsapp-group-x-v01.webp",
+    linkLabel: "Join Group",
+    linkUrl: "#",
+    custom: false,
   },
 ];
 
 /* ── Scroll-reveal observer — defined before hydrate() ── */
-const ttkObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    e.target.classList.add("in-view");
-    ttkObserver.unobserve(e.target);
-  });
-}, { threshold: 0.10, rootMargin: "0px 0px -5% 0px" });
+const ttkObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add("in-view");
+      ttkObserver.unobserve(e.target);
+    });
+  },
+  { threshold: 0.1, rootMargin: "0px 0px -5% 0px" },
+);
 
 function renderTTK() {
   const grid = document.getElementById("ttkGrid");
   if (!grid) return;
-  const active = TTK_ITEMS.filter(item => item.enabled);
+  const active = TTK_ITEMS.filter((item) => item.enabled);
   if (!active.length) return;
   const count = active.length;
   if (count === 1) grid.classList.add("ttk-grid--single");
@@ -1791,29 +2088,44 @@ function buildTTKCard(item, isLastOdd) {
 
   const icon = document.createElement("img");
   icon.className = "ttk-card-icon";
-  icon.src = item.icon; icon.alt = ""; icon.decoding = "async"; icon.loading = "lazy";
+  icon.src = item.icon;
+  icon.alt = "";
+  icon.decoding = "async";
+  icon.loading = "lazy";
   icon.setAttribute("aria-hidden", "true");
 
   /* After spring transition ends, mark as sprung so CSS animation takes over cleanly */
-  icon.addEventListener("transitionend", () => {
-    icon.classList.add("icon-sprung");
-  }, { once: true });
+  icon.addEventListener(
+    "transitionend",
+    () => {
+      icon.classList.add("icon-sprung");
+    },
+    { once: true },
+  );
 
   wrap.appendChild(icon);
 
   const title = document.createElement("h3");
-  title.className = "ttk-card-title"; title.textContent = item.title;
+  title.className = "ttk-card-title";
+  title.textContent = item.title;
 
   const body = document.createElement("p");
-  body.className = "ttk-card-body"; body.textContent = item.description;
+  body.className = "ttk-card-body";
+  body.textContent = item.description;
 
-  a.appendChild(wrap); a.appendChild(title); a.appendChild(body);
+  a.appendChild(wrap);
+  a.appendChild(title);
+  a.appendChild(body);
 
   if (item.linkLabel && item.linkUrl) {
     const lnk = document.createElement("a");
-    lnk.className = "ttk-card-link"; lnk.href = item.linkUrl;
+    lnk.className = "ttk-card-link";
+    lnk.href = item.linkUrl;
     lnk.textContent = "↗ " + item.linkLabel;
-    if (item.linkUrl.startsWith("http")) { lnk.target = "_blank"; lnk.rel = "noreferrer"; }
+    if (item.linkUrl.startsWith("http")) {
+      lnk.target = "_blank";
+      lnk.rel = "noreferrer";
+    }
     a.appendChild(lnk);
   }
   return a;
@@ -1825,69 +2137,92 @@ function buildTTKCard(item, isLastOdd) {
    and overrides the data arrays so render functions use live data.
 ═══════════════════════════════════════════════════════════════ */
 (function applyConfigPhase1() {
-  var C = (typeof window !== 'undefined') ? window.__WEDDING_CONFIG__ : null;
+  var C = typeof window !== "undefined" ? window.__WEDDING_CONFIG__ : null;
   if (!C) return;
 
   /* Load TTK items from config FIRST — before any rendering */
   if (C.ttk && Array.isArray(C.ttk)) {
-    TTK_ITEMS = C.ttk.map(function(item) {
+    TTK_ITEMS = C.ttk.map(function (item) {
       return {
-        type: item.type || '',
+        type: item.type || "",
         enabled: item.enabled !== false,
-        title: item.title || '',
-        description: item.description || '',
-        icon: item.icon || '',
+        title: item.title || "",
+        description: item.description || "",
+        icon: item.icon || "",
         linkLabel: item.linkLabel || null,
         linkUrl: item.linkUrl || null,
-        custom: item.custom !== true
+        custom: item.custom !== true,
       };
     });
   }
 
   /* Format ISO date "2026-12-13" → "13 Dec 2026" for event cards */
   function fmtEvDate(iso) {
-    if (!iso) return '';
-    var parts = iso.split('-');
-    var d = parseInt(parts[2], 10), m = parseInt(parts[1], 10), y = parts[0];
-    var mo = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    return d + ' ' + (mo[m - 1] || '') + ' ' + y;
+    if (!iso) return "";
+    var parts = iso.split("-");
+    var d = parseInt(parts[2], 10),
+      m = parseInt(parts[1], 10),
+      y = parts[0];
+    var mo = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    return d + " " + (mo[m - 1] || "") + " " + y;
   }
 
   /* Override EVENTS array in-place */
   if (C.events && C.events.length > 0) {
-    var mapped = C.events.map(function(ev) {
+    var mapped = C.events.map(function (ev) {
       return {
-        id:    ev.id,
-        icon:  ev.icon,
-        name:  ev.name,
-        date:  fmtEvDate(ev.date),
-        time:  ev.time  || '',
-        venue: ev.venue || '',
-        note:  ev.desc  || '',
-        map:   ev.mapsLink || ''
+        id: ev.id,
+        icon: ev.icon,
+        name: ev.name,
+        date: fmtEvDate(ev.date),
+        time: ev.time || "",
+        venue: ev.venue || "",
+        note: ev.desc || "",
+        map: ev.mapsLink || "",
       };
     });
     EVENTS.splice(0, EVENTS.length);
-    mapped.forEach(function(e) { EVENTS.push(e); });
+    mapped.forEach(function (e) {
+      EVENTS.push(e);
+    });
   }
 
   /* Override GALLERY_PHOTOS in-place */
   if (C.gallery) {
-    if (!C.gallery.show || C.gallery.layout === 'skip') {
+    if (!C.gallery.show || C.gallery.layout === "skip") {
       GALLERY_PHOTOS.splice(0);
     } else {
       var photos = (C.gallery.photos || []).filter(Boolean);
       if (photos.length > 0) {
-        var ORIENTS = ['hero', 'portrait', 'landscape', 'portrait'];
-        var bride = (C.couple && C.couple.bride) || '';
-        var groom = (C.couple && C.couple.groom) || '';
-        var caption = bride && groom ? bride + ' & ' + groom : '';
+        var ORIENTS = ["hero", "portrait", "landscape", "portrait"];
+        var bride = (C.couple && C.couple.bride) || "";
+        var groom = (C.couple && C.couple.groom) || "";
+        var caption = bride && groom ? bride + " & " + groom : "";
         var maxPhotos = parseInt(C.gallery.layout, 10) || 4;
-        var newPhotos = photos.slice(0, maxPhotos).map(function(src, i) {
-          return { src: src, caption: caption, orient: ORIENTS[i] || 'portrait' };
+        var newPhotos = photos.slice(0, maxPhotos).map(function (src, i) {
+          return {
+            src: src,
+            caption: caption,
+            orient: ORIENTS[i] || "portrait",
+          };
         });
         GALLERY_PHOTOS.splice(0, GALLERY_PHOTOS.length);
-        newPhotos.forEach(function(p) { GALLERY_PHOTOS.push(p); });
+        newPhotos.forEach(function (p) {
+          GALLERY_PHOTOS.push(p);
+        });
       }
     }
   }
@@ -1896,34 +2231,45 @@ function buildTTKCard(item, isLastOdd) {
   if (C.thingsToKnow && C.thingsToKnow.length > 0) {
     // Builder IDs that differ from template type strings
     var TTK_ID_MAP = {
-      dresscode: 'dress-code', hotel: 'stay-options', gifts: 'gift-registry',
-      kids: 'kids-welcome', whatsapp: 'whatsapp-group', photos: 'photography',
+      dresscode: "dress-code",
+      hotel: "stay-options",
+      gifts: "gift-registry",
+      kids: "kids-welcome",
+      whatsapp: "whatsapp-group",
+      photos: "photography",
     };
-    TTK_ITEMS.forEach(function(item) { item.enabled = false; });
-    C.thingsToKnow.forEach(function(ttk) {
+    TTK_ITEMS.forEach(function (item) {
+      item.enabled = false;
+    });
+    C.thingsToKnow.forEach(function (ttk) {
       // Match by id only — custom items have ctk_ ids and never match predefined entries
       var resolvedType = TTK_ID_MAP[ttk.id] || ttk.id;
-      var match = ttk.id && !ttk.id.startsWith('ctk_')
-        ? TTK_ITEMS.find(function(item) { return item.type === resolvedType; })
-        : null;
+      var match =
+        ttk.id && !ttk.id.startsWith("ctk_")
+          ? TTK_ITEMS.find(function (item) {
+              return item.type === resolvedType;
+            })
+          : null;
       if (match) {
         match.title = ttk.label || match.title;
         match.description = ttk.value || match.description;
         match.enabled = true;
         if (ttk.iconKey) match.icon = TTK_BASE + ttk.iconKey;
         if (ttk.mapsLink) {
-          match.linkLabel = 'Open in Maps';
+          match.linkLabel = "Open in Maps";
           match.linkUrl = ttk.mapsLink;
         }
       } else if (ttk.label) {
-        var iconFile = ttk.iconKey || 'pn-ttk-ico-custom-note-x-v01.webp';
+        var iconFile = ttk.iconKey || "pn-ttk-ico-custom-note-x-v01.webp";
         TTK_ITEMS.push({
-          type: ttk.id || ('custom-' + TTK_ITEMS.length),
+          type: ttk.id || "custom-" + TTK_ITEMS.length,
           enabled: true,
           title: ttk.label,
-          description: ttk.value || '',
+          description: ttk.value || "",
           icon: TTK_BASE + iconFile,
-          linkLabel: null, linkUrl: null, custom: true,
+          linkLabel: null,
+          linkUrl: null,
+          custom: true,
         });
       }
     });
@@ -1931,7 +2277,7 @@ function buildTTKCard(item, isLastOdd) {
 
   /* Override grandparents flag */
   if (C.invite) {
-    HAS_GRANDPARENTS = !!(C.invite.showGrandparents);
+    HAS_GRANDPARENTS = !!C.invite.showGrandparents;
   }
 })();
 
@@ -1943,25 +2289,25 @@ function buildTTKCard(item, isLastOdd) {
     if (window.__WEDDING_CONFIG__) {
       // Config is loaded
       const C = window.__WEDDING_CONFIG__;
-      
+
       // Load TTK items from config (only if not already loaded)
       if (C.ttk && Array.isArray(C.ttk) && TTK_ITEMS.length <= 12) {
         // Check if TTK_ITEMS still has the old hardcoded values (length should be 12 for old array)
         // If so, replace with new values from config
-        TTK_ITEMS = C.ttk.map(function(item) {
+        TTK_ITEMS = C.ttk.map(function (item) {
           return {
-            type: item.type || '',
+            type: item.type || "",
             enabled: item.enabled !== false,
-            title: item.title || '',
-            description: item.description || '',
-            icon: item.icon || '',
+            title: item.title || "",
+            description: item.description || "",
+            icon: item.icon || "",
             linkLabel: item.linkLabel || null,
             linkUrl: item.linkUrl || null,
-            custom: item.custom !== true
+            custom: item.custom !== true,
           };
         });
       }
-      
+
       // Now call hydrate
       hydrate();
       Sound.init();
@@ -1979,22 +2325,23 @@ function buildTTKCard(item, isLastOdd) {
 
 /* ── Wedding event data (sourced from EVENTS above) ── */
 const RSVP_EVENT = {
-  title:    "Aarav & Meera's Wedding",
+  title: "Aarav & Meera's Wedding",
   // Shaadi on 13 Dec 2026, 9:30 AM, 3 hours, IST (UTC+5:30)
   startUTC: "20261213T040000Z", // 09:30 IST → 04:00 UTC
-  endUTC:   "20261213T070000Z", // 12:30 IST → 07:00 UTC
+  endUTC: "20261213T070000Z", // 12:30 IST → 07:00 UTC
   location: "The Oberoi Udaivilas, Udaipur, Rajasthan, India",
-  description: "Join us for the wedding of Aarav & Meera. Dress code: Traditional Indian attire."
+  description:
+    "Join us for the wedding of Aarav & Meera. Dress code: Traditional Indian attire.",
 };
 
 /* ── Calendar link builders ── */
 function buildGCalLink(e) {
   const p = new URLSearchParams({
     action: "TEMPLATE",
-    text:   e.title,
-    dates:  `${e.startUTC}/${e.endUTC}`,
+    text: e.title,
+    dates: `${e.startUTC}/${e.endUTC}`,
     location: e.location,
-    details:  e.description
+    details: e.description,
   });
   return "https://calendar.google.com/calendar/render?" + p.toString();
 }
@@ -2014,7 +2361,7 @@ function buildICSContent(e) {
     `DESCRIPTION:${e.description}`,
     "STATUS:CONFIRMED",
     "END:VEVENT",
-    "END:VCALENDAR"
+    "END:VCALENDAR",
   ].join("\r\n");
 }
 
@@ -2024,25 +2371,29 @@ function wireCalendarButtons() {
   if (!gcal || !ical) return;
 
   // If Phase 2 already wired real couple URLs, don't overwrite with demo data
-  const cfg = (typeof window !== 'undefined') && window.__WEDDING_CONFIG__;
+  const cfg = typeof window !== "undefined" && window.__WEDDING_CONFIG__;
   if (cfg && cfg.calendarUrls) return;
 
   gcal.href = buildGCalLink(RSVP_EVENT);
 
   // iCal: data URI (works cross-browser; download attr triggers save)
-  const icsBlob = new Blob([buildICSContent(RSVP_EVENT)], { type: "text/calendar" });
+  const icsBlob = new Blob([buildICSContent(RSVP_EVENT)], {
+    type: "text/calendar",
+  });
   ical.href = URL.createObjectURL(icsBlob);
 }
 
 /* ── Fireworks ── */
 function initRSVPFireworks(canvas) {
   const ctx = canvas.getContext("2d");
-  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const prefersReduced = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
   if (prefersReduced) return;
 
   let W, H;
   const resize = () => {
-    W = canvas.width  = canvas.offsetWidth;
+    W = canvas.width = canvas.offsetWidth;
     H = canvas.height = canvas.offsetHeight;
   };
   resize();
@@ -2050,33 +2401,36 @@ function initRSVPFireworks(canvas) {
 
   // Colour palette: ivory, blush, dusty rose, carmine
   const PALETTES = [
-    ["rgba(247,238,220,", "rgba(235,210,190,"],  // ivory
-    ["rgba(223,176,180,", "rgba(200,148,160,"],  // blush rose
-    ["rgba(191,155,168,", "rgba(166,120,140,"],  // dusty rose
-    ["rgba(180,100,118,", "rgba(140,70,90,"],    // carmine
+    ["rgba(247,238,220,", "rgba(235,210,190,"], // ivory
+    ["rgba(223,176,180,", "rgba(200,148,160,"], // blush rose
+    ["rgba(191,155,168,", "rgba(166,120,140,"], // dusty rose
+    ["rgba(180,100,118,", "rgba(140,70,90,"], // carmine
   ];
 
   const bursts = [];
 
   function spawnBurst() {
     // Only upper 38% of sky
-    const x = W * (.18 + Math.random() * .64);
-    const y = H * (.04 + Math.random() * .34);
+    const x = W * (0.18 + Math.random() * 0.64);
+    const y = H * (0.04 + Math.random() * 0.34);
     const palette = PALETTES[Math.floor(Math.random() * PALETTES.length)];
     const particleCount = 36 + Math.floor(Math.random() * 22);
     const particles = [];
     for (let i = 0; i < particleCount; i++) {
-      const angle = (Math.PI * 2 * i) / particleCount + (Math.random() - .5) * .3;
+      const angle =
+        (Math.PI * 2 * i) / particleCount + (Math.random() - 0.5) * 0.3;
       const speed = 1.2 + Math.random() * 2.6;
       particles.push({
-        angle, speed,
+        angle,
+        speed,
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed,
-        x, y,
+        x,
+        y,
         life: 1,
-        decay: .012 + Math.random() * .010,
-        size: .8 + Math.random() * 1.4,
-        col: palette[Math.floor(Math.random() * palette.length)]
+        decay: 0.012 + Math.random() * 0.01,
+        size: 0.8 + Math.random() * 1.4,
+        col: palette[Math.floor(Math.random() * palette.length)],
       });
     }
     bursts.push({ particles, age: 0 });
@@ -2089,11 +2443,13 @@ function initRSVPFireworks(canvas) {
   function startBursts() {
     if (burstStarted) return;
     burstStarted = true;
-    BURST_DELAYS.forEach(d => setTimeout(function schedBurst() {
-      if (!document.getElementById("rsvp")) return;
-      spawnBurst();
-      setTimeout(schedBurst, CYCLE);
-    }, d));
+    BURST_DELAYS.forEach((d) =>
+      setTimeout(function schedBurst() {
+        if (!document.getElementById("rsvp")) return;
+        spawnBurst();
+        setTimeout(schedBurst, CYCLE);
+      }, d),
+    );
   }
 
   let rafId;
@@ -2103,10 +2459,10 @@ function initRSVPFireworks(canvas) {
       const burst = bursts[b];
       let allDead = true;
       for (const p of burst.particles) {
-        p.x += p.vx * .72;
-        p.y += p.vy * .72 + .04; // very slight gravity
-        p.vx *= .97;
-        p.vy *= .97;
+        p.x += p.vx * 0.72;
+        p.y += p.vy * 0.72 + 0.04; // very slight gravity
+        p.vx *= 0.97;
+        p.vy *= 0.97;
         p.life -= p.decay;
         if (p.life <= 0) continue;
         allDead = false;
@@ -2122,12 +2478,20 @@ function initRSVPFireworks(canvas) {
   }
 
   // Start bursts and render only when section is in view
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { startBursts(); if (!rafId) frame(); }
-      else { cancelAnimationFrame(rafId); rafId = 0; }
-    });
-  }, { threshold: 0.05 });
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          startBursts();
+          if (!rafId) frame();
+        } else {
+          cancelAnimationFrame(rafId);
+          rafId = 0;
+        }
+      });
+    },
+    { threshold: 0.05 },
+  );
   io.observe(canvas.closest(".rsvp-section"));
 }
 
@@ -2136,13 +2500,16 @@ function initRSVPReveal() {
   const section = document.getElementById("rsvp");
   if (!section) return;
 
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      section.classList.add("rsvp-alive");
-      io.unobserve(section);
-    });
-  }, { threshold: 0.08 });
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        section.classList.add("rsvp-alive");
+        io.unobserve(section);
+      });
+    },
+    { threshold: 0.08 },
+  );
   io.observe(section);
 }
 
@@ -2150,9 +2517,9 @@ function initRSVPReveal() {
    Preloader & Hero Text Initialization
 ───────────────────────────────────── */
 function initPreloader() {
-  const bride = "Kiran";
-  const groom = "Geet";
-  const date = "12 December 2026";
+  const bride = "किरण";
+  const groom = "गीत";
+  const date = "२० जून २०२६";
 
   function updatePreloader() {
     // Names in preloader
@@ -2171,7 +2538,7 @@ function initPreloader() {
     const introNames = document.getElementById("introNames");
     if (introNames && bride && groom) {
       const words = Array.from(introNames.querySelectorAll(".word")).filter(
-        w => !w.classList.contains("amp-wrap")
+        (w) => !w.classList.contains("amp-wrap"),
       );
       if (words.length >= 2) {
         words[0].textContent = bride;
@@ -2184,7 +2551,7 @@ function initPreloader() {
     if (introDate && date) introDate.textContent = date;
 
     // Fallback: replace any leaf text still reading the placeholder names
-    document.querySelectorAll("*").forEach(el => {
+    document.querySelectorAll("*").forEach((el) => {
       if (el.children.length === 0 && el.textContent.trim() === "Priya")
         el.textContent = bride;
       if (el.children.length === 0 && el.textContent.trim() === "Arjun")
@@ -2194,7 +2561,7 @@ function initPreloader() {
     // Date injection
     if (date) {
       let found = false;
-      document.querySelectorAll("*").forEach(el => {
+      document.querySelectorAll("*").forEach((el) => {
         if (el.children.length === 0) {
           const txt = el.textContent.trim();
           if (
@@ -2253,12 +2620,10 @@ function initEventHandlers() {
   }
 
   // Handle smooth scrolling for anchor links
-  document.addEventListener("click", e => {
+  document.addEventListener("click", (e) => {
     if (e.defaultPrevented) return;
     const link =
-      e.target && e.target.closest
-        ? e.target.closest('a[href^="#"]')
-        : null;
+      e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
     if (!link) return;
     const href = link.getAttribute("href") || "";
     if (!href || href === "#") return;
@@ -2285,7 +2650,7 @@ function initRSVP() {
 async function initAll() {
   // Wait for config to be loaded
   await loadWeddingConfig();
-  
+
   // Then initialize all features
   initPreloader();
   initEventHandlers();
@@ -2300,18 +2665,18 @@ if (document.readyState !== "loading") initAll();
    MEET THE COUPLE — Tree parting + content reveal
 ═══════════════════════════════════════════ */
 (function () {
-  const section   = document.getElementById("couple");
-  const treeLeft  = document.getElementById("cplTreeLeft");
+  const section = document.getElementById("couple");
+  const treeLeft = document.getElementById("cplTreeLeft");
   const treeRight = document.getElementById("cplTreeRight");
 
   if (!section || !treeLeft || !treeRight) return;
 
   /* ── Preflight: set trees to fully closed via direct transform ── */
-  treeLeft.style.transform  = "translateX(0%)";
+  treeLeft.style.transform = "translateX(0%)";
   treeRight.style.transform = "translateX(0%)";
 
-  let rafPending  = false;
-  let fullyOpen   = false;
+  let rafPending = false;
+  let fullyOpen = false;
   let contentFired = false;
 
   /* Content elements to reveal once trees have parted enough */
@@ -2327,7 +2692,7 @@ if (document.readyState !== "loading") initAll();
   }
 
   function setTreeTravel(pct) {
-    treeLeft.style.transform  = `translateX(-${pct}%)`;
+    treeLeft.style.transform = `translateX(-${pct}%)`;
     treeRight.style.transform = `translateX(${pct}%)`;
   }
 
@@ -2346,8 +2711,8 @@ if (document.readyState !== "loading") initAll();
       ANY part of the section becomes visible from below.
     */
     const startPos = winH + section.offsetHeight * 0.15;
-    const endPos   = winH * 0.5;
-    const raw      = 1 - (rect.bottom - endPos) / (startPos - endPos);
+    const endPos = winH * 0.5;
+    const raw = 1 - (rect.bottom - endPos) / (startPos - endPos);
     const progress = Math.max(0, Math.min(1, raw));
 
     /* Ease-out quart — snappy open, luxurious finish */
@@ -2358,16 +2723,16 @@ if (document.readyState !== "loading") initAll();
     setTreeTravel(pct);
 
     /* At 40% open, fade in the content with staggered delay */
-    if (!contentFired && progress > 0.40) {
+    if (!contentFired && progress > 0.4) {
       contentFired = true;
       contentEls.forEach((el, i) => {
-        el.style.opacity   = "0";
+        el.style.opacity = "0";
         el.style.transform = "translateY(20px)";
         el.style.transition = `opacity 700ms cubic-bezier(.16,1,.3,1) ${i * 180}ms,
                                transform 800ms cubic-bezier(.16,1,.3,1) ${i * 180}ms`;
         /* Force reflow so transition fires */
         void el.offsetHeight;
-        el.style.opacity   = "1";
+        el.style.opacity = "1";
         el.style.transform = "translateY(0)";
       });
     }
@@ -2379,21 +2744,29 @@ if (document.readyState !== "loading") initAll();
   }
 
   /* Start content hidden */
-  contentEls.forEach(el => {
-    el.style.opacity   = "0";
+  contentEls.forEach((el) => {
+    el.style.opacity = "0";
     el.style.transform = "translateY(20px)";
   });
 
-  window.addEventListener("scroll", () => {
-    if (!rafPending && !fullyOpen) {
-      rafPending = true;
-      requestAnimationFrame(updateTrees);
-    }
-  }, { passive: true });
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!rafPending && !fullyOpen) {
+        rafPending = true;
+        requestAnimationFrame(updateTrees);
+      }
+    },
+    { passive: true },
+  );
 
-  window.addEventListener("resize", () => {
-    if (fullyOpen) setTreeTravel(getTreeTravelPct());
-  }, { passive: true });
+  window.addEventListener(
+    "resize",
+    () => {
+      if (fullyOpen) setTreeTravel(getTreeTravelPct());
+    },
+    { passive: true },
+  );
 
   /* Run on load in case section is already in view */
   updateTrees();
@@ -2405,91 +2778,126 @@ if (document.readyState !== "loading") initAll();
    calendar links, and music. Arrays were already handled in Phase 1.
 ═══════════════════════════════════════════════════════════════ */
 (function applyConfigPhase2() {
-  var C = (typeof window !== 'undefined') ? window.__WEDDING_CONFIG__ : null;
+  var C = typeof window !== "undefined" ? window.__WEDDING_CONFIG__ : null;
   if (!C) return;
 
   var couple = C.couple || {};
   var invite = C.invite || {};
-  var story  = C.story  || {};
+  var story = C.story || {};
   var gallery = C.gallery || {};
-  var rsvp   = C.rsvp   || {};
-  var music  = C.music  || {};
+  var rsvp = C.rsvp || {};
+  var music = C.music || {};
 
-  var MONTHS_LONG = ['January','February','March','April','May','June',
-                     'July','August','September','October','November','December'];
+  var MONTHS_LONG = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
   function fmtLong(iso) {
-    if (!iso) return '';
-    var p = iso.split('-');
-    return parseInt(p[2], 10) + ' ' + (MONTHS_LONG[parseInt(p[1], 10) - 1] || '') + ' ' + p[0];
+    if (!iso) return "";
+    var p = iso.split("-");
+    return (
+      parseInt(p[2], 10) +
+      " " +
+      (MONTHS_LONG[parseInt(p[1], 10) - 1] || "") +
+      " " +
+      p[0]
+    );
   }
   function fmtDot(iso) {
-    if (!iso) return '';
-    var p = iso.split('-');
-    return parseInt(p[2], 10) + ' · ' + (MONTHS_LONG[parseInt(p[1], 10) - 1] || '') + ' · ' + p[0];
+    if (!iso) return "";
+    var p = iso.split("-");
+    return (
+      parseInt(p[2], 10) +
+      " · " +
+      (MONTHS_LONG[parseInt(p[1], 10) - 1] || "") +
+      " · " +
+      p[0]
+    );
   }
 
   /* ── Page title ── */
   if (couple.bride && couple.groom) {
-    document.title = couple.bride + ' & ' + couple.groom + ' · ShaadiPath';
+    document.title = couple.bride + " & " + couple.groom + " · ShaadiPath";
   }
 
   /* ── Intro section names, date, venue ── */
-  var introNames = document.getElementById('introNames');
+  var introNames = document.getElementById("introNames");
   if (introNames && couple.bride && couple.groom) {
-    var words = Array.from(introNames.querySelectorAll('.word')).filter(function(w) {
-      return !w.classList.contains('amp-wrap');
-    });
+    var words = Array.from(introNames.querySelectorAll(".word")).filter(
+      function (w) {
+        return !w.classList.contains("amp-wrap");
+      },
+    );
     if (words.length >= 2) {
       words[0].textContent = couple.bride;
       words[words.length - 1].textContent = couple.groom;
     }
   }
-  var introDate = document.getElementById('introDate');
+  var introDate = document.getElementById("introDate");
   if (introDate && couple.date) introDate.textContent = fmtDot(couple.date);
-  var introVenue = document.getElementById('introVenue');
+  var introVenue = document.getElementById("introVenue");
   if (introVenue && couple.venue) introVenue.textContent = couple.venue;
 
   /* ── Invite — couple names ── */
-  var invNames = document.querySelector('.inv-names');
+  var invNames = document.querySelector(".inv-names");
   if (invNames && couple.bride && couple.groom) {
-    invNames.innerHTML = couple.bride + ' <span class="inv-amp">&amp;</span> ' + couple.groom;
+    invNames.innerHTML =
+      couple.bride + ' <span class="inv-amp">&amp;</span> ' + couple.groom;
   }
 
   /* ── Invite — parents ── */
-  var invParents = document.querySelector('.inv-parents');
+  var invParents = document.querySelector(".inv-parents");
   if (invParents && (invite.brideFather || invite.groomFather)) {
-    var bF = invite.brideFather || '', bM = invite.brideMother || '';
-    var gF = invite.groomFather || '', gM = invite.groomMother || '';
-    var isGroomFirst = invite.parentsOrder === 'groom_first';
-    var line1 = (isGroomFirst ? 'S/O ' : 'D/O ') + bF + ' &amp; ' + bM;
-    var line2 = (isGroomFirst ? 'D/O ' : 'S/O ') + gF + ' &amp; ' + gM;
-    invParents.innerHTML = '<p>' + line1 + '</p><p>' + line2 + '</p>';
+    var bF = invite.brideFather || "",
+      bM = invite.brideMother || "";
+    var gF = invite.groomFather || "",
+      gM = invite.groomMother || "";
+    var isGroomFirst = invite.parentsOrder === "groom_first";
+    var line1 = (isGroomFirst ? "S/O " : "D/O ") + bF + " &amp; " + bM;
+    var line2 = (isGroomFirst ? "D/O " : "S/O ") + gF + " &amp; " + gM;
+    invParents.innerHTML = "<p>" + line1 + "</p><p>" + line2 + "</p>";
   }
 
   /* ── Invite — date and venue ── */
-  var invDate = document.querySelector('.inv-date');
+  var invDate = document.querySelector(".inv-date");
   if (invDate && couple.date) invDate.textContent = fmtLong(couple.date);
-  var invVenue = document.querySelector('.inv-venue');
+  var invVenue = document.querySelector(".inv-venue");
   if (invVenue && couple.venue) invVenue.textContent = couple.venue;
 
   /* ── Invite — grandparents text ── */
   if (HAS_GRANDPARENTS && invite.showGrandparents) {
-    var blessing = document.querySelector('.inv-blessing');
+    var blessing = document.querySelector(".inv-blessing");
     if (blessing) {
-      var blessPs = Array.from(blessing.querySelectorAll('p:not(.inv-overline)'));
+      var blessPs = Array.from(
+        blessing.querySelectorAll("p:not(.inv-overline)"),
+      );
       if (blessPs.length >= 2) {
-        var brideGPText = [invite.brideGF, invite.brideGM].filter(Boolean).join(' & ');
-        var groomGPText = [invite.groomGF, invite.groomGM].filter(Boolean).join(' & ');
+        var brideGPText = [invite.brideGF, invite.brideGM]
+          .filter(Boolean)
+          .join(" & ");
+        var groomGPText = [invite.groomGF, invite.groomGM]
+          .filter(Boolean)
+          .join(" & ");
         if (brideGPText) {
           blessPs[0].textContent = brideGPText;
         } else {
-          blessPs[0].style.display = 'none';
+          blessPs[0].style.display = "none";
         }
         if (groomGPText) {
           blessPs[1].textContent = groomGPText;
         } else {
-          blessPs[1].style.display = 'none';
+          blessPs[1].style.display = "none";
         }
       }
     }
@@ -2497,22 +2905,26 @@ if (document.readyState !== "loading") initAll();
 
   /* ── Couple section — hide if story disabled ── */
   if (story.show === false) {
-    var coupleSection = document.getElementById('couple');
-    if (coupleSection) coupleSection.style.display = 'none';
+    var coupleSection = document.getElementById("couple");
+    if (coupleSection) coupleSection.style.display = "none";
     var coupleNavLink = document.querySelector('.menu-link[href="#couple"]');
     if (coupleNavLink) {
-      coupleNavLink.style.display = 'none';
+      coupleNavLink.style.display = "none";
       var coupleNavDivider = coupleNavLink.previousElementSibling;
-      if (coupleNavDivider && coupleNavDivider.classList.contains('menu-divider')) coupleNavDivider.style.display = 'none';
+      if (
+        coupleNavDivider &&
+        coupleNavDivider.classList.contains("menu-divider")
+      )
+        coupleNavDivider.style.display = "none";
     }
   }
 
   /* ── Story paragraph + tags — respect storyMode ── */
-  var storyMode = story.storyMode || 'tags';
-  var storyBody = document.querySelector('.cpl-story-body');
-  var tagsContainer = document.getElementById('cplTags');
+  var storyMode = story.storyMode || "tags";
+  var storyBody = document.querySelector(".cpl-story-body");
+  var tagsContainer = document.getElementById("cplTags");
 
-  if (storyMode === 'story') {
+  if (storyMode === "story") {
     /* Story mode: replace paragraph with user text, hide tags */
     if (storyBody && story.storyText) storyBody.textContent = story.storyText;
     /* Tags container stays empty → auto-hidden via CSS :empty rule */
@@ -2520,12 +2932,12 @@ if (document.readyState !== "loading") initAll();
     /* Tags mode: only clear demo paragraph if there are actual tags to show.
        If tags array is empty, leave the hardcoded demo text as a visual fallback. */
     if (story.tags && story.tags.length > 0) {
-      if (storyBody) storyBody.textContent = '';
+      if (storyBody) storyBody.textContent = "";
       if (tagsContainer) {
-        tagsContainer.setAttribute('aria-hidden', 'false');
-        story.tags.forEach(function(tag) {
-          var chip = document.createElement('span');
-          chip.className = 'cpl-tag-chip';
+        tagsContainer.setAttribute("aria-hidden", "false");
+        story.tags.forEach(function (tag) {
+          var chip = document.createElement("span");
+          chip.className = "cpl-tag-chip";
           chip.textContent = tag;
           tagsContainer.appendChild(chip);
         });
@@ -2535,84 +2947,102 @@ if (document.readyState !== "loading") initAll();
   }
 
   /* ── Gallery section — hide if disabled ── */
-  if (!gallery.show || gallery.layout === 'skip') {
-    var galSection = document.getElementById('gallery');
-    if (galSection) galSection.style.display = 'none';
+  if (!gallery.show || gallery.layout === "skip") {
+    var galSection = document.getElementById("gallery");
+    if (galSection) galSection.style.display = "none";
     var galleryNavLink = document.querySelector('.menu-link[href="#gallery"]');
     if (galleryNavLink) {
-      galleryNavLink.style.display = 'none';
+      galleryNavLink.style.display = "none";
       var galleryNavDivider = galleryNavLink.previousElementSibling;
-      if (galleryNavDivider && galleryNavDivider.classList.contains('menu-divider')) galleryNavDivider.style.display = 'none';
+      if (
+        galleryNavDivider &&
+        galleryNavDivider.classList.contains("menu-divider")
+      )
+        galleryNavDivider.style.display = "none";
     }
   }
 
   /* ── RSVP — headline ── */
-  var headline = document.getElementById('rsvpHeadline');
+  var headline = document.getElementById("rsvpHeadline");
   if (headline && rsvp.heading) {
-    var joinEl = headline.querySelector('.rsvp-hl-join');
-    var willEl = headline.querySelector('.rsvp-hl-will');
+    var joinEl = headline.querySelector(".rsvp-hl-join");
+    var willEl = headline.querySelector(".rsvp-hl-will");
     if (joinEl) {
       joinEl.textContent = rsvp.heading;
-      if (willEl) willEl.textContent = '';
+      if (willEl) willEl.textContent = "";
     } else {
       headline.textContent = rsvp.heading;
     }
   }
 
   /* ── RSVP — body ── */
-  var rsvpBody = document.querySelector('.rsvp-body');
+  var rsvpBody = document.querySelector(".rsvp-body");
   if (rsvpBody && rsvp.subtext) rsvpBody.textContent = rsvp.subtext;
 
   /* ── RSVP — primary CTA button ── */
-  var rsvpBtn = document.querySelector('.rsvp-btn-primary');
+  var rsvpBtn = document.querySelector(".rsvp-btn-primary");
   if (rsvpBtn && couple.bride) {
-    if (rsvp.mode === 'form' && rsvp.form_url) {
+    if (rsvp.mode === "form" && rsvp.form_url) {
       rsvpBtn.href = rsvp.form_url;
-      rsvpBtn.setAttribute('target', '_blank');
+      rsvpBtn.setAttribute("target", "_blank");
     } else {
-      var ph = (couple.whatsapp || '').replace(/\D/g, '');
+      var ph = (couple.whatsapp || "").replace(/\D/g, "");
       if (ph) {
-        var full = ph.startsWith('91') ? ph : '91' + ph;
+        var full = ph.startsWith("91") ? ph : "91" + ph;
         var msg = encodeURIComponent(
-          'Hi ' + couple.bride + ' & ' + couple.groom + "! I'll be there to celebrate with you!"
+          "Hi " +
+            couple.bride +
+            " & " +
+            couple.groom +
+            "! I'll be there to celebrate with you!",
         );
-        rsvpBtn.href = 'https://wa.me/' + full + '?text=' + msg;
+        rsvpBtn.href = "https://wa.me/" + full + "?text=" + msg;
       }
     }
-    var btnInner = rsvpBtn.querySelector('.rsvp-btn-inner');
-    var btnLabel = rsvp.mode === 'form' ? (rsvp.button_text || rsvp.btnText) : rsvp.btnText;
+    var btnInner = rsvpBtn.querySelector(".rsvp-btn-inner");
+    var btnLabel =
+      rsvp.mode === "form" ? rsvp.button_text || rsvp.btnText : rsvp.btnText;
     if (btnInner && btnLabel) btnInner.textContent = btnLabel;
-    var rsvpHelper = rsvpBtn.parentElement && rsvpBtn.parentElement.querySelector('.rsvp-helper');
+    var rsvpHelper =
+      rsvpBtn.parentElement &&
+      rsvpBtn.parentElement.querySelector(".rsvp-helper");
     if (rsvpHelper) {
-      rsvpHelper.textContent = rsvp.mode === 'form'
-        ? "You'll be redirected to our RSVP form."
-        : "You'll be redirected to WhatsApp to confirm your attendance.";
+      rsvpHelper.textContent =
+        rsvp.mode === "form"
+          ? "You'll be redirected to our RSVP form."
+          : "You'll be redirected to WhatsApp to confirm your attendance.";
     }
   }
 
   /* ── Calendar links — use ShaadiPath pipeline URLs ── */
   if (C.calendarUrls) {
-    var gcalBtn = document.getElementById('rsvpGcalBtn');
-    var icalBtn = document.getElementById('rsvpIcalBtn');
+    var gcalBtn = document.getElementById("rsvpGcalBtn");
+    var icalBtn = document.getElementById("rsvpIcalBtn");
     if (gcalBtn) gcalBtn.href = C.calendarUrls.google;
     if (icalBtn) {
       icalBtn.href = C.calendarUrls.apple;
-      var dlName = ((couple.bride || 'bride') + '-' + (couple.groom || 'groom') + '-wedding.ics')
-        .toLowerCase().replace(/\s+/g, '-');
-      icalBtn.setAttribute('download', dlName);
+      var dlName = (
+        (couple.bride || "bride") +
+        "-" +
+        (couple.groom || "groom") +
+        "-wedding.ics"
+      )
+        .toLowerCase()
+        .replace(/\s+/g, "-");
+      icalBtn.setAttribute("download", dlName);
     }
   }
 
   /* ── Closing section ── */
-  var closingNames = document.querySelector('.closing-names');
+  var closingNames = document.querySelector(".closing-names");
   if (closingNames && couple.bride && couple.groom) {
-    closingNames.textContent = couple.bride + ' & ' + couple.groom;
+    closingNames.textContent = couple.bride + " & " + couple.groom;
   }
-  var closingDate = document.querySelector('.closing-date');
+  var closingDate = document.querySelector(".closing-date");
   if (closingDate && couple.date) closingDate.textContent = fmtDot(couple.date);
 
   /* ── Music ── */
-  var audioEl = document.getElementById('bgMusic');
+  var audioEl = document.getElementById("bgMusic");
   if (audioEl) {
     if (music.enabled && music.src) audioEl.src = music.src;
     // Music toggle always visible — template always has a song (default or custom)

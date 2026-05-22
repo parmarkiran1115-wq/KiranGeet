@@ -1,0 +1,196 @@
+{
+  "couple": {
+    "bride": "किरण",
+    "groom": "गीता",
+    "date": "20 जून 2026",
+    "venue": "The Oberoi Udaivilas, Udaipur"
+  },
+  "map": {
+    "url": "https://www.google.com/maps/search/?api=1&query=The+Oberoi+Udaivilas+Udaipur+Rajasthan"
+  },
+  "ui": {
+    "elements": {
+      "ropeButton": {
+        "id": "ropeButton",
+        "class": "rope-button rope-ready",
+        "type": "button",
+        "ariaLabel": "Pull the rope to light our celebration",
+        "title": "Pull to light us up",
+        "children": [
+          {
+            "tag": "img",
+            "id": "ropeImg",
+            "class": "rope-img",
+            "alt": "",
+            "draggable": false,
+            "ariaHidden": true,
+            "src": "{assets.hero.rope}"
+          },
+          {
+            "tag": "span",
+            "class": "rope-halo",
+            "ariaHidden": true
+          }
+        ]
+      },
+      "lotusButton": {
+        "id": "lotusButton",
+        "class": "lotus-button",
+        "type": "button",
+        "ariaLabel": "Tap the lotus to join us",
+        "children": [
+          {
+            "tag": "img",
+            "id": "lotusGlowBurst",
+            "class": "lotus-glow-burst",
+            "alt": "",
+            "ariaHidden": true,
+            "decoding": "async",
+            "src": "{assets.hero.lotusGlow}"
+          },
+          {
+            "tag": "img",
+            "id": "lotusIconImg",
+            "class": "lotus-icon-img",
+            "alt": "",
+            "ariaHidden": true,
+            "draggable": false,
+            "src": "{assets.hero.lotusClosed}"
+          },
+          {
+            "tag": "img",
+            "id": "lotusOpenImg",
+            "class": "lotus-open-img",
+            "alt": "",
+            "ariaHidden": true,
+            "draggable": false,
+            "src": "{assets.hero.lotusOpen}"
+          }
+        ]
+      },
+      "introBgDark": {
+        "tag": "img",
+        "id": "introBgDark",
+        "class": "intro-bg intro-bg-dark",
+        "alt": "",
+        "ariaHidden": true,
+        "decoding": "async",
+        "fetchpriority": "high",
+        "src": "{assets.hero.darkBgDesktop}"
+      },
+      "introBgLit": {
+        "tag": "img",
+        "id": "introBgLit",
+        "class": "intro-bg intro-bg-lit",
+        "alt": "",
+        "ariaHidden": true,
+        "decoding": "async",
+        "src": "{assets.hero.litBgDesktop}"
+      }
+    }
+  },
+  "events": [
+    {
+      "id": "mehendi",
+      "icon": "assets/event/pn-evt-ico-mehendi-x-v01.webp",
+      "name": "Mehendi",
+      "date": "11 Dec 2026",
+      "time": "4:00 PM",
+      "venue": "Lotus Courtyard",
+      "note": "Greens & florals encouraged"
+    },
+    {
+      "id": "haldi",
+      "icon": "assets/event/pn-evt-ico-haldi-x-v01.webp",
+      "name": "Haldi",
+      "date": "12 Dec 2026",
+      "time": "10:00 AM",
+      "venue": "Poolside Courtyard",
+      "note": "Yellow / ivory tones"
+    },
+    {
+      "id": "sangeet",
+      "icon": "assets/event/pn-evt-ico-sangeet-x-v01.webp",
+      "name": "Sangeet",
+      "date": "12 Dec 2026",
+      "time": "7:30 PM",
+      "venue": "Royal Ballroom",
+      "note": "An evening of music and performances"
+    },
+    {
+      "id": "shaadi",
+      "icon": "assets/event/pn-evt-ico-shaadi-x-v01.webp",
+      "name": "Shaadi",
+      "date": "13 Dec 2026",
+      "time": "9:30 AM",
+      "venue": "Lake Mandap",
+      "note": "Traditional Indian attire"
+    },
+    {
+      "id": "reception",
+      "icon": "assets/event/pn-evt-ico-reception-x-v01.webp",
+      "name": "Reception",
+      "date": "13 Dec 2026",
+      "time": "7:30 PM",
+      "venue": "Palace Lawns",
+      "note": "Candlelit dinner and celebration"
+    },
+    {
+      "id": "vidaai",
+      "icon": "assets/event/pn-evt-ico-vidaai-x-v01.webp",
+      "name": "Vidaai",
+      "date": "14 Dec 2026",
+      "time": "9:00 AM",
+      "venue": "Main Courtyard",
+      "note": "A quiet farewell with blessings"
+    }
+  ],
+  "assets": {
+    "hero": {
+      "darkBgMobile": "assets/hero/pn-hro-bg-courtyard-dark-m-v03.webp",
+      "litBgMobile": "assets/hero/pn-hro-bg-courtyard-lit-m-v03.webp",
+      "darkBgDesktop": "assets/hero/pn-hro-bg-courtyard-dark-D-v03.webp",
+      "litBgDesktop": "assets/hero/pn-hro-bg-courtyard-lit-d-v03.webp",
+      "rope": "assets/hero/pn-hro-el-rope-hemp-pull-x-v01.webp",
+      "lotusClosed": "assets/hero/pn-rvl-btn-lotus-closed-x-v01.webp",
+      "lotusOpen": "assets/hero/pn-rvl-btn-lotus-open-x-v01.webp",
+      "lotusGlow": "assets/hero/pn-fx-ovl-lotus-glow-burst-x-v01.webp",
+      "jhoomer": "assets/shared/pn-shr-mot-jhoomer-hanging-x-v01.webp",
+      "floralBush": "assets/hero/pn-shr-mot-floral-bush-cluster-x-v01.webp",
+      "diya": "assets/hero/pn-shr-mot-diya-glow-x-v01.webp"
+    },
+    "gallery": {
+      "frameAssets": {
+        "landscape": "assets/gallery/pn-gal-fr-hanging-landscape-x-v01.webp",
+        "portrait": "assets/gallery/pn-gal-fr-hanging-portrait-x-v01.webp",
+        "hero": "assets/gallery/pn-gal-fr-hanging-hero-arch-x-v01.webp"
+      }
+    }
+  },
+  "gallery": [
+    {
+      "src": "",
+      "caption": "Together",
+      "orient": "hero"
+    },
+    {
+      "src": "",
+      "caption": "Getting ready",
+      "orient": "portrait"
+    },
+    {
+      "src": "",
+      "caption": "The ceremony",
+      "orient": "landscape"
+    },
+    {
+      "src": "",
+      "caption": "Celebrations",
+      "orient": "portrait"
+    }
+  ],
+  "config": {
+    "hasGrandparents": true,
+    "pullThresholdPercent": 0.11
+  }
+}

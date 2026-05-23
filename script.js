@@ -282,8 +282,9 @@ function playBgMusic() {
   
   /* Ensure audio element is ready */
   if (!bgMusic.src) {
-    console.warn("Audio src not set yet");
-    return Promise.reject(new Error("No audio source"));
+    console.warn("Audio src not set yet, using fallback");
+    bgMusic.src = "assets/song/Template_09.mp3";
+    bgMusic.load();
   }
   
   /* Reset playback state for clean play */
@@ -291,12 +292,37 @@ function playBgMusic() {
   
   return bgMusic.play()
     .then(() => {
+      console.log("Audio playing successfully");
       syncBgMusicState();
     })
     .catch((err) => {
       console.warn("Audio playback failed:", err.message);
-      syncBgMusicState();
       
+      /* Try to recover with fallback path if not already using it */
+      if (bgMusic.src !== "assets/song/Template_09.mp3") {
+        console.log("Retrying with fallback audio path...");
+        bgMusic.src = "assets/song/Template_09.mp3";
+        bgMusic.load();
+        
+        /* Retry play after a brief delay */
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            bgMusic.play()
+              .then(() => {
+                console.log("Audio playing via fallback");
+                syncBgMusicState();
+                resolve();
+              })
+              .catch((retryErr) => {
+                console.error("Fallback audio also failed:", retryErr.message);
+                syncBgMusicState();
+                reject(retryErr);
+              });
+          }, 100);
+        });
+      }
+      
+      syncBgMusicState();
       /* On mobile, audio might need gesture after a brief delay */
       return Promise.reject(err);
     });
@@ -525,16 +551,39 @@ function hydrate() {
   lotusIconImg.src = A.lotusClosed;
   lotusGlow.src = A.lotusGlow;
 
-  // Set background music src from config
+  // Set background music src from config with fallback to direct path
+  let audioSrc = null;
+  
   if (
     window.__WEDDING_CONFIG__ &&
     window.__WEDDING_CONFIG__.music &&
     window.__WEDDING_CONFIG__.music.bgMusic
   ) {
-    bgMusic.src = window.__WEDDING_CONFIG__.music.bgMusic;
+    audioSrc = window.__WEDDING_CONFIG__.music.bgMusic;
+    console.log("Using audio src from config:", audioSrc);
+  } else {
+    // Fallback direct path
+    audioSrc = "assets/song/Template_09.mp3";
+    console.log("Using fallback audio src:", audioSrc);
+  }
+  
+  if (audioSrc) {
+    bgMusic.src = audioSrc;
     
     /* Preload the audio for better mobile support */
     bgMusic.load();
+    
+    /* Handle audio loading errors with fallback retry */
+    bgMusic.addEventListener("error", function handleAudioError() {
+      console.error("Audio load error:", bgMusic.error?.message);
+      
+      /* If current src fails, try direct path as ultimate fallback */
+      if (bgMusic.src !== "assets/song/Template_09.mp3") {
+        console.warn("Attempting fallback audio path...");
+        bgMusic.src = "assets/song/Template_09.mp3";
+        bgMusic.load();
+      }
+    }, { once: true });
     
     /* Attempt initial play/pause cycle to warm up audio context on iOS */
     if (typeof bgMusic.play === "function") {

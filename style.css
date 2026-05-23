@@ -5216,7 +5216,7 @@ input.gal-file-input {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: clamp(0px, 0svh, 40px) clamp(20px, 6vw, 48px) clamp(48px, 10svh, 96px);
+  padding: clamp(0px, 0svh, 40px) clamp(20px, 6vw, 48px) clamp(10px, 0svh, 40px);
   max-width: 540px;
   width: 100%;
 }

@@ -279,7 +279,27 @@ function syncBgMusicState() {
 function playBgMusic() {
   bgMusic.muted = false;
   bgMusic.volume = 1;
-  return bgMusic.play().then(syncBgMusicState);
+  
+  /* Ensure audio element is ready */
+  if (!bgMusic.src) {
+    console.warn("Audio src not set yet");
+    return Promise.reject(new Error("No audio source"));
+  }
+  
+  /* Reset playback state for clean play */
+  bgMusic.currentTime = 0;
+  
+  return bgMusic.play()
+    .then(() => {
+      syncBgMusicState();
+    })
+    .catch((err) => {
+      console.warn("Audio playback failed:", err.message);
+      syncBgMusicState();
+      
+      /* On mobile, audio might need gesture after a brief delay */
+      return Promise.reject(err);
+    });
 }
 
 function pauseBgMusic() {
@@ -512,6 +532,25 @@ function hydrate() {
     window.__WEDDING_CONFIG__.music.bgMusic
   ) {
     bgMusic.src = window.__WEDDING_CONFIG__.music.bgMusic;
+    
+    /* Preload the audio for better mobile support */
+    bgMusic.load();
+    
+    /* Attempt initial play/pause cycle to warm up audio context on iOS */
+    if (typeof bgMusic.play === "function") {
+      bgMusic.volume = 0; /* Silent */
+      bgMusic.play()
+        .then(() => {
+          bgMusic.pause();
+          bgMusic.currentTime = 0;
+          bgMusic.volume = 1; /* Restore volume */
+          console.log("Audio context primed for mobile");
+        })
+        .catch((err) => {
+          console.warn("Audio priming failed (expected on iOS):", err.message);
+          bgMusic.volume = 1; /* Restore volume anyway */
+        });
+    }
   }
 
   const lotusOpenImg = document.getElementById("lotusOpenImg");
@@ -1464,9 +1503,15 @@ function revealSite() {
 })();
 
 let triggered = false;
+let autoClickTimeout = null;
+
 function triggerIntro() {
   if (triggered) return;
   triggered = true;
+  
+  // Cancel auto-click timeouts when user interacts
+  if (autoClickTimeout) clearTimeout(autoClickTimeout);
+  
   Sound.bell(); /* soft bell chime — the pull lands */
   /* Start background music. pointermove isn't a trusted activation in all browsers,
      so if play() is blocked, retry on the very next user gesture (lotus tap, scroll, etc.) */
@@ -1811,8 +1856,32 @@ lotusButton.addEventListener("click", () => {
 
   /* Phase 5 — reveal site */
   setTimeout(revealSite, 1200);
+  
+  // Cancel auto-click timeout on lotus when user taps
+  if (autoClickTimeout) clearTimeout(autoClickTimeout);
 });
 skipBtn.addEventListener("click", revealSite);
+
+/* ─────────────────────────────────────
+   Auto-click fallback for non-interactive users
+───────────────────────────────────── */
+function enableAutoClick() {
+  /* Auto-click rope button after 5 seconds if user hasn't clicked */
+  autoClickTimeout = setTimeout(() => {
+    if (!triggered) {
+      console.log("Auto-triggering intro (rope)...");
+      ropeButton.click();
+      
+      /* Auto-click lotus button after intro sequence completes (3.5 seconds after rope click) */
+      setTimeout(() => {
+        if (!lotusButton.classList.contains("is-animating")) {
+          console.log("Auto-triggering lotus...");
+          lotusButton.click();
+        }
+      }, 3500);
+    }
+  }, 5000);
+}
 
 /* ─────────────────────────────────────
    Floating nav
@@ -2301,6 +2370,9 @@ function buildTTKCard(item, isLastOdd) {
       // Now call hydrate
       hydrate();
       Sound.init();
+      
+      // Enable auto-click after a short delay (after page is fully rendered)
+      setTimeout(enableAutoClick, 500);
     } else {
       // Config not ready yet, try again soon
       setTimeout(runHydrate, 50);

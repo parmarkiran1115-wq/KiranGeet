@@ -36,64 +36,64 @@ const MAP_URL =
 const MAP_Home =
   "https://www.google.com/maps/place/Kumar+Palaash/@18.5423147,73.9250591,629m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3bc2c14245732dbd:0x6c4686b57846cedb!8m2!3d18.5423147!4d73.927634!16s%2Fg%2F11ghrkkkqv?entry=ttu&g_ep=EgoyMDI2MDUxNy4wIKXMDSoASAFQAw%3D%3D";
 const EVENTS = [
-  {
-    id: "mehendi",
-    icon: "assets/event/pn-evt-ico-mehendi-x-v01.webp",
-    name: "मेहंदी",
-    date: "१९ जून २०२६",
-    time: "4:00 PM",
-    venue: "सुगंध उपवन",
-    note: "हिरवाई, आनंद आणि प्रेमाने सजलेला मेहंदी सोहळा",
-    map: MAP_Home,
-  },
-  {
-    id: "haldi",
-    icon: "assets/event/pn-evt-ico-haldi-x-v01.webp",
-    name: "हल्दी",
-    date: "१९ जून २०२६",
-    time: "5:00 PM",
-    venue: "मंगल प्रांगण",
-    note: "हळदीच्या शुभ रंगात न्हालेला आनंदमय क्षण",
-    map: MAP_Home,
-  },
+  // {
+  //   id: "haldi",
+  //   icon: "assets/event/pn-evt-ico-haldi-x-v01.webp",
+  //   name: "हल्दी",
+  //   date: "१९ जून २०२६",
+  //   time: "शाम ५:०० बजे ",
+  //   venue: "मंगल प्रांगण",
+  //   note: "हळदीच्या शुभ रंगात न्हालेला आनंदमय क्षण",
+  //   map: MAP_Home,
+  // },
   {
     id: "sangeet",
     icon: "assets/event/pn-evt-ico-sangeet-x-v01.webp",
     name: "कुंकुम",
     date: "२० जून २०२६",
-    time: "9:10 AM",
-    venue: "शुभ मंगल सभागृह",
-    note: "परंपरा, आनंद आणि आशीर्वादांचा मंगल सोहळा",
+    time: "सु. ९:१० बजे",
+    venue: "अवधूत बैंक्वेट हॉल",
+    note: "मंगलमय रीति-रिवाजों, शुभ आशीर्वाद और पारिवारिक स्नेह से सजा पावन कुंकुम समारोह",
     map: MAP_URL,
   },
-  {
-    id: "shaadi",
-    icon: "assets/event/pn-evt-ico-shaadi-x-v01.webp",
-    name: "शादी",
-    date: "२० जून २०२६",
-    time: "12:30 PM",
-    venue: "विवाह मंडप",
-    note: "दोन जीवांच्या पवित्र बंधनाचा शुभ क्षण",
-    map: MAP_URL,
-  },
+  // {
+  //   id: "shaadi",
+  //   icon: "assets/event/pn-evt-ico-shaadi-x-v01.webp",
+  //   name: "शादी",
+  //   date: "२० जून २०२६",
+  //   time: "दुपारी १२:३० बजे",
+  //   venue: "अवधूत बैंक्वेट हॉल",
+  //   note: "दोन जीवांच्या पवित्र बंधनाचा शुभ क्षण",
+  //   map: MAP_URL,
+  // },
   {
     id: "reception",
     icon: "assets/event/pn-evt-ico-reception-x-v01.webp",
     name: "हस्तमिलाप",
     date: "२० जून २०२६",
-    time: "2:16 PM",
+    time: "दु. २:१६ बजे",
     venue: "अवधूत बैंक्वेट हॉल",
-    note: "प्रेम, आनंद आणि शुभेच्छांचा खास उत्सव",
+    note: "दो हृदयों के मिलन, प्रेम, शुभ आशीर्वाद और खुशियों से सजा पावन हस्तमिलाप समारोह",
     map: MAP_URL,
   },
+  // {
+  //   id: "vidaai",
+  //   icon: "assets/event/pn-evt-ico-vidaai-x-v01.webp",
+  //   name: "विदाई",
+  //   date: "२० जून २०२६",
+  //   time: "शाम ६:०० बजे",
+  //   venue: "मुख्य प्रांगण",
+  //   note: "आशीर्वाद आणि भावनांनी भरलेला निरोप समारंभ",
+  //   map: MAP_URL,
+  // },
   {
-    id: "vidaai",
-    icon: "assets/event/pn-evt-ico-vidaai-x-v01.webp",
-    name: "विदाई",
-    date: "२० जून २०२६",
-    time: "6:00 AM",
-    venue: "मुख्य प्रांगण",
-    note: "आशीर्वाद आणि भावनांनी भरलेला निरोप समारंभ",
+    id: "mehendi",
+    icon: "assets/event/pn-evt-ico-shaadi-x-v01.webp",
+    name: "विवाह स्थल ",
+    date: "20 जून २०२६",
+    time: "दु. १२:३० बजे",
+    venue: "अवधूत बैंक्वेट हॉल",
+    note: "इंद्रायणी हॉस्पिटल के आगे, आळंदी–चाकण रोड,आळंदी, ता. खेड, जि. पुणे – ४१२१०५",
     map: MAP_URL,
   },
 ];
@@ -1755,7 +1755,7 @@ ropeButton.addEventListener("keydown", (e) => {
   }
 });
 ropeButton.addEventListener("click", () => {
-  if (!triggered && rmq) triggerIntro();
+  if (!triggered) triggerIntro();
 });
 
 /* ─────────────────────────────────────
@@ -1908,8 +1908,7 @@ const TTK_ITEMS = [
     type: "dress-code",
     enabled: true,
     title: "विनीत ",
-    description:
-      "फुलचंदजी, संजयकुमारजी, शांतीलालजी परमार व परिवार",
+    description: "फुलचंदजी, संजयकुमारजी, शांतीलालजी परमार व परिवार",
     icon: TTK_BASE + "pn-ttk-ico-dress-code-x-v01.webp",
     linkLabel: null,
     linkUrl: null,
@@ -1920,7 +1919,7 @@ const TTK_ITEMS = [
     enabled: true,
     title: "आपकी प्रतीक्षा में",
     description:
-      "सौ. नंदा प्रेमचंदजी श्रीश्रीमाळ, संभाजीनगर \n" + 
+      "सौ. नंदा प्रेमचंदजी श्रीश्रीमाळ, संभाजीनगर \n" +
       "सौ.पुष्पा सुभाषलालजी कटारिया, लोणी प्रवरा",
     icon: TTK_BASE + "pn-ttk-ico-venue-x-v01.webp",
     linkLabel: null,
@@ -1942,7 +1941,8 @@ const TTK_ITEMS = [
     type: "hashtag",
     enabled: true,
     title: "मीठी मनुहार ",
-    description: "सूरजमल, शुभम, धार्मिका, विराज, आरती, वैभवी, रुही एवं परमार परिवार",
+    description:
+      "सूरजमल, शुभम, धार्मिका, विराज, आरती, वैभवी, रुही एवं परमार परिवार",
     icon: TTK_BASE + "pn-ttk-ico-hashtag-x-v01.webp",
     linkLabel: null,
     linkUrl: null,
@@ -2522,7 +2522,7 @@ function initPreloader() {
         margin: 0 auto 20px;
         perspective: 1200px;
       `;
-      
+
       const img = document.createElement("img");
       img.className = "pl-couple-img";
       img.src = coupleImageUrl;
@@ -2537,7 +2537,7 @@ function initPreloader() {
         animation: couple3dRotate 8s infinite ease-in-out;
         transform-style: preserve-3d;
       `;
-      
+
       imgWrap.appendChild(img);
       plNames.insertBefore(imgWrap, plNames.firstChild);
     }
@@ -2553,7 +2553,7 @@ function initPreloader() {
         margin: 0 auto 20px;
         perspective: 1200px;
       `;
-      
+
       const img = document.createElement("img");
       img.className = "intro-couple-img";
       img.src = coupleImageUrl;
@@ -2565,7 +2565,7 @@ function initPreloader() {
         animation: couple3dRotate 8s infinite ease-in-out;
         transform-style: preserve-3d;
       `;
-      
+
       imgWrap.appendChild(img);
       introNames.insertBefore(imgWrap, introNames.firstChild);
     }

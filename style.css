@@ -3357,7 +3357,7 @@ body {
 }
 
 .gal-photo-wrap:hover .gal-photo {
-  transform: scale(1.045);
+  transform: scale(1);
 }
 
 /* Placeholder shown when no photo supplied */
